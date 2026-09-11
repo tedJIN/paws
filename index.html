@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paws — 주인 없는 프로세스만 골라냅니다</title>
+<meta name="description" content="AI 에이전트를 여러 개 돌리는 맥을 위한 메뉴바 앱. 메모리를 지켜보다가 고아 프로세스를 찾아 보여주고, 작업 중인 것은 건드리지 않습니다.">
+<meta property="og:title" content="Paws — 주인 없는 프로세스만 골라냅니다">
+<meta property="og:description" content="AI 에이전트를 여러 개 돌리는 맥을 위한 메뉴바 앱.">
+<meta property="og:type" content="website">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#EDF0F3;
+  --card:#FFFFFF;
+  --ink:#11151A;
+  --slate:#5C6773;
+  --hair:#D3DAE1;
+  --calm:#8A94A0;
+  --warn:#D9782F;
+  --danger:#C93A2B;
+  --hold:#1F6B5C;
+  --hold-soft:#E4F0ED;
+  --night:#12171D;
+
+  --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --gut:clamp(20px,5vw,56px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.65;
+  font-feature-settings:"ss01";
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1060px;margin:0 auto;padding:0 var(--gut)}
+
+/* ── eyebrow / mono utility ─────────────────── */
+.eyebrow{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--slate);
+}
+
+/* ── top bar ────────────────────────────────── */
+.bar{
+  position:sticky;top:0;z-index:20;background:rgba(237,240,243,.86);
+  backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--hair);
+}
+.bar .wrap{display:flex;align-items:center;gap:12px;height:56px}
+.mark{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:-.01em}
+.bar .spacer{flex:1}
+.bar a.ghost{
+  font-size:14px;color:var(--slate);text-decoration:none;padding:6px 2px;
+  border-bottom:1px solid transparent;
+}
+.bar a.ghost:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* ── ring ───────────────────────────────────── */
+.ring{width:22px;height:22px;flex:none}
+.ring circle{fill:none;stroke-width:3;stroke-linecap:round}
+.ring .track{stroke:var(--hair)}
+.ring .arc{stroke:var(--calm);transition:stroke .4s}
+
+/* ── buttons ────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--sans);font-size:16px;font-weight:600;
+  padding:13px 22px;border-radius:10px;text-decoration:none;
+  border:1px solid transparent;cursor:pointer;
+}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#000}
+.btn-quiet{color:var(--ink);border-color:var(--hair);background:var(--card)}
+.btn-quiet:hover{border-color:var(--slate)}
+.btn .sub{font-family:var(--mono);font-size:12px;font-weight:400;opacity:.62}
+a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offset:3px;border-radius:6px}
+
+/* ── hero ───────────────────────────────────── */
+.hero{padding:clamp(56px,9vw,104px) 0 clamp(40px,6vw,64px)}
+.hero h1{
+  font-size:clamp(36px,6.4vw,68px);line-height:1.14;letter-spacing:-.035em;
+  font-weight:800;margin:18px 0 0;max-width:15ch;word-break:keep-all;
+}
+.hero .lede{
+  margin:22px 0 0;max-width:46ch;color:var(--slate);font-size:clamp(16px,2vw,19px);
+  word-break:keep-all;
+}
+.hero .lede b{color:var(--ink);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;align-items:center}
+.cta .note{font-family:var(--mono);font-size:12px;color:var(--slate)}
+
+/* ── signature: the process tree ────────────── */
+.scope{
+  margin-top:clamp(40px,6vw,64px);background:var(--card);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+.scope-head{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  border-bottom:1px solid var(--hair);
+}
+.scope-head .eyebrow{letter-spacing:.12em}
+.scope-head .mem{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--slate)}
+.tree{font-family:var(--mono);font-size:13.5px;line-height:1.5;padding:14px 0 18px;overflow-x:auto}
+.row{
+  display:grid;grid-template-columns:34px 62px 1fr auto;gap:14px;align-items:center;
+  padding:5px 16px 5px 0;position:relative;min-width:540px;
+}
+.row .gutter{position:relative;height:100%}
+.row .pid{color:var(--slate)}
+.row .cmd{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .cmd .dim{color:var(--slate)}
+.row .tag{
+  font-size:11px;letter-spacing:.06em;padding:2px 8px;border-radius:999px;white-space:nowrap;
+  border:1px solid transparent;
+}
+.tag-hold{color:var(--hold);background:var(--hold-soft);border-color:#C9E2DB}
+.tag-orphan{color:var(--danger);background:#FAE9E7;border-color:#F0CFCA}
+.tag-mem{color:var(--slate);font-family:var(--mono)}
+
+/* the protection bracket — one unbroken line down the held subtree */
+.held-group{position:relative}
+.held-group::before{
+  content:"";position:absolute;left:17px;top:9px;bottom:9px;width:2px;
+  background:var(--hold);border-radius:2px;
+}
+.indent .cmd{padding-left:18px;position:relative}
+.indent .cmd::before{
+  content:"";position:absolute;left:2px;top:50%;width:10px;height:1px;background:var(--hair);
+}
+.scope-foot{
+  border-top:1px solid var(--hair);padding:12px 16px;display:flex;gap:10px;
+  align-items:baseline;font-size:13.5px;color:var(--slate);flex-wrap:wrap;
+}
+.scope-foot .key{
+  display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;
+}
+.swatch{width:9px;height:9px;border-radius:2px;display:inline-block}
+
+/* ── origin note ────────────────────────────── */
+.origin{
+  margin:clamp(44px,7vw,76px) 0 0;padding:22px 24px;border-left:2px solid var(--warn);
+  background:var(--card);border-radius:0 10px 10px 0;
+}
+.origin p{margin:0;max-width:60ch;word-break:keep-all}
+.origin .stamp{font-family:var(--mono);font-size:12px;color:var(--slate);display:block;margin-bottom:6px}
+
+/* ── generic section ────────────────────────── */
+section{padding:clamp(56px,8vw,96px) 0}
+.sec-head{max-width:52ch}
+.sec-head h2{
+  font-size:clamp(26px,3.6vw,38px);line-height:1.25;letter-spacing:-.03em;
+  font-weight:800;margin:12px 0 0;word-break:keep-all;
+}
+.sec-head p{color:var(--slate);margin:14px 0 0;word-break:keep-all}
+
+.finds{display:grid;gap:1px;background:var(--hair);border:1px solid var(--hair);
+  border-radius:14px;overflow:hidden;margin-top:40px}
+@media(min-width:760px){.finds{grid-template-columns:repeat(3,1fr)}}
+.find{background:var(--card);padding:26px 24px 28px}
+.find h3{font-size:18px;margin:14px 0 8px;letter-spacing:-.015em}
+.find p{margin:0;color:var(--slate);font-size:15px;word-break:keep-all}
+.find .n{font-family:var(--mono);font-size:12px;color:var(--calm)}
+
+/* ── the promise (inverted) ─────────────────── */
+.promise{background:var(--night);color:#E8ECF0}
+.promise .eyebrow{color:#7E8A97}
+.promise h2{color:#fff}
+.promise p{color:#A9B4C0}
+.vows{margin:44px 0 0;padding:0;list-style:none;display:grid;gap:1px;background:#222A32;
+  border:1px solid #222A32;border-radius:14px;overflow:hidden}
+@media(min-width:760px){.vows{grid-template-columns:1fr 1fr}}
+.vow{background:var(--night);padding:26px 24px}
+.vow h3{margin:0 0 8px;font-size:17px;color:#fff;letter-spacing:-.015em}
+.vow p{margin:0;font-size:15px;color:#98A4B1;word-break:keep-all}
+.vow .mark-hold{color:#4FBBA3;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+.aside-cpu{border:1px dashed #2E3841;border-radius:12px;margin-top:34px;padding:24px}
+.aside-cpu p{margin:0;max-width:64ch;word-break:keep-all;color:#A9B4C0;font-size:15px}
+.aside-cpu b{color:#fff;font-weight:600}
+.aside-cpu code{font-family:var(--mono);font-size:13px;color:#4FBBA3}
+
+/* ── price ──────────────────────────────────── */
+.price-grid{display:grid;gap:18px;margin-top:40px}
+@media(min-width:760px){.price-grid{grid-template-columns:1fr 1fr}}
+.plan{background:var(--card);border:1px solid var(--hair);border-radius:14px;padding:28px 26px}
+.plan.lead{border-color:var(--ink)}
+.plan .tier{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+.plan .amount{font-size:34px;font-weight:800;letter-spacing:-.03em;margin:10px 0 2px}
+.plan .amount .unit{font-size:15px;font-weight:500;color:var(--slate);letter-spacing:0}
+.plan ul{margin:18px 0 0;padding:0;list-style:none;font-size:15px;color:var(--slate)}
+.plan li{padding:6px 0 6px 20px;position:relative;word-break:keep-all}
+.plan li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;
+  border-radius:2px;background:var(--hold)}
+.plan.free li::before{background:var(--calm)}
+.plan .btn{margin-top:22px;width:100%;justify-content:center}
+
+/* ── download ───────────────────────────────── */
+.get{border-top:1px solid var(--hair)}
+.get .inner{display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
+.get h2{margin:0;font-size:clamp(24px,3.2vw,32px);letter-spacing:-.03em;word-break:keep-all}
+.specs{font-family:var(--mono);font-size:12.5px;color:var(--slate);margin-top:12px;line-height:1.9}
+
+/* ── footer ─────────────────────────────────── */
+footer{border-top:1px solid var(--hair);padding:34px 0 56px;font-size:14px;color:var(--slate)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+footer a{text-decoration:none;border-bottom:1px solid var(--hair)}
+footer a:hover{border-bottom-color:var(--slate);color:var(--ink)}
+footer .spacer{flex:1}
+
+/* ── entrance choreography ──────────────────── */
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(10px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
+  .row{opacity:0;animation:rise .42s cubic-bezier(.2,.7,.3,1) forwards}
+  .held-group::before{transform-origin:top;animation:drop .5s cubic-bezier(.3,.8,.3,1) .62s both}
+  .row .tag{opacity:0;animation:fade .4s ease .95s forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @keyframes drop{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  @keyframes fade{to{opacity:1}}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.row,.row .tag{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <span class="mark">
+      <svg class="ring" viewBox="0 0 24 24" aria-hidden="true">
+        <circle class="track" cx="12" cy="12" r="9"></circle>
+        <circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="34 57" transform="rotate(-90 12 12)"></circle>
+      </svg>
+      Paws
+    </span>
+    <span class="spacer"></span>
+    <a class="ghost" href="#promise">안 하는 것</a>
+    <a class="ghost" href="#price">가격</a>
+    <a class="ghost" href="#get">내려받기</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">macOS 14 이상 · 메뉴바 앱</span>
+    <h1 class="reveal" style="animation-delay:.06s">터미널을 닫아도<br>프로세스는 남습니다</h1>
+    <p class="lede reveal" style="animation-delay:.12s">
+      AI 에이전트를 여러 개 돌리면 주인이 사라진 프로세스가 쌓입니다.
+      Paws는 메뉴바에서 메모리를 지켜보다가 그것만 골라 보여줍니다.
+      <b>작업 중인 것은 건드리지 않습니다.</b>
+    </p>
+    <div class="cta reveal" style="animation-delay:.18s">
+      <a class="btn btn-primary" href="#get">내려받기 <span class="sub">1.0.0 · Apple 공증</span></a>
+      <a class="btn btn-quiet" href="#promise">무엇을 안 하는지 보기</a>
+      <span class="note">14일 체험 · 감시는 계속 무료</span>
+    </div>
+
+    <!-- signature: the protection bracket -->
+    <div class="scope" role="img" aria-label="프로세스 목록 예시. 터미널이 붙잡고 있는 프로세스 세 개는 보호로 표시되고, 부모가 사라진 chroma-mcp 프로세스 두 개는 고아로 표시됩니다.">
+      <div class="scope-head">
+        <svg class="ring" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
+          <circle class="track" cx="12" cy="12" r="9"></circle>
+          <circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="46 57" transform="rotate(-90 12 12)" style="stroke:var(--warn)"></circle>
+        </svg>
+        <span class="eyebrow">지금 이 맥에서</span>
+        <span class="mem">메모리 압박 경고 · 발견 2</span>
+      </div>
+
+      <div class="tree">
+        <div class="held-group">
+        <div class="row held" style="animation-delay:.20s">
+          <span class="gutter"></span><span class="pid">41820</span>
+          <span class="cmd">node <span class="dim">claude --dangerously-skip-permissions</span></span>
+          <span class="tag tag-hold">보호 · 세션이 붙잡음</span>
+        </div>
+        <div class="row held indent" style="animation-delay:.26s">
+          <span class="gutter"></span><span class="pid">41904</span>
+          <span class="cmd">rg <span class="dim">--json --hidden pattern src/</span></span>
+          <span class="tag tag-hold">보호 · 위로 번짐</span>
+        </div>
+        <div class="row held indent" style="animation-delay:.32s">
+          <span class="gutter"></span><span class="pid">41911</span>
+          <span class="cmd">node <span class="dim">playwright-mcp --user-data-dir=…</span></span>
+          <span class="tag tag-hold">보호 · 위로 번짐</span>
+        </div>
+        </div>
+        <div class="row" style="animation-delay:.40s">
+          <span class="gutter"></span><span class="pid">9012</span>
+          <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
+          <span class="tag tag-orphan">고아 · 부모 없음 · 812 MB</span>
+        </div>
+        <div class="row" style="animation-delay:.46s">
+          <span class="gutter"></span><span class="pid">9013</span>
+          <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
+          <span class="tag tag-orphan">고아 · 부모 없음 · 804 MB</span>
+        </div>
+      </div>
+
+      <div class="scope-foot">
+        <span class="key"><span class="swatch" style="background:var(--hold)"></span> 보호선은 위로 번집니다</span>
+        <span class="key"><span class="swatch" style="background:var(--danger)"></span> 고아만 정리 대상</span>
+      </div>
+    </div>
+
+    <div class="origin">
+      <span class="stamp">2026-09-09</span>
+      <p>한 맥에서 chroma-mcp가 남긴 고아 프로세스 1,374쌍이 메모리를 전부 먹었습니다.
+         경고창이 지목한 앱은 범인이 아니었습니다. Paws는 그날 시작됐습니다.</p>
+    </div>
+  </div>
+</header>
+
+<section id="finds">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">무엇을 찾나</span>
+      <h2>느려진 이유를 이름으로 알려줍니다</h2>
+      <p>메모리를 얼마나 쓰는지 보여주는 도구는 많습니다. Paws는 그중 무엇이 주인을 잃었는지까지 판정합니다.</p>
+    </div>
+    <div class="finds">
+      <div class="find">
+        <span class="n">01</span>
+        <h3>고아 프로세스</h3>
+        <p>부모가 죽고 남은 프로세스. 같은 명령이 셋 이상 쌓였을 때만 후보로 올립니다. 하나뿐인 것은 건드리지 않습니다.</p>
+      </div>
+      <div class="find">
+        <span class="n">02</span>
+        <h3>세션 없는 큰 프로세스</h3>
+        <p>터미널이 쥐고 있지 않은데 메모리를 크게 먹는 것. 자동으로 끝내는 일은 절대 없고, 목록으로만 보여줍니다.</p>
+      </div>
+      <div class="find">
+        <span class="n">03</span>
+        <h3>메모리 압박</h3>
+        <p>메뉴바의 링이 색으로 상태를 말합니다. 평소엔 회색, 경고면 주황, 위험이면 빨강. 그래프로 지난 흐름도 봅니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="promise" id="promise">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">무엇을 절대 안 하나</span>
+      <h2>작업을 잃게 만드는 도구는<br>쓸 이유가 없습니다</h2>
+      <p>정리 앱에서 가장 중요한 것은 무엇을 지우느냐가 아니라 무엇을 남기느냐입니다.</p>
+    </div>
+    <ul class="vows">
+      <li class="vow">
+        <span class="mark-hold">HOLD</span>
+        <h3>터미널이 앞에 둔 작업은 건드리지 않습니다</h3>
+        <p>그 아래에 딸린 것까지 함께 보호합니다. 입력을 기다리는 AI 세션도 마찬가지입니다.</p>
+      </li>
+      <li class="vow">
+        <span class="mark-hold">HOLD</span>
+        <h3>미리 체크된 항목이 없습니다</h3>
+        <p>정리 목록은 빈 상태로 열립니다. 무엇을 끝낼지는 전부 사람이 고릅니다.</p>
+      </li>
+      <li class="vow">
+        <span class="mark-hold">HOLD</span>
+        <h3>데이터가 기계를 떠나지 않습니다</h3>
+        <p>사용 통계도 크래시 리포트도 보내지 않습니다. 라이선스 확인 한 종류만 예외입니다.</p>
+      </li>
+      <li class="vow">
+        <span class="mark-hold">HOLD</span>
+        <h3>기록 없는 종료가 없습니다</h3>
+        <p>끝내기 전에 다시 묻고, 무엇을 언제 왜 끝냈는지 전부 남깁니다. 판정이 불확실하면 아무것도 하지 않습니다.</p>
+      </li>
+    </ul>
+    <div class="aside-cpu">
+      <p><b>CPU를 안 쓴다고 노는 게 아닙니다.</b>
+         입력을 기다리는 클로드 코드는 CPU가 0입니다. CPU로 판정하는 정리 도구는 그것을 죽입니다.
+         Paws는 커널이 터미널 앞에 둔 그룹, <code>e_tpgid</code>를 봅니다. 세션이 쥐고 있는지를 묻는 것이지, 바쁜지를 묻지 않습니다.</p>
+    </div>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">가격</span>
+      <h2>보는 것은 무료, 끝내는 것만 유료</h2>
+      <p>설치하면 14일간 전부 열립니다. 그 뒤에도 링과 그래프와 발견 목록은 그대로 남습니다.</p>
+    </div>
+    <div class="price-grid">
+      <div class="plan free">
+        <span class="tier">감시</span>
+        <div class="amount">무료 <span class="unit">기한 없음</span></div>
+        <ul>
+          <li>메뉴바 메모리 링과 그래프</li>
+          <li>고아·세션 없는 프로세스 발견 목록</li>
+          <li>메모리 압박 알림</li>
+        </ul>
+      </div>
+      <div class="plan lead">
+        <span class="tier">정리</span>
+        <div class="amount" data-price>가격 준비 중 <span class="unit">일회성 구매</span></div>
+        <ul>
+          <li>발견한 프로세스 끝내기</li>
+          <li>고아 자동 정리 (기본은 꺼짐)</li>
+          <li>업데이트 계속 제공</li>
+        </ul>
+        <a class="btn btn-primary" href="#get" data-checkout>14일 체험으로 시작</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="get" id="get">
+  <div class="wrap inner">
+    <div>
+      <h2>받아서 메뉴바에 두세요</h2>
+      <div class="specs">
+        macOS 14 Sonoma 이상 · Apple Silicon 및 Intel<br>
+        Developer ID 서명 · Apple 공증 완료<br>
+        설치 후 14일 체험 · 계정 가입 없음
+      </div>
+    </div>
+    <a class="btn btn-primary" href="Paws-1.0.0.dmg" download>Paws 1.0.0 내려받기 <span class="sub">DMG</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Paws</span>
+    <span class="spacer"></span>
+    <a href="privacy.html">개인정보 처리방침</a>
+    <a href="terms.html">이용약관</a>
+    <a href="mailto:" data-support>문의</a>
+  </div>
+</footer>
+
+</body>
+</html>

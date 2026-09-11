@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개인정보 처리방침 — Paws</title>
+<meta name="robots" content="index">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="_legal.css">
+</head>
+<body>
+<div class="bar"><div class="wrap">
+<a href="index.html"><svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="9"></circle><circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="34 57" transform="rotate(-90 12 12)"></circle></svg></a>
+<a href="index.html">Paws</a>
+</div></div>
+<main><div class="wrap">
+<span class="eyebrow">개인정보 처리방침</span>
+<h1>Paws 는 이 맥에서만 일합니다</h1>
+<p class="draft">이 문서는 초안이며 법률 검토를 거치지 않았습니다.</p>
+<p>Paws 는 이 맥의 메모리와 프로세스 목록을 읽어 화면에 보여주고, 사용자가 고른 프로세스를 끝내는 도구입니다.</p><h2>기계 밖으로 나가는 것</h2>
+<ul>
+<li><b>라이선스 확인.</b> 라이선스 키를 등록·검증·해제할 때 <code>api.lemonsqueezy.com</code> 에 키, 이 맥의 이름, 인스턴스 ID 를 보냅니다. 등록할 때 한 번, 그 뒤로는 7일마다 한 번입니다.</li>
+<li><b>업데이트 확인.</b> 하루 한 번 새 버전 번호가 적힌 작은 파일을 읽습니다. 보내는 것은 없습니다.</li>
+</ul>
+<p>그 외에는 어떤 데이터도 보내지 않습니다. 사용 통계와 크래시 리포트를 수집하지 않습니다.</p>
+
+<h2>기계 안에 남는 것</h2>
+<p><code>~/Library/Application Support/Paws/</code> 에 설정, 조치 기록(<code>journal.jsonl</code>), 메모리 이력, 라이선스 파일이 있습니다. 조치 기록에는 끝낸 프로세스의 경로와 명령줄이 남습니다. 지우고 싶으면 그 폴더를 지우면 됩니다.</p>
+
+<h2>문제 신고</h2>
+<p>설정에서 <b>문제 신고</b> 를 누르면 바탕화면에 진단 묶음을 만듭니다. 사용자가 직접 보내기 전에는 아무 데도 가지 않습니다. 묶음에는 설정, 최근 조치 기록, 프로세스 목록, macOS 버전이 들어 있습니다. <b>명령줄 인자는 제외합니다</b> — 인자에 API 키가 들어 있는 경우가 흔하기 때문입니다. 경로의 파일 이름만 남습니다.</p>
+
+<h2>연락</h2>
+<p data-support>문의 주소는 앱의 설정 화면에 적혀 있습니다.</p>
+</div></main>
+<footer><div class="wrap">
+<a href="index.html">홈</a><a href="privacy.html">개인정보 처리방침</a><a href="terms.html">이용약관</a>
+</div></footer>
+</body>
+</html>
