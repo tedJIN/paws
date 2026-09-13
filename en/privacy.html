@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — Paws</title>
+<meta name="robots" content="index">
+<link rel="icon" href="../icon.png">
+<link rel="alternate" hreflang="ko" href="https://tedjin.github.io/paws/privacy.html">
+<link rel="alternate" hreflang="en" href="https://tedjin.github.io/paws/en/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://tedjin.github.io/paws/en/privacy.html">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../_legal.css">
+</head>
+<body>
+<div class="bar"><div class="wrap">
+<a href="index.html"><svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="9"></circle><circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="34 57" transform="rotate(-90 12 12)"></circle></svg></a>
+<a href="index.html">Paws</a>
+<span class="spacer"></span>
+<a class="ghost" href="../privacy.html" lang="ko">KO</a>
+</div></div>
+<main><div class="wrap">
+<span class="eyebrow">Privacy policy</span>
+<h1>Paws works only on this Mac</h1>
+<p class="draft">This is a draft and has not been reviewed by a lawyer.</p>
+<p>Paws reads this Mac's memory and process list, shows them on screen, and ends the processes you pick.</p>
+
+<h2>What leaves the machine</h2>
+<ul>
+<li><b>License check.</b> When a license key is registered, validated, or released, the key, this Mac's name, and an instance ID are sent to <code>api.lemonsqueezy.com</code>. Once at registration, then once every 7 days.</li>
+<li><b>Update check.</b> Once a day it reads a small file containing the latest version number. Nothing is sent.</li>
+</ul>
+<p>Nothing else is sent anywhere. No usage statistics and no crash reports are collected.</p>
+
+<h2>What stays on the machine</h2>
+<p><code>~/Library/Application Support/Paws/</code> holds your settings, the record of actions taken (<code>journal.jsonl</code>), memory history, and the license file. The action record keeps the path and command line of every process that was ended. To erase it, delete that folder.</p>
+
+<h2>Problem reports</h2>
+<p>Pressing <b>Report a problem</b> in settings writes a diagnostic bundle to your desktop. It goes nowhere until you send it yourself. The bundle contains your settings, recent action records, the process list, and the macOS version. <b>Command-line arguments are excluded</b> — arguments often contain API keys. Only the file name in a path remains.</p>
+
+<h2>Contact</h2>
+<p>Write to <a href="mailto:pawsapp.help@gmail.com">pawsapp.help@gmail.com</a>.</p>
+</div></main>
+<footer><div class="wrap">
+<a href="index.html">Home</a><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms</a>
+</div></footer>
+</body>
+</html>

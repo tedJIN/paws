@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paws — 주인 없는 프로세스만 골라냅니다</title>
-<meta name="description" content="AI 에이전트를 여러 개 돌리는 맥을 위한 메뉴바 앱. 메모리를 지켜보다가 고아 프로세스를 찾아 보여주고, 작업 중인 것은 건드리지 않습니다.">
-<meta property="og:title" content="Paws — 주인 없는 프로세스만 골라냅니다">
-<meta property="og:description" content="AI 에이전트를 여러 개 돌리는 맥을 위한 메뉴바 앱.">
+<title>Paws — finds the processes nobody owns</title>
+<meta name="description" content="A menu bar app for Macs that run several AI agents. It watches memory, picks out the processes whose owner is gone, and never touches work in progress.">
+<meta property="og:title" content="Paws — finds the processes nobody owns">
+<meta property="og:description" content="A menu bar app for Macs that run several AI agents.">
 <meta property="og:type" content="website">
-<link rel="icon" href="icon.png">
+<link rel="icon" href="../icon.png">
 <link rel="alternate" hreflang="ko" href="https://tedjin.github.io/paws/">
 <link rel="alternate" hreflang="en" href="https://tedjin.github.io/paws/en/">
 <link rel="alternate" hreflang="x-default" href="https://tedjin.github.io/paws/en/">
@@ -90,7 +90,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offse
 .hero{padding:clamp(56px,9vw,104px) 0 clamp(40px,6vw,64px)}
 .hero h1{
   font-size:clamp(36px,6.4vw,68px);line-height:1.14;letter-spacing:-.035em;
-  font-weight:800;margin:18px 0 0;max-width:15ch;word-break:keep-all;
+  font-weight:800;margin:18px 0 0;max-width:16ch;word-break:keep-all;
 }
 .hero .lede{
   margin:22px 0 0;max-width:46ch;color:var(--slate);font-size:clamp(16px,2vw,19px);
@@ -244,37 +244,37 @@ footer .spacer{flex:1}
       Paws
     </span>
     <span class="spacer"></span>
-    <a class="ghost" href="#promise">안 하는 것</a>
-    <a class="ghost" href="#price">가격</a>
-    <a class="ghost" href="en/" lang="en">EN</a>
-    <a class="ghost" href="#get">내려받기</a>
+    <a class="ghost" href="#promise">What it never does</a>
+    <a class="ghost" href="#price">Pricing</a>
+    <a class="ghost" href="../" lang="ko">KO</a>
+    <a class="ghost" href="#get">Download</a>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow reveal">macOS 14 이상 · 메뉴바 앱</span>
-    <h1 class="reveal" style="animation-delay:.06s">터미널을 닫아도<br>프로세스는 남습니다</h1>
+    <span class="eyebrow reveal">macOS 14+ · menu bar app</span>
+    <h1 class="reveal" style="animation-delay:.06s">Closing the terminal<br>doesn't end the process</h1>
     <p class="lede reveal" style="animation-delay:.12s">
-      AI 에이전트를 여러 개 돌리면 주인이 사라진 프로세스가 쌓입니다.
-      Paws는 메뉴바에서 메모리를 지켜보다가 그것만 골라 보여줍니다.
-      <b>작업 중인 것은 건드리지 않습니다.</b>
+      Run several AI agents and you accumulate processes whose owner is gone.
+      Paws watches memory from the menu bar and shows you only those.
+      <b>It never touches work in progress.</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
-      <a class="btn btn-primary" href="#get">내려받기 <span class="sub">1.0.0 · Apple 공증</span></a>
-      <a class="btn btn-quiet" href="#promise">무엇을 안 하는지 보기</a>
-      <span class="note">14일 체험 · 감시는 계속 무료</span>
+      <a class="btn btn-primary" href="#get">Download <span class="sub">1.0.0 · notarized by Apple</span></a>
+      <a class="btn btn-quiet" href="#promise">See what it never does</a>
+      <span class="note">14-day trial · monitoring stays free</span>
     </div>
 
     <!-- signature: the protection bracket -->
-    <div class="scope" role="img" aria-label="프로세스 목록 예시. 터미널이 붙잡고 있는 프로세스 세 개는 보호로 표시되고, 부모가 사라진 chroma-mcp 프로세스 두 개는 고아로 표시됩니다.">
+    <div class="scope" role="img" aria-label="An example process list. The three processes the terminal is holding are marked as held, and the two chroma-mcp processes whose parent is gone are marked as orphans.">
       <div class="scope-head">
         <svg class="ring" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
           <circle class="track" cx="12" cy="12" r="9"></circle>
           <circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="46 57" transform="rotate(-90 12 12)" style="stroke:var(--warn)"></circle>
         </svg>
-        <span class="eyebrow">지금 이 맥에서</span>
-        <span class="mem">메모리 압박 경고 · 발견 2</span>
+        <span class="eyebrow">On this Mac right now</span>
+        <span class="mem">memory pressure: warning · 2 findings</span>
       </div>
 
       <div class="tree">
@@ -282,41 +282,41 @@ footer .spacer{flex:1}
         <div class="row held" style="animation-delay:.20s">
           <span class="gutter"></span><span class="pid">41820</span>
           <span class="cmd">node <span class="dim">claude --dangerously-skip-permissions</span></span>
-          <span class="tag tag-hold">보호 · 세션이 붙잡음</span>
+          <span class="tag tag-hold">held · session owns it</span>
         </div>
         <div class="row held indent" style="animation-delay:.26s">
           <span class="gutter"></span><span class="pid">41904</span>
           <span class="cmd">rg <span class="dim">--json --hidden pattern src/</span></span>
-          <span class="tag tag-hold">보호 · 위로 번짐</span>
+          <span class="tag tag-hold">held · spreads upward</span>
         </div>
         <div class="row held indent" style="animation-delay:.32s">
           <span class="gutter"></span><span class="pid">41911</span>
           <span class="cmd">node <span class="dim">playwright-mcp --user-data-dir=…</span></span>
-          <span class="tag tag-hold">보호 · 위로 번짐</span>
+          <span class="tag tag-hold">held · spreads upward</span>
         </div>
         </div>
         <div class="row" style="animation-delay:.40s">
           <span class="gutter"></span><span class="pid">9012</span>
           <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
-          <span class="tag tag-orphan">고아 · 부모 없음 · 812 MB</span>
+          <span class="tag tag-orphan">orphan · no parent · 812 MB</span>
         </div>
         <div class="row" style="animation-delay:.46s">
           <span class="gutter"></span><span class="pid">9013</span>
           <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
-          <span class="tag tag-orphan">고아 · 부모 없음 · 804 MB</span>
+          <span class="tag tag-orphan">orphan · no parent · 804 MB</span>
         </div>
       </div>
 
       <div class="scope-foot">
-        <span class="key"><span class="swatch" style="background:var(--hold)"></span> 보호선은 위로 번집니다</span>
-        <span class="key"><span class="swatch" style="background:var(--danger)"></span> 고아만 정리 대상</span>
+        <span class="key"><span class="swatch" style="background:var(--hold)"></span> The hold line spreads upward</span>
+        <span class="key"><span class="swatch" style="background:var(--danger)"></span> Only orphans are cleanup targets</span>
       </div>
     </div>
 
     <div class="origin">
       <span class="stamp">2026-09-09</span>
-      <p>한 맥에서 chroma-mcp가 남긴 고아 프로세스 1,374쌍이 메모리를 전부 먹었습니다.
-         경고창이 지목한 앱은 범인이 아니었습니다. Paws는 그날 시작됐습니다.</p>
+      <p>On one Mac, 1,374 orphan pairs left behind by chroma-mcp ate all the memory.
+         The app the warning dialog blamed wasn't the culprit. Paws started that day.</p>
     </div>
   </div>
 </header>
@@ -324,25 +324,25 @@ footer .spacer{flex:1}
 <section id="finds">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">무엇을 찾나</span>
-      <h2>느려진 이유를 이름으로 알려줍니다</h2>
-      <p>메모리를 얼마나 쓰는지 보여주는 도구는 많습니다. Paws는 그중 무엇이 주인을 잃었는지까지 판정합니다.</p>
+      <span class="eyebrow">What it finds</span>
+      <h2>Tells you why it's slow, by name</h2>
+      <p>Plenty of tools show you how much memory something uses. Paws goes further and decides which of them lost its owner.</p>
     </div>
     <div class="finds">
       <div class="find">
         <span class="n">01</span>
-        <h3>고아 프로세스</h3>
-        <p>부모가 죽고 남은 프로세스. 같은 명령이 셋 이상 쌓였을 때만 후보로 올립니다. 하나뿐인 것은 건드리지 않습니다.</p>
+        <h3>Orphan processes</h3>
+        <p>A process left behind when its parent died. It becomes a candidate only once three or more of the same command have piled up. A lone one is left alone.</p>
       </div>
       <div class="find">
         <span class="n">02</span>
-        <h3>세션 없는 큰 프로세스</h3>
-        <p>터미널이 쥐고 있지 않은데 메모리를 크게 먹는 것. 자동으로 끝내는 일은 절대 없고, 목록으로만 보여줍니다.</p>
+        <h3>Large processes with no session</h3>
+        <p>Something no terminal is holding that still eats a lot of memory. Paws never ends it on its own; it only lists it.</p>
       </div>
       <div class="find">
         <span class="n">03</span>
-        <h3>메모리 압박</h3>
-        <p>메뉴바의 링이 색으로 상태를 말합니다. 평소엔 회색, 경고면 주황, 위험이면 빨강. 그래프로 지난 흐름도 봅니다.</p>
+        <h3>Memory pressure</h3>
+        <p>The ring in the menu bar says the state in color. Grey when calm, orange on warning, red on danger. A graph shows how it got there.</p>
       </div>
     </div>
   </div>
@@ -351,36 +351,36 @@ footer .spacer{flex:1}
 <section class="promise" id="promise">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">무엇을 절대 안 하나</span>
-      <h2>작업을 잃게 만드는 도구는<br>쓸 이유가 없습니다</h2>
-      <p>정리 앱에서 가장 중요한 것은 무엇을 지우느냐가 아니라 무엇을 남기느냐입니다.</p>
+      <span class="eyebrow">What it never does</span>
+      <h2>A tool that loses your work<br>isn't worth using</h2>
+      <p>What matters most in a cleanup app is not what it removes but what it leaves.</p>
     </div>
     <ul class="vows">
       <li class="vow">
         <span class="mark-hold">HOLD</span>
-        <h3>터미널이 앞에 둔 작업은 건드리지 않습니다</h3>
-        <p>그 아래에 딸린 것까지 함께 보호합니다. 입력을 기다리는 AI 세션도 마찬가지입니다.</p>
+        <h3>Never touches what your terminal is holding</h3>
+        <p>Everything hanging below it is protected too. An AI session waiting for input counts.</p>
       </li>
       <li class="vow">
         <span class="mark-hold">HOLD</span>
-        <h3>미리 체크된 항목이 없습니다</h3>
-        <p>정리 목록은 빈 상태로 열립니다. 무엇을 끝낼지는 전부 사람이 고릅니다.</p>
+        <h3>Nothing is pre-checked</h3>
+        <p>The cleanup list opens empty. Every process that ends is one a person picked.</p>
       </li>
       <li class="vow">
         <span class="mark-hold">HOLD</span>
-        <h3>데이터가 기계를 떠나지 않습니다</h3>
-        <p>사용 통계도 크래시 리포트도 보내지 않습니다. 라이선스 확인 한 종류만 예외입니다.</p>
+        <h3>Data never leaves this machine</h3>
+        <p>No usage statistics, no crash reports. The license check is the single exception.</p>
       </li>
       <li class="vow">
         <span class="mark-hold">HOLD</span>
-        <h3>기록 없는 종료가 없습니다</h3>
-        <p>끝내기 전에 다시 묻고, 무엇을 언제 왜 끝냈는지 전부 남깁니다. 판정이 불확실하면 아무것도 하지 않습니다.</p>
+        <h3>No termination without a record</h3>
+        <p>It asks again before ending anything, and writes down what ended, when, and why. When the call is uncertain, it does nothing.</p>
       </li>
     </ul>
     <div class="aside-cpu">
-      <p><b>CPU를 안 쓴다고 노는 게 아닙니다.</b>
-         입력을 기다리는 클로드 코드는 CPU가 0입니다. CPU로 판정하는 정리 도구는 그것을 죽입니다.
-         Paws는 커널이 터미널 앞에 둔 그룹, <code>e_tpgid</code>를 봅니다. 세션이 쥐고 있는지를 묻는 것이지, 바쁜지를 묻지 않습니다.</p>
+      <p><b>Zero CPU doesn't mean idle.</b>
+         Claude Code waiting for input uses 0 CPU. Cleanup tools that judge by CPU kill it.
+         Paws reads the group the kernel put in front of the terminal, <code>e_tpgid</code>. It asks whether a session owns it, not whether it's busy.</p>
     </div>
   </div>
 </section>
@@ -388,30 +388,30 @@ footer .spacer{flex:1}
 <section id="price">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">가격</span>
-      <h2>보는 것은 무료, 끝내는 것만 유료</h2>
-      <p>설치하면 14일간 전부 열립니다. 그 뒤에도 링과 그래프와 발견 목록은 그대로 남습니다.</p>
+      <span class="eyebrow">Pricing</span>
+      <h2>Watching is free, ending is paid</h2>
+      <p>Everything is open for 14 days after install. After that the ring, the graph, and the findings list stay.</p>
     </div>
     <div class="price-grid">
       <div class="plan free">
-        <span class="tier">감시</span>
-        <div class="amount">무료 <span class="unit">기한 없음</span></div>
+        <span class="tier">Monitor</span>
+        <div class="amount">Free <span class="unit">forever</span></div>
         <ul>
-          <li>메뉴바 메모리 링과 그래프</li>
-          <li>고아·세션 없는 프로세스 발견 목록</li>
-          <li>메모리 압박 알림</li>
+          <li>Memory ring and graph in the menu bar</li>
+          <li>Findings list of orphan and session-less processes</li>
+          <li>Memory pressure alerts</li>
         </ul>
       </div>
       <div class="plan lead">
-        <span class="tier">정리</span>
-        <div class="amount">$29 <span class="unit">한 번 결제 · 맥 3대</span></div>
+        <span class="tier">Cleanup</span>
+        <div class="amount">$29 <span class="unit">one-time · 3 Macs</span></div>
         <ul>
-          <li>발견한 프로세스 끝내기</li>
-          <li>고아 자동 정리 (기본은 꺼짐)</li>
-          <li>업데이트 계속 제공</li>
-          <li>맥 3대까지 활성화</li>
+          <li>End the processes it finds</li>
+          <li>Automatic orphan cleanup (off by default)</li>
+          <li>Updates included</li>
+          <li>Activate on up to 3 Macs</li>
         </ul>
-        <a class="btn btn-primary" href="https://paws.lemonsqueezy.com/checkout/buy/bf1eeab7-5f72-4d26-bf70-dc662b80700b">라이선스 구입</a>
+        <a class="btn btn-primary" href="https://paws.lemonsqueezy.com/checkout/buy/bf1eeab7-5f72-4d26-bf70-dc662b80700b">Buy a license</a>
       </div>
     </div>
   </div>
@@ -420,14 +420,14 @@ footer .spacer{flex:1}
 <section class="get" id="get">
   <div class="wrap inner">
     <div>
-      <h2>받아서 메뉴바에 두세요</h2>
+      <h2>Download it, keep it in the menu bar</h2>
       <div class="specs">
-        macOS 14 Sonoma 이상 · Apple Silicon 및 Intel<br>
-        Developer ID 서명 · Apple 공증 완료<br>
-        설치 후 14일 체험 · 계정 가입 없음
+        macOS 14 Sonoma or later · Apple Silicon &amp; Intel<br>
+        Developer ID signed · notarized by Apple<br>
+        14-day trial after install · no account
       </div>
     </div>
-    <a class="btn btn-primary" href="Paws-1.0.0.dmg" download>Paws 1.0.0 내려받기 <span class="sub">DMG</span></a>
+    <a class="btn btn-primary" href="../Paws-1.0.0.dmg" download>Download Paws 1.0.0 <span class="sub">DMG</span></a>
   </div>
 </section>
 
@@ -435,9 +435,9 @@ footer .spacer{flex:1}
   <div class="wrap">
     <span>Paws</span>
     <span class="spacer"></span>
-    <a href="privacy.html">개인정보 처리방침</a>
-    <a href="terms.html">이용약관</a>
-    <a href="mailto:pawsapp.help@gmail.com">문의</a>
+    <a href="privacy.html">Privacy policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="mailto:pawsapp.help@gmail.com">Contact</a>
   </div>
 </footer>
 
