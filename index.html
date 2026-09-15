@@ -11,6 +11,9 @@
 <link rel="icon" href="icon.png">
 <link rel="alternate" hreflang="ko" href="https://tedjin.github.io/paws/">
 <link rel="alternate" hreflang="en" href="https://tedjin.github.io/paws/en/">
+<link rel="alternate" hreflang="ja" href="https://tedjin.github.io/paws/ja/">
+<link rel="alternate" hreflang="zh-Hans" href="https://tedjin.github.io/paws/zh-hans/">
+<link rel="alternate" hreflang="de" href="https://tedjin.github.io/paws/de/">
 <link rel="alternate" hreflang="x-default" href="https://tedjin.github.io/paws/en/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -230,6 +233,22 @@ footer .spacer{flex:1}
 @media(prefers-reduced-motion:reduce){
   .reveal,.row,.row .tag{opacity:1}
 }
+/* ── language menu ─────────────────────────── */
+.lang{position:relative}
+.lang summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--slate);padding:6px 2px;letter-spacing:.04em}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary:hover,.lang[open] summary{color:var(--ink)}
+.lang-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:30;display:grid;min-width:150px;padding:6px;background:var(--card);border:1px solid var(--hair);border-radius:10px;box-shadow:0 10px 30px rgba(17,21,26,.10)}
+.lang-menu a{padding:7px 10px;border-radius:6px;font-size:14px;font-weight:500;letter-spacing:0;text-decoration:none;color:var(--ink);border:0}
+.lang-menu a:hover{background:var(--paper)}
+.lang-menu a[aria-current]{color:var(--slate)}
+/* lang-menu fonts */.lang-menu a[lang="ja"]{font-family:"Hiragino Sans","Noto Sans JP",sans-serif}.lang-menu a[lang="zh-Hans"]{font-family:"PingFang SC","Hiragino Sans GB","Noto Sans SC",sans-serif}
+/* ── phone ───────────────────────────────── */
+.bar a.ghost{white-space:nowrap}
+@media(max-width:640px){
+  .bar .wrap{gap:14px}
+  .bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
+}
 </style>
 </head>
 <body>
@@ -246,7 +265,7 @@ footer .spacer{flex:1}
     <span class="spacer"></span>
     <a class="ghost" href="#promise">안 하는 것</a>
     <a class="ghost" href="#price">가격</a>
-    <a class="ghost" href="en/" lang="en">EN</a>
+    <details class="lang"><summary aria-label="Language">KO</summary><div class="lang-menu"><a href="./" lang="ko" hreflang="ko" aria-current="page">한국어</a><a href="en/" lang="en" hreflang="en">English</a><a href="ja/" lang="ja" hreflang="ja">日本語</a><a href="zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="de/" lang="de" hreflang="de">Deutsch</a></div></details>
     <a class="ghost" href="#get">내려받기</a>
   </div>
 </div>

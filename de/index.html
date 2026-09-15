@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paws — finds the processes nobody owns</title>
-<meta name="description" content="A menu bar app for Macs that run several AI agents. It watches memory, picks out the processes whose owner is gone, and never touches work in progress.">
-<meta property="og:title" content="Paws — finds the processes nobody owns">
-<meta property="og:description" content="A menu bar app for Macs that run several AI agents.">
+<title>Paws — findet die Prozesse, die niemandem gehören</title>
+<meta name="description" content="Eine Menüleisten-App für Macs, auf denen mehrere KI-Agenten laufen. Sie beobachtet den Speicher, findet Prozesse, deren Besitzer verschwunden ist, und rührt laufende Arbeit nie an.">
+<meta property="og:title" content="Paws — findet die Prozesse, die niemandem gehören">
+<meta property="og:description" content="Eine Menüleisten-App für Macs, auf denen mehrere KI-Agenten laufen.">
 <meta property="og:type" content="website">
 <link rel="icon" href="../icon.png">
 <link rel="alternate" hreflang="ko" href="https://tedjin.github.io/paws/">
@@ -250,6 +250,7 @@ footer .spacer{flex:1}
   .bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
 }
 </style>
+<style>h1,h2,h3{hyphens:auto;-webkit-hyphens:auto}</style>
 </head>
 <body>
 
@@ -263,37 +264,37 @@ footer .spacer{flex:1}
       Paws
     </span>
     <span class="spacer"></span>
-    <a class="ghost" href="#promise">What it never does</a>
-    <a class="ghost" href="#price">Pricing</a>
-    <details class="lang"><summary aria-label="Language">EN</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en" aria-current="page">English</a><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="../de/" lang="de" hreflang="de">Deutsch</a></div></details>
+    <a class="ghost" href="#promise">Was es nie tut</a>
+    <a class="ghost" href="#price">Preise</a>
+    <details class="lang"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en">English</a><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="../de/" lang="de" hreflang="de" aria-current="page">Deutsch</a></div></details>
     <a class="ghost" href="#get">Download</a>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow reveal">macOS 14+ · menu bar app</span>
-    <h1 class="reveal" style="animation-delay:.06s">Closing the terminal<br>doesn't end the process</h1>
+    <span class="eyebrow reveal">macOS 14+ · Menüleisten-App</span>
+    <h1 class="reveal" style="animation-delay:.06s">Terminal zu,<br>Prozess noch da</h1>
     <p class="lede reveal" style="animation-delay:.12s">
-      Run several AI agents and you accumulate processes whose owner is gone.
-      Paws watches memory from the menu bar and shows you only those.
-      <b>It never touches work in progress.</b>
+      Wer mehrere KI-Agenten laufen lässt, sammelt Prozesse an, deren Besitzer verschwunden ist.
+      Paws beobachtet den Speicher aus der Menüleiste und zeigt dir nur diese.
+      <b>Laufende Arbeit rührt es nie an.</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
-      <a class="btn btn-primary" href="#get">Download <span class="sub">1.0.0 · notarized by Apple</span></a>
-      <a class="btn btn-quiet" href="#promise">See what it never does</a>
-      <span class="note">14-day trial · monitoring stays free</span>
+      <a class="btn btn-primary" href="#get">Download <span class="sub">1.0.0 · von Apple notarisiert</span></a>
+      <a class="btn btn-quiet" href="#promise">Sieh, was es nie tut</a>
+      <span class="note">14 Tage testen · Überwachung bleibt kostenlos</span>
     </div>
 
     <!-- signature: the protection bracket -->
-    <div class="scope" role="img" aria-label="An example process list. The three processes the terminal is holding are marked as held, and the two chroma-mcp processes whose parent is gone are marked as orphans.">
+    <div class="scope" role="img" aria-label="Eine beispielhafte Prozessliste. Die drei Prozesse, die das Terminal hält, sind als geschützt markiert, die zwei chroma-mcp-Prozesse ohne Elternprozess als verwaist.">
       <div class="scope-head">
         <svg class="ring" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
           <circle class="track" cx="12" cy="12" r="9"></circle>
           <circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="46 57" transform="rotate(-90 12 12)" style="stroke:var(--warn)"></circle>
         </svg>
-        <span class="eyebrow">On this Mac right now</span>
-        <span class="mem">memory pressure: warning · 2 findings</span>
+        <span class="eyebrow">Gerade auf diesem Mac</span>
+        <span class="mem">Speicherdruck: Warnung · 2 Funde</span>
       </div>
 
       <div class="tree">
@@ -301,41 +302,41 @@ footer .spacer{flex:1}
         <div class="row held" style="animation-delay:.20s">
           <span class="gutter"></span><span class="pid">41820</span>
           <span class="cmd">node <span class="dim">claude --dangerously-skip-permissions</span></span>
-          <span class="tag tag-hold">held · session owns it</span>
+          <span class="tag tag-hold">geschützt · Sitzung hält ihn</span>
         </div>
         <div class="row held indent" style="animation-delay:.26s">
           <span class="gutter"></span><span class="pid">41904</span>
           <span class="cmd">rg <span class="dim">--json --hidden pattern src/</span></span>
-          <span class="tag tag-hold">held · spreads upward</span>
+          <span class="tag tag-hold">geschützt · reicht nach oben</span>
         </div>
         <div class="row held indent" style="animation-delay:.32s">
           <span class="gutter"></span><span class="pid">41911</span>
           <span class="cmd">node <span class="dim">playwright-mcp --user-data-dir=…</span></span>
-          <span class="tag tag-hold">held · spreads upward</span>
+          <span class="tag tag-hold">geschützt · reicht nach oben</span>
         </div>
         </div>
         <div class="row" style="animation-delay:.40s">
           <span class="gutter"></span><span class="pid">9012</span>
           <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
-          <span class="tag tag-orphan">orphan · no parent · 812 MB</span>
+          <span class="tag tag-orphan">verwaist · kein Elternprozess · 812 MB</span>
         </div>
         <div class="row" style="animation-delay:.46s">
           <span class="gutter"></span><span class="pid">9013</span>
           <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
-          <span class="tag tag-orphan">orphan · no parent · 804 MB</span>
+          <span class="tag tag-orphan">verwaist · kein Elternprozess · 804 MB</span>
         </div>
       </div>
 
       <div class="scope-foot">
-        <span class="key"><span class="swatch" style="background:var(--hold)"></span> The hold line spreads upward</span>
-        <span class="key"><span class="swatch" style="background:var(--danger)"></span> Only orphans are cleanup targets</span>
+        <span class="key"><span class="swatch" style="background:var(--hold)"></span> Die Schutzlinie reicht nach oben</span>
+        <span class="key"><span class="swatch" style="background:var(--danger)"></span> Nur verwaiste Prozesse werden aufgeräumt</span>
       </div>
     </div>
 
     <div class="origin">
       <span class="stamp">2026-09-09</span>
-      <p>On one Mac, 1,374 orphan pairs left behind by chroma-mcp ate all the memory.
-         The app the warning dialog blamed wasn't the culprit. Paws started that day.</p>
+      <p>Auf einem Mac haben 1.374 verwaiste Prozesspaare von chroma-mcp den gesamten Speicher aufgefressen.
+         Die App, die der Warndialog beschuldigte, war nicht die Ursache. An diesem Tag begann Paws.</p>
     </div>
   </div>
 </header>
@@ -343,25 +344,25 @@ footer .spacer{flex:1}
 <section id="finds">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">What it finds</span>
-      <h2>Tells you why it's slow, by name</h2>
-      <p>Plenty of tools show you how much memory something uses. Paws goes further and decides which of them lost its owner.</p>
+      <span class="eyebrow">Was es findet</span>
+      <h2>Sagt dir beim Namen, warum es langsam ist</h2>
+      <p>Viele Tools zeigen, wie viel Speicher etwas belegt. Paws geht weiter und entscheidet, welche davon ihren Besitzer verloren haben.</p>
     </div>
     <div class="finds">
       <div class="find">
         <span class="n">01</span>
-        <h3>Orphan processes</h3>
-        <p>A process left behind when its parent died. It becomes a candidate only once three or more of the same command have piled up. A lone one is left alone.</p>
+        <h3>Verwaiste Prozesse</h3>
+        <p>Ein Prozess, der zurückbleibt, wenn sein Elternprozess stirbt. Kandidat wird er erst, wenn sich drei oder mehr desselben Befehls angesammelt haben. Einen einzelnen lässt Paws in Ruhe.</p>
       </div>
       <div class="find">
         <span class="n">02</span>
-        <h3>Large processes with no session</h3>
-        <p>Something no terminal is holding that still eats a lot of memory. Paws never ends it on its own; it only lists it.</p>
+        <h3>Große Prozesse ohne Sitzung</h3>
+        <p>Etwas, das kein Terminal hält und trotzdem viel Speicher frisst. Paws beendet es nie von selbst, sondern listet es nur auf.</p>
       </div>
       <div class="find">
         <span class="n">03</span>
-        <h3>Memory pressure</h3>
-        <p>The ring in the menu bar says the state in color. Grey when calm, orange on warning, red on danger. A graph shows how it got there.</p>
+        <h3>Speicherdruck</h3>
+        <p>Der Ring in der Menüleiste zeigt den Zustand in Farbe. Grau, wenn alles ruhig ist, orange bei Warnung, rot bei Gefahr. Ein Diagramm zeigt, wie es dazu kam.</p>
       </div>
     </div>
   </div>
@@ -370,36 +371,36 @@ footer .spacer{flex:1}
 <section class="promise" id="promise">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">What it never does</span>
-      <h2>A tool that loses your work<br>isn't worth using</h2>
-      <p>What matters most in a cleanup app is not what it removes but what it leaves.</p>
+      <span class="eyebrow">Was es nie tut</span>
+      <h2>Ein Tool, das deine Arbeit verliert,<br>ist nichts wert</h2>
+      <p>Bei einer Aufräum-App zählt nicht, was sie entfernt, sondern was sie stehen lässt.</p>
     </div>
     <ul class="vows">
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>Never touches what your terminal is holding</h3>
-        <p>Everything hanging below it is protected too. An AI session waiting for input counts.</p>
+        <span class="mark-hold">SCHUTZ</span>
+        <h3>Rührt nie an, was dein Terminal hält</h3>
+        <p>Alles, was darunter hängt, ist ebenfalls geschützt. Auch eine KI-Sitzung, die auf Eingabe wartet.</p>
       </li>
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>Nothing is pre-checked</h3>
-        <p>The cleanup list opens empty. Every process that ends is one a person picked.</p>
+        <span class="mark-hold">SCHUTZ</span>
+        <h3>Nichts ist vorausgewählt</h3>
+        <p>Die Aufräumliste öffnet sich leer. Jeder beendete Prozess wurde von einem Menschen ausgewählt.</p>
       </li>
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>Data never leaves this machine</h3>
-        <p>No usage statistics, no crash reports. The license check is the single exception.</p>
+        <span class="mark-hold">SCHUTZ</span>
+        <h3>Daten verlassen diesen Mac nie</h3>
+        <p>Keine Nutzungsstatistik, keine Absturzberichte. Die Lizenzprüfung ist die einzige Ausnahme.</p>
       </li>
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>No termination without a record</h3>
-        <p>It asks again before ending anything, and writes down what ended, when, and why. When the call is uncertain, it does nothing.</p>
+        <span class="mark-hold">SCHUTZ</span>
+        <h3>Kein Beenden ohne Protokoll</h3>
+        <p>Vor dem Beenden fragt es noch einmal nach und schreibt auf, was wann und warum beendet wurde. Ist die Lage unklar, tut es nichts.</p>
       </li>
     </ul>
     <div class="aside-cpu">
-      <p><b>Zero CPU doesn't mean idle.</b>
-         Claude Code waiting for input uses 0 CPU. Cleanup tools that judge by CPU kill it.
-         Paws reads the group the kernel put in front of the terminal, <code>e_tpgid</code>. It asks whether a session owns it, not whether it's busy.</p>
+      <p><b>Null CPU heißt nicht untätig.</b>
+         Claude Code, das auf Eingabe wartet, verbraucht 0 CPU. Aufräum-Tools, die nach CPU urteilen, beenden es.
+         Paws liest die Gruppe, die der Kernel in den Vordergrund des Terminals gestellt hat, <code>e_tpgid</code>. Es fragt, ob eine Sitzung den Prozess hält, nicht ob er beschäftigt ist.</p>
     </div>
   </div>
 </section>
@@ -407,30 +408,30 @@ footer .spacer{flex:1}
 <section id="price">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Pricing</span>
-      <h2>Watching is free, ending is paid</h2>
-      <p>Everything is open for 14 days after install. After that the ring, the graph, and the findings list stay.</p>
+      <span class="eyebrow">Preise</span>
+      <h2>Beobachten ist kostenlos, Beenden kostet</h2>
+      <p>Nach der Installation ist 14 Tage lang alles offen. Danach bleiben Ring, Diagramm und Fundliste.</p>
     </div>
     <div class="price-grid">
       <div class="plan free">
-        <span class="tier">Monitor</span>
-        <div class="amount">Free <span class="unit">forever</span></div>
+        <span class="tier">Überwachen</span>
+        <div class="amount">Kostenlos <span class="unit">für immer</span></div>
         <ul>
-          <li>Memory ring and graph in the menu bar</li>
-          <li>Findings list of orphan and session-less processes</li>
-          <li>Memory pressure alerts</li>
+          <li>Speicherring und Diagramm in der Menüleiste</li>
+          <li>Fundliste verwaister und sitzungsloser Prozesse</li>
+          <li>Warnungen bei Speicherdruck</li>
         </ul>
       </div>
       <div class="plan lead">
-        <span class="tier">Cleanup</span>
-        <div class="amount">$29 <span class="unit">one-time · 3 Macs</span></div>
+        <span class="tier">Aufräumen</span>
+        <div class="amount">$29 <span class="unit">einmalig · 3 Macs</span></div>
         <ul>
-          <li>End the processes it finds</li>
-          <li>Automatic orphan cleanup (off by default)</li>
-          <li>Updates included</li>
-          <li>Activate on up to 3 Macs</li>
+          <li>Gefundene Prozesse beenden</li>
+          <li>Verwaiste Prozesse automatisch aufräumen (standardmäßig aus)</li>
+          <li>Updates inklusive</li>
+          <li>Auf bis zu 3 Macs aktivieren</li>
         </ul>
-        <a class="btn btn-primary" href="https://paws.lemonsqueezy.com/checkout/buy/bf1eeab7-5f72-4d26-bf70-dc662b80700b">Buy a license</a>
+        <a class="btn btn-primary" href="https://paws.lemonsqueezy.com/checkout/buy/bf1eeab7-5f72-4d26-bf70-dc662b80700b">Lizenz kaufen</a>
       </div>
     </div>
   </div>
@@ -439,14 +440,14 @@ footer .spacer{flex:1}
 <section class="get" id="get">
   <div class="wrap inner">
     <div>
-      <h2>Download it, keep it in the menu bar</h2>
+      <h2>Herunterladen und in der Menüleiste lassen</h2>
       <div class="specs">
-        macOS 14 Sonoma or later · Apple Silicon &amp; Intel<br>
-        Developer ID signed · notarized by Apple<br>
-        14-day trial after install · no account
+        macOS 14 Sonoma oder neuer · Apple Silicon &amp; Intel<br>
+        Mit Developer ID signiert · von Apple notarisiert<br>
+        14 Tage testen nach der Installation · kein Konto
       </div>
     </div>
-    <a class="btn btn-primary" href="../Paws-1.0.0.dmg" download>Download Paws 1.0.0 <span class="sub">DMG</span></a>
+    <a class="btn btn-primary" href="../Paws-1.0.0.dmg" download>Paws 1.0.0 herunterladen <span class="sub">DMG</span></a>
   </div>
 </section>
 
@@ -454,9 +455,9 @@ footer .spacer{flex:1}
   <div class="wrap">
     <span>Paws</span>
     <span class="spacer"></span>
-    <a href="privacy.html">Privacy policy</a>
-    <a href="terms.html">Terms</a>
-    <a href="mailto:pawsapp.help@gmail.com">Contact</a>
+    <a href="privacy.html">Datenschutzerklärung</a>
+    <a href="terms.html">Nutzungsbedingungen</a>
+    <a href="mailto:pawsapp.help@gmail.com">Kontakt</a>
   </div>
 </footer>
 

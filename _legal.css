@@ -33,3 +33,13 @@ a:focus-visible{outline:2px solid var(--hold);outline-offset:3px}
 .bar a.ghost{font-weight:500;font-size:14px;color:var(--slate);letter-spacing:.04em;
 border-bottom:1px solid transparent}
 .bar a.ghost:hover{color:var(--ink);border-bottom-color:var(--ink)}
+/* ── language menu ─────────────────────────── */
+.lang{position:relative}
+.lang summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--slate);padding:6px 2px;letter-spacing:.04em}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary:hover,.lang[open] summary{color:var(--ink)}
+.lang-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:30;display:grid;min-width:150px;padding:6px;background:var(--card);border:1px solid var(--hair);border-radius:10px;box-shadow:0 10px 30px rgba(17,21,26,.10)}
+.lang-menu a{padding:7px 10px;border-radius:6px;font-size:14px;font-weight:500;letter-spacing:0;text-decoration:none;color:var(--ink);border:0}
+.lang-menu a:hover{background:var(--paper)}
+.lang-menu a[aria-current]{color:var(--slate)}
+/* lang-menu fonts */.lang-menu a[lang="ja"]{font-family:"Hiragino Sans","Noto Sans JP",sans-serif}.lang-menu a[lang="zh-Hans"]{font-family:"PingFang SC","Hiragino Sans GB","Noto Sans SC",sans-serif}

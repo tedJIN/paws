@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paws — finds the processes nobody owns</title>
-<meta name="description" content="A menu bar app for Macs that run several AI agents. It watches memory, picks out the processes whose owner is gone, and never touches work in progress.">
-<meta property="og:title" content="Paws — finds the processes nobody owns">
-<meta property="og:description" content="A menu bar app for Macs that run several AI agents.">
+<title>Paws — 持ち主のいないプロセスだけを見つけ出す</title>
+<meta name="description" content="AI エージェントを複数動かす Mac のためのメニューバーアプリ。メモリを見守り、持ち主が消えたプロセスを見つけ出し、作業中のものには決して触れません。">
+<meta property="og:title" content="Paws — 持ち主のいないプロセスだけを見つけ出す">
+<meta property="og:description" content="AI エージェントを複数動かす Mac のためのメニューバーアプリ。">
 <meta property="og:type" content="website">
 <link rel="icon" href="../icon.png">
 <link rel="alternate" hreflang="ko" href="https://tedjin.github.io/paws/">
@@ -250,6 +250,7 @@ footer .spacer{flex:1}
   .bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
 }
 </style>
+<style>@media(max-width:480px){.hero h1{font-size:clamp(28px,8.4vw,40px)}}:root{--sans:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",-apple-system,system-ui,sans-serif}body *{word-break:normal!important;line-break:strict}.hero h1{max-width:14em}</style>
 </head>
 <body>
 
@@ -263,37 +264,37 @@ footer .spacer{flex:1}
       Paws
     </span>
     <span class="spacer"></span>
-    <a class="ghost" href="#promise">What it never does</a>
-    <a class="ghost" href="#price">Pricing</a>
-    <details class="lang"><summary aria-label="Language">EN</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en" aria-current="page">English</a><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="../de/" lang="de" hreflang="de">Deutsch</a></div></details>
-    <a class="ghost" href="#get">Download</a>
+    <a class="ghost" href="#promise">しないこと</a>
+    <a class="ghost" href="#price">価格</a>
+    <details class="lang"><summary aria-label="Language">JA</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en">English</a><a href="../ja/" lang="ja" hreflang="ja" aria-current="page">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="../de/" lang="de" hreflang="de">Deutsch</a></div></details>
+    <a class="ghost" href="#get">ダウンロード</a>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow reveal">macOS 14+ · menu bar app</span>
-    <h1 class="reveal" style="animation-delay:.06s">Closing the terminal<br>doesn't end the process</h1>
+    <span class="eyebrow reveal">macOS 14 以降 · メニューバーアプリ</span>
+    <h1 class="reveal" style="animation-delay:.06s">ターミナルを閉じても<br>プロセスは残ります</h1>
     <p class="lede reveal" style="animation-delay:.12s">
-      Run several AI agents and you accumulate processes whose owner is gone.
-      Paws watches memory from the menu bar and shows you only those.
-      <b>It never touches work in progress.</b>
+      AI エージェントを複数動かすと、持ち主が消えたプロセスが溜まっていきます。
+      Paws はメニューバーからメモリを見守り、それだけを選び出して見せます。
+      <b>作業中のものには決して触れません。</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
-      <a class="btn btn-primary" href="#get">Download <span class="sub">1.0.0 · notarized by Apple</span></a>
-      <a class="btn btn-quiet" href="#promise">See what it never does</a>
-      <span class="note">14-day trial · monitoring stays free</span>
+      <a class="btn btn-primary" href="#get">ダウンロード <span class="sub">1.0.0 · Apple 公証済み</span></a>
+      <a class="btn btn-quiet" href="#promise">しないことを見る</a>
+      <span class="note">14日間無料で試用 · 監視はずっと無料</span>
     </div>
 
     <!-- signature: the protection bracket -->
-    <div class="scope" role="img" aria-label="An example process list. The three processes the terminal is holding are marked as held, and the two chroma-mcp processes whose parent is gone are marked as orphans.">
+    <div class="scope" role="img" aria-label="プロセス一覧の例。ターミナルが保持している3つのプロセスは保護、親が消えた2つの chroma-mcp は孤児プロセスとして表示されています。">
       <div class="scope-head">
         <svg class="ring" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
           <circle class="track" cx="12" cy="12" r="9"></circle>
           <circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="46 57" transform="rotate(-90 12 12)" style="stroke:var(--warn)"></circle>
         </svg>
-        <span class="eyebrow">On this Mac right now</span>
-        <span class="mem">memory pressure: warning · 2 findings</span>
+        <span class="eyebrow">いまこの Mac で</span>
+        <span class="mem">メモリプレッシャー: 警告 · 検出 2 件</span>
       </div>
 
       <div class="tree">
@@ -301,41 +302,41 @@ footer .spacer{flex:1}
         <div class="row held" style="animation-delay:.20s">
           <span class="gutter"></span><span class="pid">41820</span>
           <span class="cmd">node <span class="dim">claude --dangerously-skip-permissions</span></span>
-          <span class="tag tag-hold">held · session owns it</span>
+          <span class="tag tag-hold">保護 · セッションが保持</span>
         </div>
         <div class="row held indent" style="animation-delay:.26s">
           <span class="gutter"></span><span class="pid">41904</span>
           <span class="cmd">rg <span class="dim">--json --hidden pattern src/</span></span>
-          <span class="tag tag-hold">held · spreads upward</span>
+          <span class="tag tag-hold">保護 · 上へ広がる</span>
         </div>
         <div class="row held indent" style="animation-delay:.32s">
           <span class="gutter"></span><span class="pid">41911</span>
           <span class="cmd">node <span class="dim">playwright-mcp --user-data-dir=…</span></span>
-          <span class="tag tag-hold">held · spreads upward</span>
+          <span class="tag tag-hold">保護 · 上へ広がる</span>
         </div>
         </div>
         <div class="row" style="animation-delay:.40s">
           <span class="gutter"></span><span class="pid">9012</span>
           <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
-          <span class="tag tag-orphan">orphan · no parent · 812 MB</span>
+          <span class="tag tag-orphan">孤児 · 親なし · 812 MB</span>
         </div>
         <div class="row" style="animation-delay:.46s">
           <span class="gutter"></span><span class="pid">9013</span>
           <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
-          <span class="tag tag-orphan">orphan · no parent · 804 MB</span>
+          <span class="tag tag-orphan">孤児 · 親なし · 804 MB</span>
         </div>
       </div>
 
       <div class="scope-foot">
-        <span class="key"><span class="swatch" style="background:var(--hold)"></span> The hold line spreads upward</span>
-        <span class="key"><span class="swatch" style="background:var(--danger)"></span> Only orphans are cleanup targets</span>
+        <span class="key"><span class="swatch" style="background:var(--hold)"></span> 保護線は上へ広がります</span>
+        <span class="key"><span class="swatch" style="background:var(--danger)"></span> 整理対象は孤児プロセスだけ</span>
       </div>
     </div>
 
     <div class="origin">
       <span class="stamp">2026-09-09</span>
-      <p>On one Mac, 1,374 orphan pairs left behind by chroma-mcp ate all the memory.
-         The app the warning dialog blamed wasn't the culprit. Paws started that day.</p>
+      <p>ある Mac で、chroma-mcp が残した孤児プロセス 1,374 組がメモリを食い尽くしました。
+         警告ダイアログが名指ししたアプリは犯人ではありませんでした。Paws はその日に始まりました。</p>
     </div>
   </div>
 </header>
@@ -343,25 +344,25 @@ footer .spacer{flex:1}
 <section id="finds">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">What it finds</span>
-      <h2>Tells you why it's slow, by name</h2>
-      <p>Plenty of tools show you how much memory something uses. Paws goes further and decides which of them lost its owner.</p>
+      <span class="eyebrow">見つけるもの</span>
+      <h2>なぜ遅いのかを名指しで伝えます</h2>
+      <p>メモリをどれだけ使っているかを見せるツールはたくさんあります。Paws はその先で、どれが持ち主を失ったのかを判定します。</p>
     </div>
     <div class="finds">
       <div class="find">
         <span class="n">01</span>
-        <h3>Orphan processes</h3>
-        <p>A process left behind when its parent died. It becomes a candidate only once three or more of the same command have piled up. A lone one is left alone.</p>
+        <h3>孤児プロセス</h3>
+        <p>親が終了して残されたプロセス。同じコマンドが3つ以上溜まったときだけ候補になります。1つだけなら放っておきます。</p>
       </div>
       <div class="find">
         <span class="n">02</span>
-        <h3>Large processes with no session</h3>
-        <p>Something no terminal is holding that still eats a lot of memory. Paws never ends it on its own; it only lists it.</p>
+        <h3>セッションのない大きなプロセス</h3>
+        <p>どのターミナルも保持していないのに、メモリを大量に使っているもの。Paws が自分で終了することはなく、一覧に出すだけです。</p>
       </div>
       <div class="find">
         <span class="n">03</span>
-        <h3>Memory pressure</h3>
-        <p>The ring in the menu bar says the state in color. Grey when calm, orange on warning, red on danger. A graph shows how it got there.</p>
+        <h3>メモリプレッシャー</h3>
+        <p>メニューバーのリングが状態を色で伝えます。平常時はグレー、警告でオレンジ、危険で赤。グラフでそこに至る経緯がわかります。</p>
       </div>
     </div>
   </div>
@@ -370,36 +371,36 @@ footer .spacer{flex:1}
 <section class="promise" id="promise">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">What it never does</span>
-      <h2>A tool that loses your work<br>isn't worth using</h2>
-      <p>What matters most in a cleanup app is not what it removes but what it leaves.</p>
+      <span class="eyebrow">しないこと</span>
+      <h2>作業を失わせるツールは<br>使う価値がありません</h2>
+      <p>整理アプリで一番大事なのは、何を消すかではなく何を残すかです。</p>
     </div>
     <ul class="vows">
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>Never touches what your terminal is holding</h3>
-        <p>Everything hanging below it is protected too. An AI session waiting for input counts.</p>
+        <span class="mark-hold">保護</span>
+        <h3>ターミナルが保持しているものには触れません</h3>
+        <p>その配下にぶら下がるものもすべて保護されます。入力待ちの AI セッションも含みます。</p>
       </li>
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>Nothing is pre-checked</h3>
-        <p>The cleanup list opens empty. Every process that ends is one a person picked.</p>
+        <span class="mark-hold">保護</span>
+        <h3>何も事前にチェックしません</h3>
+        <p>整理リストは空の状態で開きます。終了するプロセスはすべて人が選んだものです。</p>
       </li>
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>Data never leaves this machine</h3>
-        <p>No usage statistics, no crash reports. The license check is the single exception.</p>
+        <span class="mark-hold">保護</span>
+        <h3>データはこの Mac から出ません</h3>
+        <p>利用統計もクラッシュレポートもありません。唯一の例外はライセンス確認です。</p>
       </li>
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>No termination without a record</h3>
-        <p>It asks again before ending anything, and writes down what ended, when, and why. When the call is uncertain, it does nothing.</p>
+        <span class="mark-hold">保護</span>
+        <h3>記録のない終了はしません</h3>
+        <p>終了する前にもう一度確認し、何を・いつ・なぜ終了したかを書き残します。判断が不確かなときは何もしません。</p>
       </li>
     </ul>
     <div class="aside-cpu">
-      <p><b>Zero CPU doesn't mean idle.</b>
-         Claude Code waiting for input uses 0 CPU. Cleanup tools that judge by CPU kill it.
-         Paws reads the group the kernel put in front of the terminal, <code>e_tpgid</code>. It asks whether a session owns it, not whether it's busy.</p>
+      <p><b>CPU ゼロはアイドルではありません。</b>
+         入力待ちの Claude Code の CPU 使用は 0 です。CPU で判断する整理ツールはそれを殺してしまいます。
+         Paws はカーネルがターミナルの前面に置いたグループ <code>e_tpgid</code> を読みます。忙しいかどうかではなく、セッションが保持しているかを問います。</p>
     </div>
   </div>
 </section>
@@ -407,30 +408,30 @@ footer .spacer{flex:1}
 <section id="price">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Pricing</span>
-      <h2>Watching is free, ending is paid</h2>
-      <p>Everything is open for 14 days after install. After that the ring, the graph, and the findings list stay.</p>
+      <span class="eyebrow">価格</span>
+      <h2>見るのは無料、終了は有料</h2>
+      <p>インストール後14日間はすべて使えます。その後もリング、グラフ、検出リストは残ります。</p>
     </div>
     <div class="price-grid">
       <div class="plan free">
-        <span class="tier">Monitor</span>
-        <div class="amount">Free <span class="unit">forever</span></div>
+        <span class="tier">監視</span>
+        <div class="amount">無料 <span class="unit">ずっと</span></div>
         <ul>
-          <li>Memory ring and graph in the menu bar</li>
-          <li>Findings list of orphan and session-less processes</li>
-          <li>Memory pressure alerts</li>
+          <li>メニューバーのメモリリングとグラフ</li>
+          <li>孤児プロセスとセッションのないプロセスの検出リスト</li>
+          <li>メモリプレッシャーの通知</li>
         </ul>
       </div>
       <div class="plan lead">
-        <span class="tier">Cleanup</span>
-        <div class="amount">$29 <span class="unit">one-time · 3 Macs</span></div>
+        <span class="tier">整理</span>
+        <div class="amount">$29 <span class="unit">買い切り · Mac 3台</span></div>
         <ul>
-          <li>End the processes it finds</li>
-          <li>Automatic orphan cleanup (off by default)</li>
-          <li>Updates included</li>
-          <li>Activate on up to 3 Macs</li>
+          <li>見つけたプロセスを終了</li>
+          <li>孤児プロセスの自動整理(初期設定はオフ)</li>
+          <li>アップデート込み</li>
+          <li>最大3台の Mac で有効化</li>
         </ul>
-        <a class="btn btn-primary" href="https://paws.lemonsqueezy.com/checkout/buy/bf1eeab7-5f72-4d26-bf70-dc662b80700b">Buy a license</a>
+        <a class="btn btn-primary" href="https://paws.lemonsqueezy.com/checkout/buy/bf1eeab7-5f72-4d26-bf70-dc662b80700b">ライセンスを購入</a>
       </div>
     </div>
   </div>
@@ -439,14 +440,14 @@ footer .spacer{flex:1}
 <section class="get" id="get">
   <div class="wrap inner">
     <div>
-      <h2>Download it, keep it in the menu bar</h2>
+      <h2>ダウンロードして、メニューバーに置いておく</h2>
       <div class="specs">
-        macOS 14 Sonoma or later · Apple Silicon &amp; Intel<br>
-        Developer ID signed · notarized by Apple<br>
-        14-day trial after install · no account
+        macOS 14 Sonoma 以降 · Apple シリコン &amp; Intel<br>
+        Developer ID 署名 · Apple 公証済み<br>
+        インストール後14日間試用 · アカウント不要
       </div>
     </div>
-    <a class="btn btn-primary" href="../Paws-1.0.0.dmg" download>Download Paws 1.0.0 <span class="sub">DMG</span></a>
+    <a class="btn btn-primary" href="../Paws-1.0.0.dmg" download>Paws 1.0.0 をダウンロード <span class="sub">DMG</span></a>
   </div>
 </section>
 
@@ -454,9 +455,9 @@ footer .spacer{flex:1}
   <div class="wrap">
     <span>Paws</span>
     <span class="spacer"></span>
-    <a href="privacy.html">Privacy policy</a>
-    <a href="terms.html">Terms</a>
-    <a href="mailto:pawsapp.help@gmail.com">Contact</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="terms.html">利用規約</a>
+    <a href="mailto:pawsapp.help@gmail.com">お問い合わせ</a>
   </div>
 </footer>
 

@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paws — finds the processes nobody owns</title>
-<meta name="description" content="A menu bar app for Macs that run several AI agents. It watches memory, picks out the processes whose owner is gone, and never touches work in progress.">
-<meta property="og:title" content="Paws — finds the processes nobody owns">
-<meta property="og:description" content="A menu bar app for Macs that run several AI agents.">
+<title>Paws — 只挑出没有主人的进程</title>
+<meta name="description" content="为同时运行多个 AI 智能体的 Mac 打造的菜单栏应用。它守着内存，找出主人已经消失的进程，绝不触碰正在进行的工作。">
+<meta property="og:title" content="Paws — 只挑出没有主人的进程">
+<meta property="og:description" content="为同时运行多个 AI 智能体的 Mac 打造的菜单栏应用。">
 <meta property="og:type" content="website">
 <link rel="icon" href="../icon.png">
 <link rel="alternate" hreflang="ko" href="https://tedjin.github.io/paws/">
@@ -250,6 +250,7 @@ footer .spacer{flex:1}
   .bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
 }
 </style>
+<style>@media(max-width:480px){.hero h1{font-size:clamp(28px,8.4vw,40px)}}:root{--sans:"PingFang SC","Hiragino Sans GB","Noto Sans SC",-apple-system,system-ui,sans-serif}body *{word-break:normal!important;line-break:strict}.hero h1{max-width:14em}</style>
 </head>
 <body>
 
@@ -263,37 +264,37 @@ footer .spacer{flex:1}
       Paws
     </span>
     <span class="spacer"></span>
-    <a class="ghost" href="#promise">What it never does</a>
-    <a class="ghost" href="#price">Pricing</a>
-    <details class="lang"><summary aria-label="Language">EN</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en" aria-current="page">English</a><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="../de/" lang="de" hreflang="de">Deutsch</a></div></details>
-    <a class="ghost" href="#get">Download</a>
+    <a class="ghost" href="#promise">绝不会做的事</a>
+    <a class="ghost" href="#price">价格</a>
+    <details class="lang"><summary aria-label="Language">中文</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en">English</a><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans" aria-current="page">简体中文</a><a href="../de/" lang="de" hreflang="de">Deutsch</a></div></details>
+    <a class="ghost" href="#get">下载</a>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow reveal">macOS 14+ · menu bar app</span>
-    <h1 class="reveal" style="animation-delay:.06s">Closing the terminal<br>doesn't end the process</h1>
+    <span class="eyebrow reveal">macOS 14 及以上 · 菜单栏应用</span>
+    <h1 class="reveal" style="animation-delay:.06s">关掉终端<br>进程却还在</h1>
     <p class="lede reveal" style="animation-delay:.12s">
-      Run several AI agents and you accumulate processes whose owner is gone.
-      Paws watches memory from the menu bar and shows you only those.
-      <b>It never touches work in progress.</b>
+      同时运行多个 AI 智能体，主人已经消失的进程就会越积越多。
+      Paws 在菜单栏守着内存，只把这些进程挑出来给你看。
+      <b>绝不触碰正在进行的工作。</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
-      <a class="btn btn-primary" href="#get">Download <span class="sub">1.0.0 · notarized by Apple</span></a>
-      <a class="btn btn-quiet" href="#promise">See what it never does</a>
-      <span class="note">14-day trial · monitoring stays free</span>
+      <a class="btn btn-primary" href="#get">下载 <span class="sub">1.0.0 · 已通过 Apple 公证</span></a>
+      <a class="btn btn-quiet" href="#promise">看看它绝不会做的事</a>
+      <span class="note">14 天试用 · 监控永久免费</span>
     </div>
 
     <!-- signature: the protection bracket -->
-    <div class="scope" role="img" aria-label="An example process list. The three processes the terminal is holding are marked as held, and the two chroma-mcp processes whose parent is gone are marked as orphans.">
+    <div class="scope" role="img" aria-label="进程列表示例。终端持有的 3 个进程标记为受保护，父进程已消失的 2 个 chroma-mcp 进程标记为孤儿进程。">
       <div class="scope-head">
         <svg class="ring" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
           <circle class="track" cx="12" cy="12" r="9"></circle>
           <circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="46 57" transform="rotate(-90 12 12)" style="stroke:var(--warn)"></circle>
         </svg>
-        <span class="eyebrow">On this Mac right now</span>
-        <span class="mem">memory pressure: warning · 2 findings</span>
+        <span class="eyebrow">此刻这台 Mac 上</span>
+        <span class="mem">内存压力：警告 · 2 项发现</span>
       </div>
 
       <div class="tree">
@@ -301,41 +302,41 @@ footer .spacer{flex:1}
         <div class="row held" style="animation-delay:.20s">
           <span class="gutter"></span><span class="pid">41820</span>
           <span class="cmd">node <span class="dim">claude --dangerously-skip-permissions</span></span>
-          <span class="tag tag-hold">held · session owns it</span>
+          <span class="tag tag-hold">受保护 · 会话持有</span>
         </div>
         <div class="row held indent" style="animation-delay:.26s">
           <span class="gutter"></span><span class="pid">41904</span>
           <span class="cmd">rg <span class="dim">--json --hidden pattern src/</span></span>
-          <span class="tag tag-hold">held · spreads upward</span>
+          <span class="tag tag-hold">受保护 · 向上延伸</span>
         </div>
         <div class="row held indent" style="animation-delay:.32s">
           <span class="gutter"></span><span class="pid">41911</span>
           <span class="cmd">node <span class="dim">playwright-mcp --user-data-dir=…</span></span>
-          <span class="tag tag-hold">held · spreads upward</span>
+          <span class="tag tag-hold">受保护 · 向上延伸</span>
         </div>
         </div>
         <div class="row" style="animation-delay:.40s">
           <span class="gutter"></span><span class="pid">9012</span>
           <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
-          <span class="tag tag-orphan">orphan · no parent · 812 MB</span>
+          <span class="tag tag-orphan">孤儿 · 无父进程 · 812 MB</span>
         </div>
         <div class="row" style="animation-delay:.46s">
           <span class="gutter"></span><span class="pid">9013</span>
           <span class="cmd">node <span class="dim">chroma-mcp serve</span></span>
-          <span class="tag tag-orphan">orphan · no parent · 804 MB</span>
+          <span class="tag tag-orphan">孤儿 · 无父进程 · 804 MB</span>
         </div>
       </div>
 
       <div class="scope-foot">
-        <span class="key"><span class="swatch" style="background:var(--hold)"></span> The hold line spreads upward</span>
-        <span class="key"><span class="swatch" style="background:var(--danger)"></span> Only orphans are cleanup targets</span>
+        <span class="key"><span class="swatch" style="background:var(--hold)"></span> 保护线向上延伸</span>
+        <span class="key"><span class="swatch" style="background:var(--danger)"></span> 只有孤儿进程才是清理对象</span>
       </div>
     </div>
 
     <div class="origin">
       <span class="stamp">2026-09-09</span>
-      <p>On one Mac, 1,374 orphan pairs left behind by chroma-mcp ate all the memory.
-         The app the warning dialog blamed wasn't the culprit. Paws started that day.</p>
+      <p>在一台 Mac 上，chroma-mcp 留下的 1,374 对孤儿进程吃光了全部内存。
+         警告对话框点名的应用并不是元凶。Paws 就从那天开始。</p>
     </div>
   </div>
 </header>
@@ -343,25 +344,25 @@ footer .spacer{flex:1}
 <section id="finds">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">What it finds</span>
-      <h2>Tells you why it's slow, by name</h2>
-      <p>Plenty of tools show you how much memory something uses. Paws goes further and decides which of them lost its owner.</p>
+      <span class="eyebrow">它会发现什么</span>
+      <h2>直接点名告诉你为什么变慢</h2>
+      <p>能显示内存用了多少的工具有很多。Paws 更进一步，判断出其中哪些已经失去了主人。</p>
     </div>
     <div class="finds">
       <div class="find">
         <span class="n">01</span>
-        <h3>Orphan processes</h3>
-        <p>A process left behind when its parent died. It becomes a candidate only once three or more of the same command have piled up. A lone one is left alone.</p>
+        <h3>孤儿进程</h3>
+        <p>父进程退出后被遗留下来的进程。只有同一命令累积到 3 个以上时才会成为候选。只有一个的话不去管它。</p>
       </div>
       <div class="find">
         <span class="n">02</span>
-        <h3>Large processes with no session</h3>
-        <p>Something no terminal is holding that still eats a lot of memory. Paws never ends it on its own; it only lists it.</p>
+        <h3>没有会话的大进程</h3>
+        <p>没有任何终端持有，却占用大量内存的进程。Paws 从不自行结束它，只会把它列出来。</p>
       </div>
       <div class="find">
         <span class="n">03</span>
-        <h3>Memory pressure</h3>
-        <p>The ring in the menu bar says the state in color. Grey when calm, orange on warning, red on danger. A graph shows how it got there.</p>
+        <h3>内存压力</h3>
+        <p>菜单栏的圆环用颜色告诉你状态。平时是灰色，警告时变橙，危险时变红。图表显示它是怎么走到这一步的。</p>
       </div>
     </div>
   </div>
@@ -370,36 +371,36 @@ footer .spacer{flex:1}
 <section class="promise" id="promise">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">What it never does</span>
-      <h2>A tool that loses your work<br>isn't worth using</h2>
-      <p>What matters most in a cleanup app is not what it removes but what it leaves.</p>
+      <span class="eyebrow">绝不会做的事</span>
+      <h2>会让你丢失工作的工具<br>不值得用</h2>
+      <p>清理应用最重要的不是删掉什么，而是留下什么。</p>
     </div>
     <ul class="vows">
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>Never touches what your terminal is holding</h3>
-        <p>Everything hanging below it is protected too. An AI session waiting for input counts.</p>
+        <span class="mark-hold">保护</span>
+        <h3>绝不触碰终端正在持有的进程</h3>
+        <p>挂在它下面的所有进程也都受保护。等待输入的 AI 会话同样算在内。</p>
       </li>
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>Nothing is pre-checked</h3>
-        <p>The cleanup list opens empty. Every process that ends is one a person picked.</p>
+        <span class="mark-hold">保护</span>
+        <h3>不预先勾选任何项</h3>
+        <p>清理列表打开时是空的。每一个被结束的进程都是人亲自选的。</p>
       </li>
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>Data never leaves this machine</h3>
-        <p>No usage statistics, no crash reports. The license check is the single exception.</p>
+        <span class="mark-hold">保护</span>
+        <h3>数据不会离开这台电脑</h3>
+        <p>没有使用统计，也没有崩溃报告。唯一的例外是许可证验证。</p>
       </li>
       <li class="vow">
-        <span class="mark-hold">HOLD</span>
-        <h3>No termination without a record</h3>
-        <p>It asks again before ending anything, and writes down what ended, when, and why. When the call is uncertain, it does nothing.</p>
+        <span class="mark-hold">保护</span>
+        <h3>没有记录就不结束</h3>
+        <p>结束任何进程之前都会再确认一次，并记下结束了什么、何时、为什么。判断不确定时，什么都不做。</p>
       </li>
     </ul>
     <div class="aside-cpu">
-      <p><b>Zero CPU doesn't mean idle.</b>
-         Claude Code waiting for input uses 0 CPU. Cleanup tools that judge by CPU kill it.
-         Paws reads the group the kernel put in front of the terminal, <code>e_tpgid</code>. It asks whether a session owns it, not whether it's busy.</p>
+      <p><b>CPU 为零不代表空闲。</b>
+         等待输入的 Claude Code 占用 0 CPU。按 CPU 判断的清理工具会把它杀掉。
+         Paws 读取内核放在终端前台的进程组 <code>e_tpgid</code>。它问的是会话是否持有它，而不是它忙不忙。</p>
     </div>
   </div>
 </section>
@@ -407,30 +408,30 @@ footer .spacer{flex:1}
 <section id="price">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Pricing</span>
-      <h2>Watching is free, ending is paid</h2>
-      <p>Everything is open for 14 days after install. After that the ring, the graph, and the findings list stay.</p>
+      <span class="eyebrow">价格</span>
+      <h2>查看免费，结束付费</h2>
+      <p>安装后 14 天内全部功能开放。之后圆环、图表和发现列表仍然保留。</p>
     </div>
     <div class="price-grid">
       <div class="plan free">
-        <span class="tier">Monitor</span>
-        <div class="amount">Free <span class="unit">forever</span></div>
+        <span class="tier">监控</span>
+        <div class="amount">免费 <span class="unit">永久</span></div>
         <ul>
-          <li>Memory ring and graph in the menu bar</li>
-          <li>Findings list of orphan and session-less processes</li>
-          <li>Memory pressure alerts</li>
+          <li>菜单栏的内存圆环和图表</li>
+          <li>孤儿进程与无会话进程的发现列表</li>
+          <li>内存压力提醒</li>
         </ul>
       </div>
       <div class="plan lead">
-        <span class="tier">Cleanup</span>
-        <div class="amount">$29 <span class="unit">one-time · 3 Macs</span></div>
+        <span class="tier">清理</span>
+        <div class="amount">$29 <span class="unit">一次性购买 · 3 台 Mac</span></div>
         <ul>
-          <li>End the processes it finds</li>
-          <li>Automatic orphan cleanup (off by default)</li>
-          <li>Updates included</li>
-          <li>Activate on up to 3 Macs</li>
+          <li>结束它发现的进程</li>
+          <li>孤儿进程自动清理(默认关闭)</li>
+          <li>包含更新</li>
+          <li>最多在 3 台 Mac 上激活</li>
         </ul>
-        <a class="btn btn-primary" href="https://paws.lemonsqueezy.com/checkout/buy/bf1eeab7-5f72-4d26-bf70-dc662b80700b">Buy a license</a>
+        <a class="btn btn-primary" href="https://paws.lemonsqueezy.com/checkout/buy/bf1eeab7-5f72-4d26-bf70-dc662b80700b">购买许可证</a>
       </div>
     </div>
   </div>
@@ -439,14 +440,14 @@ footer .spacer{flex:1}
 <section class="get" id="get">
   <div class="wrap inner">
     <div>
-      <h2>Download it, keep it in the menu bar</h2>
+      <h2>下载后放在菜单栏就好</h2>
       <div class="specs">
-        macOS 14 Sonoma or later · Apple Silicon &amp; Intel<br>
-        Developer ID signed · notarized by Apple<br>
-        14-day trial after install · no account
+        macOS 14 Sonoma 或更高版本 · Apple 芯片 &amp; Intel<br>
+        Developer ID 签名 · 已通过 Apple 公证<br>
+        安装后试用 14 天 · 无需账户
       </div>
     </div>
-    <a class="btn btn-primary" href="../Paws-1.0.0.dmg" download>Download Paws 1.0.0 <span class="sub">DMG</span></a>
+    <a class="btn btn-primary" href="../Paws-1.0.0.dmg" download>下载 Paws 1.0.0 <span class="sub">DMG</span></a>
   </div>
 </section>
 
@@ -454,9 +455,9 @@ footer .spacer{flex:1}
   <div class="wrap">
     <span>Paws</span>
     <span class="spacer"></span>
-    <a href="privacy.html">Privacy policy</a>
-    <a href="terms.html">Terms</a>
-    <a href="mailto:pawsapp.help@gmail.com">Contact</a>
+    <a href="privacy.html">隐私政策</a>
+    <a href="terms.html">使用条款</a>
+    <a href="mailto:pawsapp.help@gmail.com">联系我们</a>
   </div>
 </footer>
 

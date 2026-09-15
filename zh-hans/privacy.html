@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隐私政策 — Paws</title>
+<meta name="robots" content="index">
+<link rel="icon" href="../icon.png">
+<link rel="alternate" hreflang="ko" href="https://tedjin.github.io/paws/privacy.html">
+<link rel="alternate" hreflang="en" href="https://tedjin.github.io/paws/en/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://tedjin.github.io/paws/ja/privacy.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://tedjin.github.io/paws/zh-hans/privacy.html">
+<link rel="alternate" hreflang="de" href="https://tedjin.github.io/paws/de/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://tedjin.github.io/paws/en/privacy.html">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../_legal.css">
+<style>@media(max-width:480px){.hero h1{font-size:clamp(28px,8.4vw,40px)}}:root{--sans:"PingFang SC","Hiragino Sans GB","Noto Sans SC",-apple-system,system-ui,sans-serif}body *{word-break:normal!important;line-break:strict}.hero h1{max-width:14em}</style>
+</head>
+<body>
+<div class="bar"><div class="wrap">
+<a href="index.html"><svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="9"></circle><circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="34 57" transform="rotate(-90 12 12)"></circle></svg></a>
+<a href="index.html">Paws</a>
+<span class="spacer"></span>
+<details class="lang"><summary aria-label="Language">中文</summary><div class="lang-menu"><a href="../privacy.html" lang="ko" hreflang="ko">한국어</a><a href="../en/privacy.html" lang="en" hreflang="en">English</a><a href="../ja/privacy.html" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/privacy.html" lang="zh-Hans" hreflang="zh-Hans" aria-current="page">简体中文</a><a href="../de/privacy.html" lang="de" hreflang="de">Deutsch</a></div></details>
+</div></div>
+<main><div class="wrap">
+<span class="eyebrow">隐私政策</span>
+<h1>Paws 只在这台 Mac 上工作</h1>
+<p class="draft">本文为草案，尚未经过律师审阅。</p>
+<p>Paws 读取这台 Mac 的内存和进程列表并显示在屏幕上，然后结束你选中的进程。</p>
+
+<h2>会离开电脑的内容</h2>
+<ul>
+<li><b>许可证验证。</b>注册、验证或释放许可证密钥时，密钥、这台 Mac 的名称和实例 ID 会发送到 <code>api.lemonsqueezy.com</code>。注册时一次，之后每 7 天一次。</li>
+<li><b>更新检查。</b>每天读取一次包含最新版本号的小文件。不发送任何内容。</li>
+</ul>
+<p>除此之外不向任何地方发送任何内容。不收集使用统计，也不收集崩溃报告。</p>
+
+<h2>留在电脑上的内容</h2>
+<p><code>~/Library/Application Support/Paws/</code> 中保存着你的设置、操作记录(<code>journal.jsonl</code>)、内存历史和许可证文件。操作记录会保留每个被结束进程的路径和命令行。要清除它，删除该文件夹即可。</p>
+
+<h2>问题报告</h2>
+<p>在设置中点按<b>报告问题</b>,会在桌面上生成诊断包。在你亲自发送之前，它不会去任何地方。诊断包包含你的设置、最近的操作记录、进程列表和 macOS 版本。<b>不包含命令行参数</b> — 参数里常常带有 API 密钥。路径中只保留文件名。</p>
+
+<h2>联系我们</h2>
+<p>请发邮件至 <a href="mailto:pawsapp.help@gmail.com">pawsapp.help@gmail.com</a>。</p>
+</div></main>
+<footer><div class="wrap">
+<a href="index.html">首页</a><a href="privacy.html">隐私政策</a><a href="terms.html">使用条款</a>
+</div></footer>
+</body>
+</html>
