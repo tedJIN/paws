@@ -150,14 +150,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offse
 }
 .swatch{width:9px;height:9px;border-radius:2px;display:inline-block}
 
-/* ── origin note ────────────────────────────── */
-.origin{
-  margin:clamp(44px,7vw,76px) 0 0;padding:22px 24px;border-left:2px solid var(--warn);
-  background:var(--card);border-radius:0 10px 10px 0;
-}
-.origin p{margin:0;max-width:60ch;word-break:keep-all}
-.origin .stamp{font-family:var(--mono);font-size:12px;color:var(--slate);display:block;margin-bottom:6px}
-
 /* ── generic section ────────────────────────── */
 section{padding:clamp(56px,8vw,96px) 0}
 .sec-head{max-width:52ch}
@@ -220,6 +212,111 @@ footer a{text-decoration:none;border-bottom:1px solid var(--hair)}
 footer a:hover{border-bottom-color:var(--slate);color:var(--ink)}
 footer .spacer{flex:1}
 
+/* ── why: symptoms + the case ───────────────── */
+.symptoms{
+  margin-top:40px;display:grid;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+@media(min-width:760px){.symptoms{grid-template-columns:1fr 1fr}}
+.symptom{background:var(--card);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.symptom .box{
+  flex:none;width:15px;height:15px;margin-top:5px;border-radius:4px;
+  border:1.5px solid var(--hair);background:var(--paper);
+}
+.symptom p{margin:0;font-size:15.5px;word-break:keep-all}
+.bridge{
+  margin:clamp(30px,4vw,40px) 0 0;max-width:62ch;word-break:keep-all;
+  font-size:clamp(16px,2vw,18px);
+}
+.bridge b{font-weight:600}
+
+.case{
+  margin-top:clamp(34px,5vw,48px);background:var(--card);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+.case-head{
+  padding:14px 18px;border-bottom:1px solid var(--hair);
+  display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+}
+.case-head strong{font-size:15px;letter-spacing:-.015em;font-weight:700}
+.case-head .stamp{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.verdicts{display:grid;gap:1px;background:var(--hair)}
+@media(min-width:680px){.verdicts{grid-template-columns:1fr 1fr}}
+.verdict{background:var(--card);padding:22px}
+.verdict .label{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--slate);
+}
+.verdict ul{list-style:none;margin:15px 0 0;padding:0;font-family:var(--mono);font-size:13.5px}
+.verdict li{
+  display:flex;justify-content:space-between;gap:16px;padding:7px 0;
+  border-bottom:1px dashed var(--hair);
+}
+.verdict li:last-child{border-bottom:0}
+.verdict li .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.verdict .ruling{margin:15px 0 0;font-size:14.5px;word-break:keep-all;color:var(--slate)}
+.verdict .ruling b{font-weight:600}
+.verdict.cleared .ruling b{color:var(--hold)}
+.verdict.actual{background:#FFFAF7}
+.verdict.actual .label{color:var(--danger)}
+.verdict.actual li .num{color:var(--danger)}
+.verdict.actual .ruling b{color:var(--danger)}
+.facts{display:grid;gap:1px;background:var(--hair);border-top:1px solid var(--hair)}
+@media(min-width:680px){.facts{grid-template-columns:repeat(3,1fr)}}
+.fact{background:var(--card);padding:20px 22px}
+.fact .big{
+  font-size:clamp(22px,3vw,27px);font-weight:800;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;line-height:1.2;
+}
+.fact .cap{font-size:13.5px;color:var(--slate);margin-top:6px;word-break:keep-all}
+
+.nocount{
+  margin-top:clamp(34px,5vw,48px);border:1px dashed var(--hair);
+  border-radius:12px;padding:24px;background:var(--card);
+}
+.nocount h3{margin:0;font-size:17px;letter-spacing:-.015em}
+.nocount p{margin:12px 0 0;max-width:64ch;word-break:keep-all;color:var(--slate);font-size:15px}
+.nocount p b{color:var(--ink);font-weight:600}
+.shell{
+  margin:16px 0 0;background:var(--night);border-radius:9px;padding:14px 16px;
+  font-family:var(--mono);font-size:13px;line-height:1.7;color:#E8ECF0;
+  overflow-x:auto;white-space:pre;
+}
+.shell .prompt{color:#4FBBA3}
+.shell .out{color:#98A4B1}
+
+/* ── how it works ───────────────────────────── */
+.steps{
+  margin-top:44px;display:grid;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+.step{background:var(--card);padding:24px}
+@media(min-width:860px){
+  .step{display:grid;grid-template-columns:230px 1fr 1fr;gap:28px;align-items:start;padding:26px 24px}
+}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--calm);letter-spacing:.11em}
+.step h3{margin:7px 0 0;font-size:18px;letter-spacing:-.018em;word-break:keep-all}
+.step .what{margin:10px 0 0;color:var(--slate);font-size:15px;word-break:keep-all}
+@media(min-width:860px){.step .what{margin:0}}
+.step .safe{
+  margin:14px 0 0;font-size:14.5px;word-break:keep-all;color:var(--ink);
+  background:var(--hold-soft);border-radius:9px;padding:13px 15px;
+}
+@media(min-width:860px){.step .safe{margin:0}}
+.step .safe .mark-hold{
+  display:block;color:var(--hold);font-family:var(--mono);font-size:11px;
+  letter-spacing:.09em;margin-bottom:5px;
+}
+.step .what code{font-family:var(--mono);font-size:13px;color:var(--ink)}
+
+.lesson{
+  margin-top:clamp(34px,5vw,48px);padding:24px 26px;background:var(--card);
+  border-left:2px solid var(--warn);border-radius:0 12px 12px 0;
+}
+.lesson h3{margin:0;font-size:17px;letter-spacing:-.015em}
+.lesson p{margin:12px 0 0;max-width:66ch;word-break:keep-all;color:var(--slate);font-size:15px}
+.lesson p b{color:var(--ink);font-weight:600}
+
 /* ── entrance choreography ──────────────────── */
 @media(prefers-reduced-motion:no-preference){
   .reveal{opacity:0;transform:translateY(10px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
@@ -247,7 +344,7 @@ footer .spacer{flex:1}
 .bar a.ghost{white-space:nowrap}
 @media(max-width:640px){
   .bar .wrap{gap:14px}
-  .bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
+  .bar a.ghost[href="#how"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
 }
 </style>
 </head>
@@ -263,6 +360,7 @@ footer .spacer{flex:1}
       Paws
     </span>
     <span class="spacer"></span>
+    <a class="ghost" href="#how">How it works</a>
     <a class="ghost" href="#promise">What it never does</a>
     <a class="ghost" href="#price">Pricing</a>
     <details class="lang"><summary aria-label="Language">EN</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en" aria-current="page">English</a><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="../de/" lang="de" hreflang="de">Deutsch</a></div></details>
@@ -332,13 +430,76 @@ footer .spacer{flex:1}
       </div>
     </div>
 
-    <div class="origin">
-      <span class="stamp">2026-09-09</span>
-      <p>On one Mac, 1,374 orphan pairs left behind by chroma-mcp ate all the memory.
-         The app the warning dialog blamed wasn't the culprit. Paws started that day.</p>
-    </div>
   </div>
 </header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Why it slows down</span>
+      <h2>The fan spins, but the culprit stays hidden</h2>
+      <p>When a Mac slows down we go looking for the heaviest app. On a Mac running several AI tools, the culprit isn’t at the top of the list — it isn’t in the list at all.</p>
+    </div>
+
+    <div class="symptoms">
+      <div class="symptom"><span class="box" aria-hidden="true"></span>
+        <p>The heavy work finished long ago, and the fan is still spinning.</p></div>
+      <div class="symptom"><span class="box" aria-hidden="true"></span>
+        <p>Only a few windows are open, yet scrolling feels sticky and switching apps lags.</p></div>
+      <div class="symptom"><span class="box" aria-hidden="true"></span>
+        <p>“Your system has run out of application memory.” You quit the app it named, and minutes later it’s back.</p></div>
+      <div class="symptom"><span class="box" aria-hidden="true"></span>
+        <p>You open Activity Monitor, see hundreds of rows, and have no idea where to start.</p></div>
+    </div>
+
+    <p class="bridge">When these four arrive together, it’s usually not one big app but hundreds of small processes piling up.
+      <b>Each one is harmless on its own — which is exactly why neither the warning nor Activity Monitor can point at them.</b></p>
+
+    <div class="case">
+      <div class="case-head">
+        <strong>The record from the day this app was made</strong>
+        <span class="stamp">2026-09-09 · Mac Studio M4 Max · 64 GB · 55 days uptime</span>
+      </div>
+      <div class="verdicts">
+        <div class="verdict cleared">
+          <span class="label">What the warning named</span>
+          <ul>
+            <li><span>Safari</span><span class="num">1.15 GB</span></li>
+            <li><span>Terminal</span><span class="num">1.69 GB</span></li>
+          </ul>
+          <p class="ruling"><b>Both were innocent.</b> They were quit as instructed; the warning came back minutes later.</p>
+        </div>
+        <div class="verdict actual">
+          <span class="label">What never appeared in it</span>
+          <ul>
+            <li><span>Orphaned chroma-mcp</span><span class="num">2,750</span></li>
+            <li><span>Memory they held</span><span class="num">34 GB</span></li>
+          </ul>
+          <p class="ruling"><b>This was the culprit.</b> Their parents died, launchd adopted them, and they piled up quietly for 55 days.</p>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="big">3,311</div>
+          <div class="cap">processes running that day. This Mac normally runs about 570.</div></div>
+        <div class="fact"><div class="big">73 GB</div>
+          <div class="cap">of swap in use. Physical memory was 64 GB.</div></div>
+        <div class="fact"><div class="big">1,374 pairs</div>
+          <div class="cap">spawned on every worker restart and never reclaimed.</div></div>
+      </div>
+    </div>
+
+    <div class="nocount">
+      <h3>“Can’t I just count them on my own Mac?”</h3>
+      <p>Not in one line. Counting parentless processes on the Mac this was written on gives you this:</p>
+      <div class="shell"><span class="prompt">$</span> ps -eo ppid= | awk '$1==1' | wc -l
+<span class="out">     798</span></div>
+      <p>All ~800 of them have “no parent”, and the number worth cleaning up is <b>zero</b>.
+        Spotify, Notion, Safari’s tabs and dozens of Apple’s audio helpers all have launchd as their parent too.
+        <b>Having no parent isn’t evidence of being orphaned — it’s just an absence of information.</b>
+        Telling real orphans apart from processes that are doing their job — that is what Paws does.</p>
+    </div>
+  </div>
+</section>
 
 <section id="finds">
   <div class="wrap">
@@ -363,6 +524,46 @@ footer .spacer{flex:1}
         <h3>Memory pressure</h3>
         <p>The ring in the menu bar says the state in color. Grey when calm, orange on warning, red on danger. A graph shows how it got there.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>It doesn’t guess.<br>It asks the kernel</h2>
+      <p>What to keep is the harder question, not what to remove. Paws narrows that judgment in four steps, and stops at any step where it isn’t sure.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div><span class="n">01</span><h3>It watches</h3></div>
+        <p class="what">Memory pressure and swap every 5 seconds, the process list every 15. All you see is one ring in the menu bar.</p>
+        <p class="safe"><span class="mark-hold">NO EFFECT ON YOUR WORK</span>Paws stays under 100 MB. It remembers the last 15 minutes and drops the rest.</p>
+      </div>
+      <div class="step">
+        <div><span class="n">02</span><h3>It judges</h3></div>
+        <p class="what">It asks “is a session holding this?”, not “is this busy?”. It reads the group the kernel put in front of the terminal (<code>e_tpgid</code>), and protection spreads upward to the parent.</p>
+        <p class="safe"><span class="mark-hold">NO EFFECT ON YOUR WORK</span>Whatever the terminal holds, and everything beneath it, is protected — including an AI session sitting at 0% CPU waiting for input.</p>
+      </div>
+      <div class="step">
+        <div><span class="n">03</span><h3>It narrows</h3></div>
+        <p class="what">Only commands stacked three deep or more become candidates. Apple’s XPC services and app extensions are never candidates at all.</p>
+        <p class="safe"><span class="mark-hold">NO EFFECT ON YOUR WORK</span>A lone process may simply be working. When it isn’t sure, it doesn’t list it.</p>
+      </div>
+      <div class="step">
+        <div><span class="n">04</span><h3>You choose</h3></div>
+        <p class="what">The cleanup list opens with every box unchecked. Only what you pick gets ended, and what was ended, when and why is kept for a year.</p>
+        <p class="safe"><span class="mark-hold">NO EFFECT ON YOUR WORK</span>Automatic cleanup is off by default. Even switched on, it only touches orphans that passed step 03.</p>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>We got this judgment wrong once</h3>
+      <p>The first version treated “not in <code>launchctl</code>’s list” as proof of being orphaned. On that rule it <b>ended 108 healthy Apple XPC services</b> — Safari’s web content processes among them.
+        It shipped with all 100 synthetic tests passing. Absence from the list was an absence of information, not evidence, and testing against fake processes could never have revealed that.</p>
+      <p>Now <b>a test on a real machine — “on a healthy Mac, is the automatic cleanup set empty?” — runs on every build.</b> The rules have grown to six since that day, and every one of them defaults to doing nothing when unsure.</p>
     </div>
   </div>
 </section>

@@ -150,14 +150,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offse
 }
 .swatch{width:9px;height:9px;border-radius:2px;display:inline-block}
 
-/* ── origin note ────────────────────────────── */
-.origin{
-  margin:clamp(44px,7vw,76px) 0 0;padding:22px 24px;border-left:2px solid var(--warn);
-  background:var(--card);border-radius:0 10px 10px 0;
-}
-.origin p{margin:0;max-width:60ch;word-break:keep-all}
-.origin .stamp{font-family:var(--mono);font-size:12px;color:var(--slate);display:block;margin-bottom:6px}
-
 /* ── generic section ────────────────────────── */
 section{padding:clamp(56px,8vw,96px) 0}
 .sec-head{max-width:52ch}
@@ -220,6 +212,111 @@ footer a{text-decoration:none;border-bottom:1px solid var(--hair)}
 footer a:hover{border-bottom-color:var(--slate);color:var(--ink)}
 footer .spacer{flex:1}
 
+/* ── why: symptoms + the case ───────────────── */
+.symptoms{
+  margin-top:40px;display:grid;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+@media(min-width:760px){.symptoms{grid-template-columns:1fr 1fr}}
+.symptom{background:var(--card);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.symptom .box{
+  flex:none;width:15px;height:15px;margin-top:5px;border-radius:4px;
+  border:1.5px solid var(--hair);background:var(--paper);
+}
+.symptom p{margin:0;font-size:15.5px;word-break:keep-all}
+.bridge{
+  margin:clamp(30px,4vw,40px) 0 0;max-width:62ch;word-break:keep-all;
+  font-size:clamp(16px,2vw,18px);
+}
+.bridge b{font-weight:600}
+
+.case{
+  margin-top:clamp(34px,5vw,48px);background:var(--card);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+.case-head{
+  padding:14px 18px;border-bottom:1px solid var(--hair);
+  display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+}
+.case-head strong{font-size:15px;letter-spacing:-.015em;font-weight:700}
+.case-head .stamp{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.verdicts{display:grid;gap:1px;background:var(--hair)}
+@media(min-width:680px){.verdicts{grid-template-columns:1fr 1fr}}
+.verdict{background:var(--card);padding:22px}
+.verdict .label{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--slate);
+}
+.verdict ul{list-style:none;margin:15px 0 0;padding:0;font-family:var(--mono);font-size:13.5px}
+.verdict li{
+  display:flex;justify-content:space-between;gap:16px;padding:7px 0;
+  border-bottom:1px dashed var(--hair);
+}
+.verdict li:last-child{border-bottom:0}
+.verdict li .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.verdict .ruling{margin:15px 0 0;font-size:14.5px;word-break:keep-all;color:var(--slate)}
+.verdict .ruling b{font-weight:600}
+.verdict.cleared .ruling b{color:var(--hold)}
+.verdict.actual{background:#FFFAF7}
+.verdict.actual .label{color:var(--danger)}
+.verdict.actual li .num{color:var(--danger)}
+.verdict.actual .ruling b{color:var(--danger)}
+.facts{display:grid;gap:1px;background:var(--hair);border-top:1px solid var(--hair)}
+@media(min-width:680px){.facts{grid-template-columns:repeat(3,1fr)}}
+.fact{background:var(--card);padding:20px 22px}
+.fact .big{
+  font-size:clamp(22px,3vw,27px);font-weight:800;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;line-height:1.2;
+}
+.fact .cap{font-size:13.5px;color:var(--slate);margin-top:6px;word-break:keep-all}
+
+.nocount{
+  margin-top:clamp(34px,5vw,48px);border:1px dashed var(--hair);
+  border-radius:12px;padding:24px;background:var(--card);
+}
+.nocount h3{margin:0;font-size:17px;letter-spacing:-.015em}
+.nocount p{margin:12px 0 0;max-width:64ch;word-break:keep-all;color:var(--slate);font-size:15px}
+.nocount p b{color:var(--ink);font-weight:600}
+.shell{
+  margin:16px 0 0;background:var(--night);border-radius:9px;padding:14px 16px;
+  font-family:var(--mono);font-size:13px;line-height:1.7;color:#E8ECF0;
+  overflow-x:auto;white-space:pre;
+}
+.shell .prompt{color:#4FBBA3}
+.shell .out{color:#98A4B1}
+
+/* ── how it works ───────────────────────────── */
+.steps{
+  margin-top:44px;display:grid;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+.step{background:var(--card);padding:24px}
+@media(min-width:860px){
+  .step{display:grid;grid-template-columns:230px 1fr 1fr;gap:28px;align-items:start;padding:26px 24px}
+}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--calm);letter-spacing:.11em}
+.step h3{margin:7px 0 0;font-size:18px;letter-spacing:-.018em;word-break:keep-all}
+.step .what{margin:10px 0 0;color:var(--slate);font-size:15px;word-break:keep-all}
+@media(min-width:860px){.step .what{margin:0}}
+.step .safe{
+  margin:14px 0 0;font-size:14.5px;word-break:keep-all;color:var(--ink);
+  background:var(--hold-soft);border-radius:9px;padding:13px 15px;
+}
+@media(min-width:860px){.step .safe{margin:0}}
+.step .safe .mark-hold{
+  display:block;color:var(--hold);font-family:var(--mono);font-size:11px;
+  letter-spacing:.09em;margin-bottom:5px;
+}
+.step .what code{font-family:var(--mono);font-size:13px;color:var(--ink)}
+
+.lesson{
+  margin-top:clamp(34px,5vw,48px);padding:24px 26px;background:var(--card);
+  border-left:2px solid var(--warn);border-radius:0 12px 12px 0;
+}
+.lesson h3{margin:0;font-size:17px;letter-spacing:-.015em}
+.lesson p{margin:12px 0 0;max-width:66ch;word-break:keep-all;color:var(--slate);font-size:15px}
+.lesson p b{color:var(--ink);font-weight:600}
+
 /* ── entrance choreography ──────────────────── */
 @media(prefers-reduced-motion:no-preference){
   .reveal{opacity:0;transform:translateY(10px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
@@ -247,7 +344,7 @@ footer .spacer{flex:1}
 .bar a.ghost{white-space:nowrap}
 @media(max-width:640px){
   .bar .wrap{gap:14px}
-  .bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
+  .bar a.ghost[href="#how"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
 }
 </style>
 </head>
@@ -263,6 +360,7 @@ footer .spacer{flex:1}
       Paws
     </span>
     <span class="spacer"></span>
+    <a class="ghost" href="#how">작동 방식</a>
     <a class="ghost" href="#promise">안 하는 것</a>
     <a class="ghost" href="#price">가격</a>
     <details class="lang"><summary aria-label="Language">KO</summary><div class="lang-menu"><a href="./" lang="ko" hreflang="ko" aria-current="page">한국어</a><a href="en/" lang="en" hreflang="en">English</a><a href="ja/" lang="ja" hreflang="ja">日本語</a><a href="zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="de/" lang="de" hreflang="de">Deutsch</a></div></details>
@@ -332,13 +430,76 @@ footer .spacer{flex:1}
       </div>
     </div>
 
-    <div class="origin">
-      <span class="stamp">2026-09-09</span>
-      <p>한 맥에서 chroma-mcp가 남긴 고아 프로세스 1,374쌍이 메모리를 전부 먹었습니다.
-         경고창이 지목한 앱은 범인이 아니었습니다. Paws는 그날 시작됐습니다.</p>
-    </div>
   </div>
 </header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">왜 느려지나</span>
+      <h2>팬은 도는데, 범인은 안 보입니다</h2>
+      <p>맥이 느려지면 우리는 가장 무거운 앱을 찾습니다. 그런데 AI 도구를 여러 개 돌리는 맥에서는 범인이 목록의 맨 위가 아니라 목록 바깥에 있습니다.</p>
+    </div>
+
+    <div class="symptoms">
+      <div class="symptom"><span class="box" aria-hidden="true"></span>
+        <p>무거운 작업을 끝낸 지 한참인데 팬이 계속 돕니다.</p></div>
+      <div class="symptom"><span class="box" aria-hidden="true"></span>
+        <p>창을 몇 개 열지도 않았는데 스크롤이 끈적거리고 앱 전환이 밀립니다.</p></div>
+      <div class="symptom"><span class="box" aria-hidden="true"></span>
+        <p>“응용 프로그램 메모리가 부족합니다” 창이 뜹니다. 지목된 앱을 껐는데 잠시 뒤 또 뜹니다.</p></div>
+      <div class="symptom"><span class="box" aria-hidden="true"></span>
+        <p>활성 상태 보기를 열어봐도 목록이 수백 줄이라 어디서부터 봐야 할지 모르겠습니다.</p></div>
+    </div>
+
+    <p class="bridge">이 넷이 같이 온다면 대개 큰 앱 하나가 아니라 작은 프로세스 수백 개가 쌓인 것입니다.
+      <b>하나씩은 아무 잘못이 없어서, 경고창도 활성 상태 보기도 그것을 지목하지 못합니다.</b></p>
+
+    <div class="case">
+      <div class="case-head">
+        <strong>이 앱이 만들어진 날의 기록</strong>
+        <span class="stamp">2026-09-09 · Mac Studio M4 Max · 64 GB · 55일 무재부팅</span>
+      </div>
+      <div class="verdicts">
+        <div class="verdict cleared">
+          <span class="label">경고창이 지목한 것</span>
+          <ul>
+            <li><span>Safari</span><span class="num">1.15 GB</span></li>
+            <li><span>터미널</span><span class="num">1.69 GB</span></li>
+          </ul>
+          <p class="ruling"><b>둘 다 무죄였습니다.</b> 시키는 대로 껐지만 경고는 몇 분 뒤 다시 떴습니다.</p>
+        </div>
+        <div class="verdict actual">
+          <span class="label">창에 뜨지도 않은 것</span>
+          <ul>
+            <li><span>chroma-mcp 고아</span><span class="num">2,750개</span></li>
+            <li><span>그것들이 쥔 메모리</span><span class="num">34 GB</span></li>
+          </ul>
+          <p class="ruling"><b>이쪽이 진범이었습니다.</b> 부모를 잃고 launchd 밑으로 넘어가 55일 동안 조용히 쌓였습니다.</p>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="big">3,311개</div>
+          <div class="cap">그날 돌던 프로세스 수. 이 맥의 평상시는 약 570개입니다.</div></div>
+        <div class="fact"><div class="big">73 GB</div>
+          <div class="cap">스왑 사용량. 물리 메모리는 64 GB였습니다.</div></div>
+        <div class="fact"><div class="big">1,374쌍</div>
+          <div class="cap">워커가 재시작될 때마다 새로 띄우고 회수하지 않은 짝.</div></div>
+      </div>
+    </div>
+
+    <div class="nocount">
+      <h3>“그럼 내 맥도 한 번 세어보면 되지 않나요”</h3>
+      <p>한 줄로는 안 됩니다. 지금 이 글을 쓰는 맥에서 부모 없는 프로세스를 세면 이렇게 나옵니다.</p>
+      <div class="shell"><span class="prompt">$</span> ps -eo ppid= | awk '$1==1' | wc -l
+<span class="out">     798</span></div>
+      <p>약 800개 전부가 “부모 없음”이지만 그중 정리 대상은 <b>0개</b>입니다.
+        Spotify도, 카카오톡도, Safari의 탭도, 애플의 오디오 헬퍼 수십 개도 부모가 launchd입니다.
+        <b>부모가 없다는 것은 고아라는 증거가 아니라 그냥 정보가 없다는 뜻입니다.</b>
+        진짜 고아와 멀쩡히 일하는 프로세스를 가르는 것 — 그게 Paws가 하는 일입니다.</p>
+    </div>
+  </div>
+</section>
 
 <section id="finds">
   <div class="wrap">
@@ -363,6 +524,46 @@ footer .spacer{flex:1}
         <h3>메모리 압박</h3>
         <p>메뉴바의 링이 색으로 상태를 말합니다. 평소엔 회색, 경고면 주황, 위험이면 빨강. 그래프로 지난 흐름도 봅니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">어떻게 일하나</span>
+      <h2>짐작하지 않습니다.<br>커널에 물어봅니다</h2>
+      <p>무엇을 지울지보다 무엇을 남길지가 어려운 문제입니다. Paws는 네 단계로 그 판단을 좁히고, 단계마다 확신이 없으면 멈춥니다.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div><span class="n">01</span><h3>지켜본다</h3></div>
+        <p class="what">5초마다 메모리 압박과 스왑을, 15초마다 프로세스 목록을 읽습니다. 화면에 있는 것은 메뉴바의 링 하나뿐입니다.</p>
+        <p class="safe"><span class="mark-hold">작업에는 영향 없음</span>앱이 쓰는 메모리는 100 MB 안쪽입니다. 최근 15분치만 기억하고 나머지는 버립니다.</p>
+      </div>
+      <div class="step">
+        <div><span class="n">02</span><h3>판정한다</h3></div>
+        <p class="what">“바쁜가”가 아니라 “세션이 쥐고 있나”를 묻습니다. 커널이 터미널 앞에 둔 그룹(<code>e_tpgid</code>)을 보고, 보호는 부모 쪽으로 위로 번집니다.</p>
+        <p class="safe"><span class="mark-hold">작업에는 영향 없음</span>터미널이 붙잡은 것과 그 아래 딸린 것은 전부 보호합니다. 입력을 기다리느라 CPU가 0인 AI 세션도 마찬가지입니다.</p>
+      </div>
+      <div class="step">
+        <div><span class="n">03</span><h3>좁힌다</h3></div>
+        <p class="what">같은 명령이 셋 이상 쌓인 것만 후보로 올립니다. 애플의 XPC 서비스와 앱 확장은 아예 후보가 아닙니다.</p>
+        <p class="safe"><span class="mark-hold">작업에는 영향 없음</span>하나뿐인 프로세스는 그냥 일하는 중일 수 있습니다. 불확실하면 목록에 올리지 않습니다.</p>
+      </div>
+      <div class="step">
+        <div><span class="n">04</span><h3>사람이 고른다</h3></div>
+        <p class="what">정리 목록은 빈 체크박스로 열립니다. 고른 것만 끝내고, 무엇을 언제 왜 끝냈는지 1년치 기록에 남깁니다.</p>
+        <p class="safe"><span class="mark-hold">작업에는 영향 없음</span>자동 정리는 기본이 꺼짐입니다. 켜더라도 03을 통과한 고아만 대상입니다.</p>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>이 판단을 한 번 틀렸습니다</h3>
+      <p>첫 버전은 <code>launchctl</code> 목록에 없으면 고아라고 봤습니다. 그 기준으로 <b>애플의 XPC 서비스 108개를 정상인데 종료했습니다</b> — 그중에는 Safari의 웹 콘텐츠 프로세스도 있었습니다.
+        합성 테스트 100개가 전부 통과한 채로 나간 버전이었습니다. 목록에 없다는 것은 고아의 증거가 아니라 정보의 부재였는데, 가짜 프로세스로만 시험해서는 그걸 알 수 없었습니다.</p>
+      <p>지금은 <b>진짜 기계에서 “건강한 맥이라면 자동 정리 대상이 0인가”를 확인하는 테스트</b>가 빌드마다 돕니다. 판정 규칙은 그날 이후 여섯 개로 늘었고, 전부 “모르면 하지 않는다”를 기본값으로 둡니다.</p>
     </div>
   </div>
 </section>
