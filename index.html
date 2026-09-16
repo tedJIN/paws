@@ -329,19 +329,39 @@ footer .spacer{flex:1}
 .screen .n{font-family:var(--mono);font-size:12px;color:var(--calm);letter-spacing:.11em}
 .screen h3{margin:7px 0 0;font-size:18px;letter-spacing:-.018em;word-break:keep-all}
 .screen .cap{margin:10px 0 0;color:var(--slate);font-size:15px;word-break:keep-all}
-.screen .frame{
-  margin-top:18px;border:1px solid var(--hair);border-radius:10px;
-  overflow:hidden;background:var(--night);line-height:0;
-}
-@media(min-width:900px){.screen .frame{margin-top:0}}
-.screen .frame img{width:100%;height:auto;display:block}
 .screen .read{
   margin:12px 0 0;font-family:var(--mono);font-size:12.5px;color:var(--slate);
   word-break:keep-all;line-height:1.75;
 }
+.screen .frame{
+  margin-top:18px;border:1px solid var(--hair);border-radius:10px;
+  overflow:hidden;background:#0B0E12;line-height:0;
+}
+@media(min-width:900px){.screen .frame{margin-top:0}}
+.screen .frame img{width:100%;height:auto;display:block}
+
+/* 메뉴바: 어두운 칩 위에 얹는다 */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+@media(min-width:900px){.chips{margin-top:0}}
+.chip{
+  background:#0B0E12;border:1px solid var(--hair);border-radius:10px;
+  padding:12px 14px;display:flex;align-items:center;gap:11px;
+}
+.chip img{display:block;height:26px;width:auto}
+.chip .lb{font-family:var(--mono);font-size:11.5px;color:#8A94A0;letter-spacing:.04em;white-space:nowrap}
+
+/* 게이지 상태 다섯 */
+.gauges{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin-top:18px;
+}
+@media(min-width:900px){.gauges{margin-top:0}}
+.gauge{background:#0B0E12;padding:16px 8px;text-align:center}
+.gauge img{display:block;width:34px;height:auto;margin:0 auto 9px}
+.gauge .lb{font-family:var(--mono);font-size:10.5px;color:#8A94A0;letter-spacing:.03em;word-break:keep-all;line-height:1.5}
 .shot-note{
   margin-top:clamp(28px,4vw,38px);font-family:var(--mono);font-size:12.5px;
-  color:var(--slate);word-break:keep-all;line-height:1.8;max-width:70ch;
+  color:var(--slate);word-break:keep-all;line-height:1.8;max-width:72ch;
 }
 /* ── entrance choreography ──────────────────── */
 @media(prefers-reduced-motion:no-preference){
@@ -405,7 +425,7 @@ footer .spacer{flex:1}
       <b>작업 중인 것은 건드리지 않습니다.</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
-      <a class="btn btn-primary" href="#get">내려받기 <span class="sub">1.3.0 · Apple 공증</span></a>
+      <a class="btn btn-primary" href="#get">내려받기 <span class="sub">1.3.1 · Apple 공증</span></a>
       <a class="btn btn-quiet" href="#promise">무엇을 안 하는지 보기</a>
       <span class="note">14일 체험 · 감시는 계속 무료</span>
     </div>
@@ -600,7 +620,7 @@ footer .spacer{flex:1}
     <div class="sec-head">
       <span class="eyebrow">실제 화면</span>
       <h2>앱은 이렇게 생겼습니다</h2>
-      <p>아래는 전부 이 글을 쓴 맥에서 그대로 찍은 화면입니다. 다시 그리거나 숫자를 꾸민 것이 없습니다.</p>
+      <p>아래는 전부 이 글을 쓴 맥에서 찍거나, 앱이 아이콘을 그리는 코드로 그대로 뽑은 것입니다. 다시 그리거나 숫자를 꾸민 것이 없습니다.</p>
     </div>
 
     <div class="screens">
@@ -608,11 +628,29 @@ footer .spacer{flex:1}
         <div>
           <span class="n">01</span>
           <h3>메뉴바에 이것 하나</h3>
-          <p class="cap">평소에 보이는 것은 발바닥 하나입니다. 둘린 링이 메모리 상태를 말합니다 — 평소엔 회색, 경고면 주황, 위험이면 빨강.</p>
+          <p class="cap">평소에 보이는 것은 발바닥 하나입니다. 숫자를 띄우고 싶으면 설정에서 켜면 됩니다.</p>
+          <p class="read">둘린 링이 메모리 상태를 말합니다.<br>평상시엔 조용히, 급하면 색으로.</p>
         </div>
-        <div class="frame" style="max-width:104px">
-          <img src="shots/01-menubar.webp" width="104" height="52" loading="lazy"
-               alt="맥 메뉴바에 있는 Paws 아이콘. 링 게이지가 둘린 발바닥 하나.">
+        <div>
+          <div class="chips">
+            <div class="chip">
+              <img src="shots/label-plain.webp" width="150" height="150" loading="lazy"
+                   alt="메뉴바의 Paws 아이콘. 링 게이지가 둘린 발바닥 하나.">
+              <span class="lb">숫자 끔 (기본)</span>
+            </div>
+            <div class="chip">
+              <img src="shots/label-text.webp" width="1049" height="150" loading="lazy"
+                   alt="숫자를 켠 메뉴바 항목. 발바닥 옆에 여유 90 퍼센트, 스왑 0B 라고 적혀 있다.">
+              <span class="lb">숫자 켬</span>
+            </div>
+          </div>
+          <div class="gauges">
+            <div class="gauge"><img src="shots/gauge-normal.webp" loading="lazy" alt="회색 링이 조금 차 있는 평상시 아이콘"><span class="lb">평상시</span></div>
+            <div class="gauge"><img src="shots/gauge-warning.webp" loading="lazy" alt="주황 링이 대부분 차 있는 경고 아이콘"><span class="lb">경고</span></div>
+            <div class="gauge"><img src="shots/gauge-critical.webp" loading="lazy" alt="빨간 링이 닫힌 원이 된 위험 아이콘"><span class="lb">위험</span></div>
+            <div class="gauge"><img src="shots/gauge-inactive.webp" loading="lazy" alt="윤곽선 발바닥만 남은 감시 중단 아이콘"><span class="lb">감시 중단</span></div>
+            <div class="gauge"><img src="shots/gauge-sweep.webp" loading="lazy" alt="링 위를 조각이 도는 정리 중 아이콘"><span class="lb">정리 중</span></div>
+          </div>
         </div>
       </div>
 
@@ -620,12 +658,12 @@ footer .spacer{flex:1}
         <div>
           <span class="n">02</span>
           <h3>눌렀을 때</h3>
-          <p class="cap">지금 상태가 한 장에 들어옵니다. 설치 후 되찾은 양, 발견한 것, 여유 메모리와 스왑, 프로세스 수, 압박도 그래프, 마지막으로 무엇을 치웠는지.</p>
-          <p class="read">이 맥은 설치 후 <b>155.9 GB</b>를 돌려받았습니다.<br>1,393개를 정리하고서.</p>
+          <p class="cap">지금 상태가 한 장에 다 들어옵니다. 스크롤할 것이 없습니다 — 되찾은 양, 발견한 것, 여유 메모리와 스왑, 프로세스 수, 압박도 그래프, 마지막 조치, 그리고 맨 아래 설정과 종료까지.</p>
+          <p class="read">이 맥은 설치 후 <b>156.1 GB</b>를 돌려받았습니다.<br>1,409개를 정리하고서.</p>
         </div>
         <div class="frame" style="max-width:440px">
-          <img src="shots/02-popover.webp" width="880" height="1462" loading="lazy"
-               alt="Paws 팝오버. 맨 위에 자동 정리 스위치와 155.9G 회수·1393개 정리, 그 아래 발견 0, 여유 메모리 93%, 스왑 0B, 프로세스 562개, 압박도 그래프, 최근 조치.">
+          <img src="shots/popover.webp" width="880" height="1676" loading="lazy"
+               alt="Paws 팝오버 전체. 맨 위 자동 정리 스위치와 156.1G 회수·1409개 정리, 발견 1건, 여유 메모리와 메모리 압력, 스왑과 프로세스 수, 압박도 그래프, 메모리 상위 5, 최근 조치, 맨 아래 버전과 설정·Paws 종료 버튼.">
         </div>
       </div>
 
@@ -634,11 +672,11 @@ footer .spacer{flex:1}
           <span class="n">03</span>
           <h3>끝내기 전에</h3>
           <p class="cap">목록은 아무것도 체크되지 않은 채 열립니다. 무엇을 끝낼지는 사람이 고릅니다 — 버튼에 “선택 0B · 0개 종료”라고 적혀 있는 이유입니다.</p>
-          <p class="read">여기 잡힌 <b>next-server 2.0 GB</b>는 터미널에서 띄운 뒤 세션이 끝나 부모를 잃은 것입니다. 그래도 Paws는 묻습니다.</p>
+          <p class="read">잡힌 next-server 1.9 GB 는 터미널에서 띄운 뒤<br>세션이 끝나 부모를 잃은 것입니다. 그래도 묻습니다.</p>
         </div>
-        <div class="frame" style="max-width:466px">
-          <img src="shots/03-picker.webp" width="932" height="404" loading="lazy"
-               alt="정리 승인 시트. 체크박스가 비어 있고 next-server 2.0G 한 줄이 보이며, 확인 버튼에 '선택 0B · 0개 종료'라고 적혀 있다.">
+        <div class="frame" style="max-width:460px">
+          <img src="shots/picker.webp" width="920" height="410" loading="lazy"
+               alt="정리 승인 시트. 체크박스가 비어 있고 next-server 1.9G 한 줄이 보이며, 확인 버튼에 '선택 0B · 0개 종료'라고 적혀 있다.">
         </div>
       </div>
 
@@ -647,17 +685,18 @@ footer .spacer{flex:1}
           <span class="n">04</span>
           <h3>무엇을 언제 왜</h3>
           <p class="cap">끝낸 것은 전부 남습니다. 날짜별로 무엇을 몇 개 끝냈고 얼마나 되찾았는지. 1년치를 보관합니다.</p>
-          <p class="read">가장 많이 치운 것 — <b>node 1,122개</b>, GoogleUpdater 238개.</p>
+          <p class="read">가장 많이 치운 것 — <b>node 1,122개</b>,<br>GoogleUpdater 250개.</p>
         </div>
-        <div class="frame" style="max-width:672px">
-          <img src="shots/04-actions.webp" width="1344" height="988" loading="lazy"
-               alt="Paws 기록 창의 조치 탭. 전체 155.9G·1393개, 날짜별 막대 그래프, 가장 많이 치운 것 목록(node 1122개, GoogleUpdater 238개), 그리고 날짜별 조치 내역.">
+        <div class="frame" style="max-width:680px">
+          <img src="shots/actions.webp" width="1360" height="984" loading="lazy"
+               alt="Paws 기록 창의 조치 탭. 전체 156.1G, 날짜별 막대 그래프, 가장 많이 치운 것 목록, 그리고 날짜별 조치 내역.">
         </div>
       </div>
     </div>
 
-    <p class="shot-note">2026년 9월 16일, macOS 26 · Mac Studio(M4 Max, 64 GB)에서 촬영.
-      수치는 그날 그 기계의 실제 값이고, 03의 대상도 그때 실제로 떠 있던 프로세스입니다.</p>
+    <p class="shot-note">2026년 9월 17일, macOS 26 · Mac Studio(M4 Max, 64 GB)에서 촬영.
+      수치는 그 기계의 실제 값입니다. 장마다 찍은 시각이 조금씩 달라 정리한 개수가 몇 개씩 차이 납니다 — 감시가 도는 중이라 계속 움직입니다.
+      메뉴바 아이콘 여섯 장은 앱이 아이콘을 그리는 코드(PawGauge·MenuBarLabel)로 직접 출력했습니다 — 화면을 찍으면 배경화면이 비쳐 흐려지기 때문입니다.</p>
   </div>
 </section>
 
@@ -740,7 +779,7 @@ footer .spacer{flex:1}
         설치 후 14일 체험 · 계정 가입 없음
       </div>
     </div>
-    <a class="btn btn-primary" href="Paws-1.3.0.dmg" download>Paws 1.3.0 내려받기 <span class="sub">DMG</span></a>
+    <a class="btn btn-primary" href="Paws-1.3.1.dmg" download>Paws 1.3.1 내려받기 <span class="sub">DMG</span></a>
   </div>
 </section>
 
