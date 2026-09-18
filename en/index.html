@@ -402,7 +402,7 @@ footer .spacer{flex:1}
 }
 </style>
 </head>
-<body>
+<body data-root="../">
 
 <div class="bar">
   <div class="wrap">
@@ -428,7 +428,7 @@ footer .spacer{flex:1}
     <span class="eyebrow reveal">macOS 14+ · menu bar app</span>
     <h1 class="reveal" style="animation-delay:.06s">Closing the terminal<br>doesn't end the process</h1>
     <p class="lede reveal" style="animation-delay:.12s">
-      Run several AI agents and you accumulate processes whose owner is gone.
+      Run several AI agents and processes whose owner is gone start piling up.
       Paws watches memory from the menu bar and shows you only those.
       <b>It never touches work in progress.</b>
     </p>
@@ -743,7 +743,7 @@ footer .spacer{flex:1}
     <div class="sec-head">
       <span class="eyebrow">Pricing</span>
       <h2>Watching is free, ending is paid</h2>
-      <p>Everything is open for 14 days after install. After that the ring, the graph, and the findings list stay.</p>
+      <p>Everything is open for 14 days after install. After that, the ring, the graph, and the findings list stay free.</p>
     </div>
     <div class="price-grid">
       <div class="plan free">
@@ -794,5 +794,6 @@ footer .spacer{flex:1}
   </div>
 </footer>
 
+<script src="../analytics.js" defer></script>
 </body>
 </html>
