@@ -1,5 +1,5 @@
 {
-  "version": "1.3.1",
-  "url": "https://tedjin.github.io/paws/Paws-1.3.1.dmg",
-  "notes": "팝오버가 스크롤 없이 한 화면에 다 들어갑니다. 정리 카드부터 설정·종료 줄까지."
+  "version": "1.3.2",
+  "url": "https://tedjin.github.io/paws/Paws-1.3.2.dmg",
+  "notes": "정리 승인이 기록 창에서 열립니다. 팝오버 안에서 뜨던 시트가 누를 때마다 사라지던 문제를 고쳤습니다."
 }

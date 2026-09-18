@@ -317,6 +317,60 @@ footer .spacer{flex:1}
 .lesson p{margin:12px 0 0;max-width:66ch;word-break:keep-all;color:var(--slate);font-size:15px}
 .lesson p b{color:var(--ink);font-weight:600}
 
+/* ── real screens ───────────────────────────── */
+.screens{
+  margin-top:44px;display:grid;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+.screen{background:var(--card);padding:26px 24px}
+@media(min-width:900px){
+  .screen{display:grid;grid-template-columns:270px 1fr;gap:34px;align-items:start}
+}
+.screen .n{font-family:var(--mono);font-size:12px;color:var(--calm);letter-spacing:.11em}
+.screen h3{margin:7px 0 0;font-size:18px;letter-spacing:-.018em;word-break:keep-all}
+.screen .cap{margin:10px 0 0;color:var(--slate);font-size:15px;word-break:keep-all}
+.screen .read{
+  margin:12px 0 0;font-family:var(--mono);font-size:12.5px;color:var(--slate);
+  word-break:keep-all;line-height:1.75;
+}
+.screen .frame{
+  margin-top:18px;border:1px solid var(--hair);border-radius:10px;
+  overflow:hidden;background:#0B0E12;line-height:0;
+}
+@media(min-width:900px){.screen .frame{margin-top:0}}
+.screen .frame img{width:100%;height:auto;display:block}
+
+/* 메뉴바: 어두운 칩 위에 얹는다 */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+@media(min-width:900px){.chips{margin-top:0}}
+.chip{
+  background:#0B0E12;border:1px solid var(--hair);border-radius:10px;
+  padding:12px 14px;display:flex;align-items:center;gap:11px;
+}
+.chip img{display:block;height:26px;width:auto;max-width:100%}
+@media(max-width:620px){
+  /* 영어·독일어는 라벨이 길어 한 줄에 안 들어간다. 좁으면 아래로 쌓는다. */
+  .chip{flex-direction:column;align-items:flex-start;gap:8px;max-width:100%}
+}
+.chip .lb{font-family:var(--mono);font-size:11.5px;color:#8A94A0;letter-spacing:.04em;white-space:nowrap}
+
+/* 게이지 상태 다섯 */
+.gauges{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin-top:18px;
+}
+@media(min-width:900px){.gauges{margin-top:0}}
+.gauge{background:#0B0E12;padding:16px 8px;text-align:center;min-width:0}
+@media(max-width:620px){
+  /* 영어·독일어 라벨은 다섯 칸에 안 들어간다. 좁으면 세 칸으로 접는다. */
+  .gauges{grid-template-columns:repeat(3,1fr)}
+}
+.gauge img{display:block;width:34px;height:auto;margin:0 auto 9px}
+.gauge .lb{font-family:var(--mono);font-size:10.5px;color:#8A94A0;letter-spacing:.03em;word-break:keep-all;line-height:1.5}
+.shot-note{
+  margin-top:clamp(28px,4vw,38px);font-family:var(--mono);font-size:12.5px;
+  color:var(--slate);word-break:keep-all;line-height:1.8;max-width:72ch;
+}
 /* ── entrance choreography ──────────────────── */
 @media(prefers-reduced-motion:no-preference){
   .reveal{opacity:0;transform:translateY(10px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
@@ -344,7 +398,7 @@ footer .spacer{flex:1}
 .bar a.ghost{white-space:nowrap}
 @media(max-width:640px){
   .bar .wrap{gap:14px}
-  .bar a.ghost[href="#how"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
+  .bar a.ghost[href="#how"],.bar a.ghost[href="#screens"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
 }
 </style>
 <style>@media(max-width:480px){.hero h1{font-size:clamp(28px,8.4vw,40px)}}:root{--sans:"PingFang SC","Hiragino Sans GB","Noto Sans SC",-apple-system,system-ui,sans-serif}body *{word-break:normal!important;line-break:strict}.hero h1{max-width:14em}</style>
@@ -362,6 +416,7 @@ footer .spacer{flex:1}
     </span>
     <span class="spacer"></span>
     <a class="ghost" href="#how">工作方式</a>
+    <a class="ghost" href="#screens">界面</a>
     <a class="ghost" href="#promise">绝不会做的事</a>
     <a class="ghost" href="#price">价格</a>
     <details class="lang"><summary aria-label="Language">中文</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en">English</a><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans" aria-current="page">简体中文</a><a href="../de/" lang="de" hreflang="de">Deutsch</a></div></details>
@@ -379,7 +434,7 @@ footer .spacer{flex:1}
       <b>绝不触碰正在进行的工作。</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
-      <a class="btn btn-primary" href="#get">下载 <span class="sub">1.3.1 · 已通过 Apple 公证</span></a>
+      <a class="btn btn-primary" href="#get">下载 <span class="sub">1.3.2 · 已通过 Apple 公证</span></a>
       <a class="btn btn-quiet" href="#promise">看看它绝不会做的事</a>
       <span class="note">14 天试用 · 监控永久免费</span>
     </div>
@@ -555,7 +610,7 @@ footer .spacer{flex:1}
       </div>
       <div class="step">
         <div><span class="n">04</span><h3>你来选</h3></div>
-        <p class="what">清理列表打开时，所有勾选框都是空的。只结束你勾的，并把结束了什么、何时、为何完整保留一年。</p>
+        <p class="what">它会打开记录窗口，把要结束的东西摆出来再问一次。没有任何会话持有的进程，列表打开时一个勾都没有。结束了什么、何时、为何，完整保留一年。</p>
         <p class="safe"><span class="mark-hold">不影响你的工作</span>自动清理默认关闭。就算打开，也只针对通过第 03 步的孤儿进程。</p>
       </div>
     </div>
@@ -566,6 +621,84 @@ footer .spacer{flex:1}
         那个版本发布时，100 个合成测试全部通过。不在列表里是信息缺失，不是证据，而只用假进程测试永远看不出这一点。</p>
       <p>现在<b>每次构建都会在真机上跑一个测试：在一台健康的 Mac 上，自动清理的名单是不是 0 个。</b> 判定规则从那天起增加到六条，每一条都把“不确定就什么都不做”作为默认值。</p>
     </div>
+  </div>
+</section>
+
+<section id="screens">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">真实界面</span>
+      <h2>它长这个样子</h2>
+      <p>下面每一张，要么直接截自写这段话的这台 Mac，要么就是从 App 画图标的那段代码里直接输出的。没有重画，也没有把数字修饰过。</p>
+    </div>
+
+    <div class="screens">
+      <div class="screen">
+        <div>
+          <span class="n">01</span>
+          <h3>菜单栏里就这一个</h3>
+          <p class="cap">平时你能看到的只有这一个爪印。想看数字就在设置里打开。</p>
+          <p class="read">围着它的圆环表示内存状态。<br>平时安静，要紧时用颜色说话。</p>
+        </div>
+        <div>
+          <div class="chips">
+            <div class="chip">
+              <img src="../shots/label-plain.webp" width="150" height="150" loading="lazy" alt="Mac 菜单栏里的 Paws 图标：一个被圆环仪表围住的爪印。">
+              <span class="lb">数字关（默认）</span>
+            </div>
+            <div class="chip">
+              <img src="../shots/label-text-zh.webp" width="1071" height="150" loading="lazy" alt="打开数字后的菜单栏项：爪印旁边写着可用 83%、交换 0B。">
+              <span class="lb">数字开</span>
+            </div>
+          </div>
+          <div class="gauges">
+            <div class="gauge"><img src="../shots/gauge-normal.webp" width="150" height="151" loading="lazy" alt="平时"><span class="lb">平时</span></div>
+            <div class="gauge"><img src="../shots/gauge-warning.webp" width="142" height="142" loading="lazy" alt="警告"><span class="lb">警告</span></div>
+            <div class="gauge"><img src="../shots/gauge-critical.webp" width="152" height="152" loading="lazy" alt="危险"><span class="lb">危险</span></div>
+            <div class="gauge"><img src="../shots/gauge-inactive.webp" width="150" height="150" loading="lazy" alt="已暂停"><span class="lb">已暂停</span></div>
+            <div class="gauge"><img src="../shots/gauge-sweep.webp" width="151" height="152" loading="lazy" alt="清理中"><span class="lb">清理中</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">02</span>
+          <h3>点开之后</h3>
+          <p class="cap">当前状态都在这一屏里，不用滚动 —— 一共拿回多少、发现了什么、可用内存和交换空间、进程数量、压力曲线、最近一次处理，以及最下面的设置和退出。</p>
+          <p class="read">这台 Mac 装上之后拿回了 <b>161.3 GB</b>，<br>一共清理了 1,590 个进程。</p>
+        </div>
+        <div class="frame" style="max-width:440px">
+          <img src="../shots/popover-zh.webp" width="880" height="1532" loading="lazy" alt="Paws 面板全貌：自动清理开关与已回收 161.3G、发现、可用内存和交换空间、进程数、压力曲线、最近处理，最下面是设置和退出。">
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">03</span>
+          <h3>在结束任何东西之前</h3>
+          <p class="cap">点清理会打开记录窗口，把将要结束的东西列出来，再问你一次。只有你选的才会结束。</p>
+          <p class="read">“未保存的工作可能会丢失。”<br>—— 结束之前它先说这句话。</p>
+        </div>
+        <div class="frame" style="max-width:680px">
+          <img src="../shots/approve-zh.webp" width="1360" height="984" loading="lazy" alt="记录窗口上弹出的清理确认面板，列出将要结束的进程，并有取消和结束按钮。">
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">04</span>
+          <h3>结束了什么、何时、为何</h3>
+          <p class="cap">结束过的全都留着记录 —— 按日期，结束了多少个什么，拿回了多少。保留一年。</p>
+          <p class="read">清理最多的 —— <b>node 1,122 个</b>，<br>GoogleUpdater 427 个。</p>
+        </div>
+        <div class="frame" style="max-width:680px">
+          <img src="../shots/actions-zh.webp" width="1360" height="984" loading="lazy" alt="Paws 记录窗口的处理标签页：合计回收量、按日期的柱状图、清理最多的列表，以及逐日的记录。">
+        </div>
+      </div>
+    </div>
+
+    <p class="shot-note">2026 年 9 月 18 日，在 macOS 26 · Mac Studio（M4 Max，64 GB）上用 Paws 1.3.2 截取。数字是那台机器的真实数值。菜单栏的六张图标是从 App 画图标的代码（PawGauge、MenuBarLabel）里直接输出的 —— 截屏会让壁纸透过来，图标就糊了。</p>
   </div>
 </section>
 
@@ -648,7 +781,7 @@ footer .spacer{flex:1}
         安装后试用 14 天 · 无需账户
       </div>
     </div>
-    <a class="btn btn-primary" href="../Paws-1.3.1.dmg" download>下载 Paws 1.3.1 <span class="sub">DMG</span></a>
+    <a class="btn btn-primary" href="../Paws-1.3.2.dmg" download>下载 Paws 1.3.2 <span class="sub">DMG</span></a>
   </div>
 </section>
 

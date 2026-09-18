@@ -317,6 +317,60 @@ footer .spacer{flex:1}
 .lesson p{margin:12px 0 0;max-width:66ch;word-break:keep-all;color:var(--slate);font-size:15px}
 .lesson p b{color:var(--ink);font-weight:600}
 
+/* ── real screens ───────────────────────────── */
+.screens{
+  margin-top:44px;display:grid;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+.screen{background:var(--card);padding:26px 24px}
+@media(min-width:900px){
+  .screen{display:grid;grid-template-columns:270px 1fr;gap:34px;align-items:start}
+}
+.screen .n{font-family:var(--mono);font-size:12px;color:var(--calm);letter-spacing:.11em}
+.screen h3{margin:7px 0 0;font-size:18px;letter-spacing:-.018em;word-break:keep-all}
+.screen .cap{margin:10px 0 0;color:var(--slate);font-size:15px;word-break:keep-all}
+.screen .read{
+  margin:12px 0 0;font-family:var(--mono);font-size:12.5px;color:var(--slate);
+  word-break:keep-all;line-height:1.75;
+}
+.screen .frame{
+  margin-top:18px;border:1px solid var(--hair);border-radius:10px;
+  overflow:hidden;background:#0B0E12;line-height:0;
+}
+@media(min-width:900px){.screen .frame{margin-top:0}}
+.screen .frame img{width:100%;height:auto;display:block}
+
+/* 메뉴바: 어두운 칩 위에 얹는다 */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+@media(min-width:900px){.chips{margin-top:0}}
+.chip{
+  background:#0B0E12;border:1px solid var(--hair);border-radius:10px;
+  padding:12px 14px;display:flex;align-items:center;gap:11px;
+}
+.chip img{display:block;height:26px;width:auto;max-width:100%}
+@media(max-width:620px){
+  /* 영어·독일어는 라벨이 길어 한 줄에 안 들어간다. 좁으면 아래로 쌓는다. */
+  .chip{flex-direction:column;align-items:flex-start;gap:8px;max-width:100%}
+}
+.chip .lb{font-family:var(--mono);font-size:11.5px;color:#8A94A0;letter-spacing:.04em;white-space:nowrap}
+
+/* 게이지 상태 다섯 */
+.gauges{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin-top:18px;
+}
+@media(min-width:900px){.gauges{margin-top:0}}
+.gauge{background:#0B0E12;padding:16px 8px;text-align:center;min-width:0}
+@media(max-width:620px){
+  /* 영어·독일어 라벨은 다섯 칸에 안 들어간다. 좁으면 세 칸으로 접는다. */
+  .gauges{grid-template-columns:repeat(3,1fr)}
+}
+.gauge img{display:block;width:34px;height:auto;margin:0 auto 9px}
+.gauge .lb{font-family:var(--mono);font-size:10.5px;color:#8A94A0;letter-spacing:.03em;word-break:keep-all;line-height:1.5}
+.shot-note{
+  margin-top:clamp(28px,4vw,38px);font-family:var(--mono);font-size:12.5px;
+  color:var(--slate);word-break:keep-all;line-height:1.8;max-width:72ch;
+}
 /* ── entrance choreography ──────────────────── */
 @media(prefers-reduced-motion:no-preference){
   .reveal{opacity:0;transform:translateY(10px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
@@ -344,7 +398,7 @@ footer .spacer{flex:1}
 .bar a.ghost{white-space:nowrap}
 @media(max-width:640px){
   .bar .wrap{gap:14px}
-  .bar a.ghost[href="#how"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
+  .bar a.ghost[href="#how"],.bar a.ghost[href="#screens"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
 }
 </style>
 <style>@media(max-width:480px){.hero h1{font-size:clamp(28px,8.4vw,40px)}}:root{--sans:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",-apple-system,system-ui,sans-serif}body *{word-break:normal!important;line-break:strict}.hero h1{max-width:14em}</style>
@@ -362,6 +416,7 @@ footer .spacer{flex:1}
     </span>
     <span class="spacer"></span>
     <a class="ghost" href="#how">仕組み</a>
+    <a class="ghost" href="#screens">画面</a>
     <a class="ghost" href="#promise">しないこと</a>
     <a class="ghost" href="#price">価格</a>
     <details class="lang"><summary aria-label="Language">JA</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en">English</a><a href="../ja/" lang="ja" hreflang="ja" aria-current="page">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="../de/" lang="de" hreflang="de">Deutsch</a></div></details>
@@ -379,7 +434,7 @@ footer .spacer{flex:1}
       <b>作業中のものには決して触れません。</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
-      <a class="btn btn-primary" href="#get">ダウンロード <span class="sub">1.3.1 · Apple 公証済み</span></a>
+      <a class="btn btn-primary" href="#get">ダウンロード <span class="sub">1.3.2 · Apple 公証済み</span></a>
       <a class="btn btn-quiet" href="#promise">しないことを見る</a>
       <span class="note">14日間無料で試用 · 監視はずっと無料</span>
     </div>
@@ -555,7 +610,7 @@ footer .spacer{flex:1}
       </div>
       <div class="step">
         <div><span class="n">04</span><h3>人が選ぶ</h3></div>
-        <p class="what">片づけの一覧は、チェックが全部外れた状態で開きます。選んだものだけを終了し、何をいつなぜ終了したかを1年分残します。</p>
+        <p class="what">記録ウインドウを開き、何を終了するのかを見せてもう一度尋ねます。どのセッションも握っていないプロセスは、何もチェックされていない一覧で開きます。何をいつなぜ終了したかは1年分残ります。</p>
         <p class="safe"><span class="mark-hold">作業に影響なし</span>自動の片づけは初期状態でオフです。オンにしても、03を通った孤児だけが対象です。</p>
       </div>
     </div>
@@ -566,6 +621,84 @@ footer .spacer{flex:1}
         100個の合成テストが全部通った状態で出た版です。一覧にないことは孤児の証拠ではなく情報の不在でしたが、偽のプロセスだけで試していては分かりませんでした。</p>
       <p>今は<b>実機で「健全なMacなら自動の片づけ対象は0個か」を確かめるテスト</b>がビルドごとに走ります。判定の規則はあの日から六つに増え、どれも「分からなければ何もしない」を既定値にしています。</p>
     </div>
+  </div>
+</section>
+
+<section id="screens">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">実際の画面</span>
+      <h2>こういう見た目です</h2>
+      <p>以下はすべて、この文章を書いているMacで撮ったか、アプリがアイコンを描くコードからそのまま出力したものです。描き直したものも、盛った数字もありません。</p>
+    </div>
+
+    <div class="screens">
+      <div class="screen">
+        <div>
+          <span class="n">01</span>
+          <h3>メニューバーにこれ一つ</h3>
+          <p class="cap">普段見えるのは肉球一つだけです。数字を出したければ設定で入にします。</p>
+          <p class="read">囲むリングがメモリの状態を伝えます。<br>平常は静かに、急ぐときは色で。</p>
+        </div>
+        <div>
+          <div class="chips">
+            <div class="chip">
+              <img src="../shots/label-plain.webp" width="150" height="150" loading="lazy" alt="MacのメニューバーにあるPawsのアイコン。リング状のゲージに囲まれた肉球が一つ。">
+              <span class="lb">数字オフ（既定）</span>
+            </div>
+            <div class="chip">
+              <img src="../shots/label-text-ja.webp" width="1201" height="150" loading="lazy" alt="数字をオンにしたメニューバー項目。肉球の横に空き83パーセント、スワップ0Bと出ている。">
+              <span class="lb">数字オン</span>
+            </div>
+          </div>
+          <div class="gauges">
+            <div class="gauge"><img src="../shots/gauge-normal.webp" width="150" height="151" loading="lazy" alt="平常"><span class="lb">平常</span></div>
+            <div class="gauge"><img src="../shots/gauge-warning.webp" width="142" height="142" loading="lazy" alt="警告"><span class="lb">警告</span></div>
+            <div class="gauge"><img src="../shots/gauge-critical.webp" width="152" height="152" loading="lazy" alt="危険"><span class="lb">危険</span></div>
+            <div class="gauge"><img src="../shots/gauge-inactive.webp" width="150" height="150" loading="lazy" alt="監視停止"><span class="lb">監視停止</span></div>
+            <div class="gauge"><img src="../shots/gauge-sweep.webp" width="151" height="152" loading="lazy" alt="片づけ中"><span class="lb">片づけ中</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">02</span>
+          <h3>押したとき</h3>
+          <p class="cap">今の状態が一枚に収まり、スクロールするものはありません — 取り戻した量、見つけたもの、空きメモリとスワップ、プロセス数、圧力のグラフ、最後の処置、そして一番下に設定と終了。</p>
+          <p class="read">このMacはインストール後に<b>161.3 GB</b>を取り戻しました。<br>1,590個を片づけて。</p>
+        </div>
+        <div class="frame" style="max-width:440px">
+          <img src="../shots/popover-ja.webp" width="880" height="1562" loading="lazy" alt="Pawsのパネル全体。自動整理スイッチと161.3G回収、検出、空きメモリとスワップ、プロセス数、圧力のグラフ、最近の処置、一番下に設定と終了。">
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">03</span>
+          <h3>終了させる前に</h3>
+          <p class="cap">片づけを押すと記録ウインドウが開き、何を終了するのかを一覧で見せてからもう一度尋ねます。選んだものだけが終わります。</p>
+          <p class="read">「保存していない作業は失われることがあります」<br>— 終了の前にまずそう言います。</p>
+        </div>
+        <div class="frame" style="max-width:680px">
+          <img src="../shots/approve-ja.webp" width="1360" height="984" loading="lazy" alt="記録ウインドウの上に出た片づけの確認シート。終了するプロセスが並び、キャンセルと終了のボタンがある。">
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">04</span>
+          <h3>何をいつなぜ</h3>
+          <p class="cap">終了させたものはすべて残ります。日付ごとに、何をいくつ、どれだけ取り戻したか。1年分を保管します。</p>
+          <p class="read">最も多く片づけたもの — <b>node 1,122個</b>、<br>GoogleUpdater 427個。</p>
+        </div>
+        <div class="frame" style="max-width:680px">
+          <img src="../shots/actions-ja.webp" width="1360" height="984" loading="lazy" alt="Pawsの記録ウインドウの処置タブ。全体の回収量、日付ごとの棒グラフ、最も多く片づけたものの一覧、日ごとの記録。">
+        </div>
+      </div>
+    </div>
+
+    <p class="shot-note">2026年9月18日、macOS 26 · Mac Studio（M4 Max、64 GB）でPaws 1.3.2を撮影。数字はその機械の実際の値です。メニューバーのアイコン6枚は、アプリがアイコンを描くコード（PawGauge・MenuBarLabel）から直接出力しました — 画面を撮ると壁紙が透けて濁るからです。</p>
   </div>
 </section>
 
@@ -648,7 +781,7 @@ footer .spacer{flex:1}
         インストール後14日間試用 · アカウント不要
       </div>
     </div>
-    <a class="btn btn-primary" href="../Paws-1.3.1.dmg" download>Paws 1.3.1 をダウンロード <span class="sub">DMG</span></a>
+    <a class="btn btn-primary" href="../Paws-1.3.2.dmg" download>Paws 1.3.2 をダウンロード <span class="sub">DMG</span></a>
   </div>
 </section>
 

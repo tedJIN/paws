@@ -317,6 +317,60 @@ footer .spacer{flex:1}
 .lesson p{margin:12px 0 0;max-width:66ch;word-break:keep-all;color:var(--slate);font-size:15px}
 .lesson p b{color:var(--ink);font-weight:600}
 
+/* ── real screens ───────────────────────────── */
+.screens{
+  margin-top:44px;display:grid;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+.screen{background:var(--card);padding:26px 24px}
+@media(min-width:900px){
+  .screen{display:grid;grid-template-columns:270px 1fr;gap:34px;align-items:start}
+}
+.screen .n{font-family:var(--mono);font-size:12px;color:var(--calm);letter-spacing:.11em}
+.screen h3{margin:7px 0 0;font-size:18px;letter-spacing:-.018em;word-break:keep-all}
+.screen .cap{margin:10px 0 0;color:var(--slate);font-size:15px;word-break:keep-all}
+.screen .read{
+  margin:12px 0 0;font-family:var(--mono);font-size:12.5px;color:var(--slate);
+  word-break:keep-all;line-height:1.75;
+}
+.screen .frame{
+  margin-top:18px;border:1px solid var(--hair);border-radius:10px;
+  overflow:hidden;background:#0B0E12;line-height:0;
+}
+@media(min-width:900px){.screen .frame{margin-top:0}}
+.screen .frame img{width:100%;height:auto;display:block}
+
+/* 메뉴바: 어두운 칩 위에 얹는다 */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+@media(min-width:900px){.chips{margin-top:0}}
+.chip{
+  background:#0B0E12;border:1px solid var(--hair);border-radius:10px;
+  padding:12px 14px;display:flex;align-items:center;gap:11px;
+}
+.chip img{display:block;height:26px;width:auto;max-width:100%}
+@media(max-width:620px){
+  /* 영어·독일어는 라벨이 길어 한 줄에 안 들어간다. 좁으면 아래로 쌓는다. */
+  .chip{flex-direction:column;align-items:flex-start;gap:8px;max-width:100%}
+}
+.chip .lb{font-family:var(--mono);font-size:11.5px;color:#8A94A0;letter-spacing:.04em;white-space:nowrap}
+
+/* 게이지 상태 다섯 */
+.gauges{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin-top:18px;
+}
+@media(min-width:900px){.gauges{margin-top:0}}
+.gauge{background:#0B0E12;padding:16px 8px;text-align:center;min-width:0}
+@media(max-width:620px){
+  /* 영어·독일어 라벨은 다섯 칸에 안 들어간다. 좁으면 세 칸으로 접는다. */
+  .gauges{grid-template-columns:repeat(3,1fr)}
+}
+.gauge img{display:block;width:34px;height:auto;margin:0 auto 9px}
+.gauge .lb{font-family:var(--mono);font-size:10.5px;color:#8A94A0;letter-spacing:.03em;word-break:keep-all;line-height:1.5}
+.shot-note{
+  margin-top:clamp(28px,4vw,38px);font-family:var(--mono);font-size:12.5px;
+  color:var(--slate);word-break:keep-all;line-height:1.8;max-width:72ch;
+}
 /* ── entrance choreography ──────────────────── */
 @media(prefers-reduced-motion:no-preference){
   .reveal{opacity:0;transform:translateY(10px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
@@ -344,7 +398,7 @@ footer .spacer{flex:1}
 .bar a.ghost{white-space:nowrap}
 @media(max-width:640px){
   .bar .wrap{gap:14px}
-  .bar a.ghost[href="#how"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
+  .bar a.ghost[href="#how"],.bar a.ghost[href="#screens"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
 }
 </style>
 <style>/* Große, von Hand umbrochene Überschriften nicht trennen; schmale Spalten schon (lange Komposita). */
@@ -364,6 +418,7 @@ h3{hyphens:auto;-webkit-hyphens:auto}</style>
     </span>
     <span class="spacer"></span>
     <a class="ghost" href="#how">So arbeitet es</a>
+    <a class="ghost" href="#screens">Bildschirme</a>
     <a class="ghost" href="#promise">Was es nie tut</a>
     <a class="ghost" href="#price">Preise</a>
     <details class="lang"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en">English</a><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="../de/" lang="de" hreflang="de" aria-current="page">Deutsch</a></div></details>
@@ -381,7 +436,7 @@ h3{hyphens:auto;-webkit-hyphens:auto}</style>
       <b>Laufende Arbeit rührt es nie an.</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
-      <a class="btn btn-primary" href="#get">Download <span class="sub">1.3.1 · von Apple notarisiert</span></a>
+      <a class="btn btn-primary" href="#get">Download <span class="sub">1.3.2 · von Apple notarisiert</span></a>
       <a class="btn btn-quiet" href="#promise">Sieh, was es nie tut</a>
       <span class="note">14 Tage testen · Überwachung bleibt kostenlos</span>
     </div>
@@ -557,7 +612,7 @@ h3{hyphens:auto;-webkit-hyphens:auto}</style>
       </div>
       <div class="step">
         <div><span class="n">04</span><h3>Du entscheidest</h3></div>
-        <p class="what">Die Liste öffnet sich mit leeren Kästchen. Beendet wird nur, was du auswählst, und was wann und warum beendet wurde, bleibt ein Jahr lang protokolliert.</p>
+        <p class="what">Es öffnet das Protokollfenster, zeigt dir, was gleich endet, und fragt noch einmal. Bei Prozessen, die keine Sitzung hält, öffnet sich die Liste ganz ohne Haken. Was wann und warum beendet wurde, bleibt ein Jahr lang protokolliert.</p>
         <p class="safe"><span class="mark-hold">OHNE EINFLUSS AUF DEINE ARBEIT</span>Automatisches Bereinigen ist standardmäßig aus. Auch eingeschaltet trifft es nur Waisen, die Schritt 03 bestanden haben.</p>
       </div>
     </div>
@@ -568,6 +623,84 @@ h3{hyphens:auto;-webkit-hyphens:auto}</style>
         Ausgeliefert wurde sie mit 100 bestandenen synthetischen Tests. Das Fehlen in der Liste war fehlende Information, kein Beweis — und mit erfundenen Prozessen ließ sich das nie zeigen.</p>
       <p>Heute läuft <b>bei jedem Build ein Test auf einer echten Maschine: „Ist die Auswahl fürs automatische Bereinigen auf einem gesunden Mac leer?“</b> Die Regeln sind seit jenem Tag auf sechs gewachsen, und alle haben „im Zweifel nichts tun“ als Standard.</p>
     </div>
+  </div>
+</section>
+
+<section id="screens">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Echte Bildschirme</span>
+      <h2>So sieht es aus</h2>
+      <p>Jede Aufnahme unten stammt von dem Mac, auf dem dieser Text entstand — oder kommt direkt aus dem Code, mit dem die App ihr Symbol zeichnet. Nichts nachgezeichnet, keine Zahl aufgehübscht.</p>
+    </div>
+
+    <div class="screens">
+      <div class="screen">
+        <div>
+          <span class="n">01</span>
+          <h3>Eines in der Menüleiste</h3>
+          <p class="cap">Im Alltag siehst du nur diese eine Pfote. Wer Zahlen will, schaltet sie in den Einstellungen ein.</p>
+          <p class="read">Der Ring darum trägt den Speicherzustand.<br>Normalerweise still, im Ernstfall farbig.</p>
+        </div>
+        <div>
+          <div class="chips">
+            <div class="chip">
+              <img src="../shots/label-plain.webp" width="150" height="150" loading="lazy" alt="Das Paws-Symbol in der Menüleiste: eine Pfote in einem Ring als Anzeige.">
+              <span class="lb">Zahlen aus (Standard)</span>
+            </div>
+            <div class="chip">
+              <img src="../shots/label-text-de.webp" width="1179" height="150" loading="lazy" alt="Das Menüleisten-Element mit eingeschalteten Zahlen: die Pfote neben 83 % frei, Swap 0B.">
+              <span class="lb">Zahlen an</span>
+            </div>
+          </div>
+          <div class="gauges">
+            <div class="gauge"><img src="../shots/gauge-normal.webp" width="150" height="151" loading="lazy" alt="Normal"><span class="lb">Normal</span></div>
+            <div class="gauge"><img src="../shots/gauge-warning.webp" width="142" height="142" loading="lazy" alt="Warnung"><span class="lb">Warnung</span></div>
+            <div class="gauge"><img src="../shots/gauge-critical.webp" width="152" height="152" loading="lazy" alt="Gefahr"><span class="lb">Gefahr</span></div>
+            <div class="gauge"><img src="../shots/gauge-inactive.webp" width="150" height="150" loading="lazy" alt="Pausiert"><span class="lb">Pausiert</span></div>
+            <div class="gauge"><img src="../shots/gauge-sweep.webp" width="151" height="152" loading="lazy" alt="Räumt auf"><span class="lb">Räumt auf</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">02</span>
+          <h3>Wenn du darauf klickst</h3>
+          <p class="cap">Der ganze Zustand passt auf eine Fläche, nichts zum Scrollen — zurückgeholt bisher, was gefunden wurde, freier Speicher und Swap, Anzahl der Prozesse, die Druckkurve, die letzte Aktion und ganz unten Einstellungen und Beenden.</p>
+          <p class="read">Dieser Mac hat seit der Installation <b>161,3 GB</b> zurückgeholt,<br>über 1.590 Prozesse.</p>
+        </div>
+        <div class="frame" style="max-width:440px">
+          <img src="../shots/popover-de.webp" width="880" height="1562" loading="lazy" alt="Die ganze Paws-Fläche: Schalter fürs automatische Bereinigen und 161,3G zurückgeholt, Funde, freier Speicher und Swap, Anzahl der Prozesse, Druckkurve, letzte Aktionen und unten Einstellungen und Beenden.">
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">03</span>
+          <h3>Bevor irgendetwas endet</h3>
+          <p class="cap">Ein Klick auf Aufräumen öffnet das Protokollfenster, listet auf, was gleich endet, und fragt noch einmal. Beendet wird nur, was du auswählst.</p>
+          <p class="read">„Nicht gesicherte Arbeit kann verloren gehen.“<br>Das sagt es, bevor es irgendetwas beendet.</p>
+        </div>
+        <div class="frame" style="max-width:680px">
+          <img src="../shots/approve-de.webp" width="1360" height="984" loading="lazy" alt="Das Bestätigungsblatt über dem Protokollfenster, das die Prozesse auflistet, die gleich enden, mit Abbrechen und Beenden.">
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">04</span>
+          <h3>Was, wann und warum</h3>
+          <p class="cap">Alles Beendete bleibt protokolliert — nach Datum, wie viele wovon, und wie viel zurückkam. Ein Jahr lang aufbewahrt.</p>
+          <p class="read">Am meisten bereinigt — <b>1.122 node</b>,<br>427 GoogleUpdater.</p>
+        </div>
+        <div class="frame" style="max-width:680px">
+          <img src="../shots/actions-de.webp" width="1360" height="984" loading="lazy" alt="Der Aktionen-Tab im Paws-Protokollfenster: gesamte Rückgewinnung, Balkendiagramm nach Datum, Liste des meist Bereinigten und das Protokoll Tag für Tag.">
+        </div>
+      </div>
+    </div>
+
+    <p class="shot-note">Aufgenommen am 18. September 2026 mit Paws 1.3.2 unter macOS 26 auf einem Mac Studio (M4 Max, 64 GB). Die Zahlen sind die echten Werte dieser Maschine. Die sechs Menüleisten-Symbole kommen direkt aus dem Code, der sie zeichnet (PawGauge, MenuBarLabel) — ein Bildschirmfoto lässt das Hintergrundbild durchscheinen und macht sie matschig.</p>
   </div>
 </section>
 
@@ -650,7 +783,7 @@ h3{hyphens:auto;-webkit-hyphens:auto}</style>
         14 Tage testen nach der Installation · kein Konto
       </div>
     </div>
-    <a class="btn btn-primary" href="../Paws-1.3.1.dmg" download>Paws 1.3.1 herunterladen <span class="sub">DMG</span></a>
+    <a class="btn btn-primary" href="../Paws-1.3.2.dmg" download>Paws 1.3.2 herunterladen <span class="sub">DMG</span></a>
   </div>
 </section>
 

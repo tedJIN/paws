@@ -317,6 +317,60 @@ footer .spacer{flex:1}
 .lesson p{margin:12px 0 0;max-width:66ch;word-break:keep-all;color:var(--slate);font-size:15px}
 .lesson p b{color:var(--ink);font-weight:600}
 
+/* ── real screens ───────────────────────────── */
+.screens{
+  margin-top:44px;display:grid;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+}
+.screen{background:var(--card);padding:26px 24px}
+@media(min-width:900px){
+  .screen{display:grid;grid-template-columns:270px 1fr;gap:34px;align-items:start}
+}
+.screen .n{font-family:var(--mono);font-size:12px;color:var(--calm);letter-spacing:.11em}
+.screen h3{margin:7px 0 0;font-size:18px;letter-spacing:-.018em;word-break:keep-all}
+.screen .cap{margin:10px 0 0;color:var(--slate);font-size:15px;word-break:keep-all}
+.screen .read{
+  margin:12px 0 0;font-family:var(--mono);font-size:12.5px;color:var(--slate);
+  word-break:keep-all;line-height:1.75;
+}
+.screen .frame{
+  margin-top:18px;border:1px solid var(--hair);border-radius:10px;
+  overflow:hidden;background:#0B0E12;line-height:0;
+}
+@media(min-width:900px){.screen .frame{margin-top:0}}
+.screen .frame img{width:100%;height:auto;display:block}
+
+/* 메뉴바: 어두운 칩 위에 얹는다 */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+@media(min-width:900px){.chips{margin-top:0}}
+.chip{
+  background:#0B0E12;border:1px solid var(--hair);border-radius:10px;
+  padding:12px 14px;display:flex;align-items:center;gap:11px;
+}
+.chip img{display:block;height:26px;width:auto;max-width:100%}
+@media(max-width:620px){
+  /* 영어·독일어는 라벨이 길어 한 줄에 안 들어간다. 좁으면 아래로 쌓는다. */
+  .chip{flex-direction:column;align-items:flex-start;gap:8px;max-width:100%}
+}
+.chip .lb{font-family:var(--mono);font-size:11.5px;color:#8A94A0;letter-spacing:.04em;white-space:nowrap}
+
+/* 게이지 상태 다섯 */
+.gauges{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin-top:18px;
+}
+@media(min-width:900px){.gauges{margin-top:0}}
+.gauge{background:#0B0E12;padding:16px 8px;text-align:center;min-width:0}
+@media(max-width:620px){
+  /* 영어·독일어 라벨은 다섯 칸에 안 들어간다. 좁으면 세 칸으로 접는다. */
+  .gauges{grid-template-columns:repeat(3,1fr)}
+}
+.gauge img{display:block;width:34px;height:auto;margin:0 auto 9px}
+.gauge .lb{font-family:var(--mono);font-size:10.5px;color:#8A94A0;letter-spacing:.03em;word-break:keep-all;line-height:1.5}
+.shot-note{
+  margin-top:clamp(28px,4vw,38px);font-family:var(--mono);font-size:12.5px;
+  color:var(--slate);word-break:keep-all;line-height:1.8;max-width:72ch;
+}
 /* ── entrance choreography ──────────────────── */
 @media(prefers-reduced-motion:no-preference){
   .reveal{opacity:0;transform:translateY(10px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
@@ -344,7 +398,7 @@ footer .spacer{flex:1}
 .bar a.ghost{white-space:nowrap}
 @media(max-width:640px){
   .bar .wrap{gap:14px}
-  .bar a.ghost[href="#how"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
+  .bar a.ghost[href="#how"],.bar a.ghost[href="#screens"],.bar a.ghost[href="#promise"],.bar a.ghost[href="#price"]{display:none}
 }
 </style>
 </head>
@@ -361,6 +415,7 @@ footer .spacer{flex:1}
     </span>
     <span class="spacer"></span>
     <a class="ghost" href="#how">How it works</a>
+    <a class="ghost" href="#screens">Screens</a>
     <a class="ghost" href="#promise">What it never does</a>
     <a class="ghost" href="#price">Pricing</a>
     <details class="lang"><summary aria-label="Language">EN</summary><div class="lang-menu"><a href="../" lang="ko" hreflang="ko">한국어</a><a href="../en/" lang="en" hreflang="en" aria-current="page">English</a><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="../de/" lang="de" hreflang="de">Deutsch</a></div></details>
@@ -378,7 +433,7 @@ footer .spacer{flex:1}
       <b>It never touches work in progress.</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
-      <a class="btn btn-primary" href="#get">Download <span class="sub">1.3.1 · notarized by Apple</span></a>
+      <a class="btn btn-primary" href="#get">Download <span class="sub">1.3.2 · notarized by Apple</span></a>
       <a class="btn btn-quiet" href="#promise">See what it never does</a>
       <span class="note">14-day trial · monitoring stays free</span>
     </div>
@@ -554,7 +609,7 @@ footer .spacer{flex:1}
       </div>
       <div class="step">
         <div><span class="n">04</span><h3>You choose</h3></div>
-        <p class="what">The cleanup list opens with every box unchecked. Only what you pick gets ended, and what was ended, when and why is kept for a year.</p>
+        <p class="what">It opens the record window, shows you what is about to end and asks again. For processes no session holds, the list opens with nothing ticked at all. What was ended, when and why is kept for a year.</p>
         <p class="safe"><span class="mark-hold">NO EFFECT ON YOUR WORK</span>Automatic cleanup is off by default. Even switched on, it only touches orphans that passed step 03.</p>
       </div>
     </div>
@@ -565,6 +620,84 @@ footer .spacer{flex:1}
         It shipped with all 100 synthetic tests passing. Absence from the list was an absence of information, not evidence, and testing against fake processes could never have revealed that.</p>
       <p>Now <b>a test on a real machine — “on a healthy Mac, is the automatic cleanup set empty?” — runs on every build.</b> The rules have grown to six since that day, and every one of them defaults to doing nothing when unsure.</p>
     </div>
+  </div>
+</section>
+
+<section id="screens">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The real thing</span>
+      <h2>This is what it looks like</h2>
+      <p>Every shot below was taken on the Mac this was written on, or printed straight from the code the app draws its icon with. Nothing redrawn, no numbers dressed up.</p>
+    </div>
+
+    <div class="screens">
+      <div class="screen">
+        <div>
+          <span class="n">01</span>
+          <h3>One thing in the menu bar</h3>
+          <p class="cap">Day to day, one paw is all you see. Turn on the readout in settings if you want numbers.</p>
+          <p class="read">The ring around it carries the memory state.<br>Quiet normally, coloured when it matters.</p>
+        </div>
+        <div>
+          <div class="chips">
+            <div class="chip">
+              <img src="../shots/label-plain.webp" width="150" height="150" loading="lazy" alt="The Paws icon in the Mac menu bar: a single paw inside a ring gauge.">
+              <span class="lb">Readout off (default)</span>
+            </div>
+            <div class="chip">
+              <img src="../shots/label-text-en.webp" width="1179" height="150" loading="lazy" alt="The menu bar item with the readout on: the paw beside 83% free, swap 0B.">
+              <span class="lb">Readout on</span>
+            </div>
+          </div>
+          <div class="gauges">
+            <div class="gauge"><img src="../shots/gauge-normal.webp" width="150" height="151" loading="lazy" alt="Normal"><span class="lb">Normal</span></div>
+            <div class="gauge"><img src="../shots/gauge-warning.webp" width="142" height="142" loading="lazy" alt="Warning"><span class="lb">Warning</span></div>
+            <div class="gauge"><img src="../shots/gauge-critical.webp" width="152" height="152" loading="lazy" alt="Critical"><span class="lb">Critical</span></div>
+            <div class="gauge"><img src="../shots/gauge-inactive.webp" width="150" height="150" loading="lazy" alt="Paused"><span class="lb">Paused</span></div>
+            <div class="gauge"><img src="../shots/gauge-sweep.webp" width="151" height="152" loading="lazy" alt="Cleaning"><span class="lb">Cleaning</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">02</span>
+          <h3>When you click it</h3>
+          <p class="cap">The whole state fits on one panel, nothing to scroll — reclaimed so far, what it found, free memory and swap, process count, the pressure graph, the last action, and settings and quit at the bottom.</p>
+          <p class="read">This Mac has taken back <b>161.3 GB</b> since install,<br>across 1,590 processes.</p>
+        </div>
+        <div class="frame" style="max-width:440px">
+          <img src="../shots/popover-en.webp" width="880" height="1562" loading="lazy" alt="The whole Paws panel: the automatic-cleanup switch, 161.3G reclaimed, findings, memory and swap, process count, the pressure graph, recent actions, and settings and quit at the bottom.">
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">03</span>
+          <h3>Before anything ends</h3>
+          <p class="cap">Press clean up and the record window opens, lists exactly what is about to end, and asks again. Only what you pick ends.</p>
+          <p class="read">“Unsaved work may be lost.”<br>It says that before it ends anything.</p>
+        </div>
+        <div class="frame" style="max-width:680px">
+          <img src="../shots/approve-en.webp" width="1360" height="984" loading="lazy" alt="The cleanup approval sheet over the record window, listing the processes about to end with cancel and end buttons.">
+        </div>
+      </div>
+
+      <div class="screen">
+        <div>
+          <span class="n">04</span>
+          <h3>What, when and why</h3>
+          <p class="cap">Everything ended stays on the record — by date, how many of what, and how much came back. Kept for a year.</p>
+          <p class="read">Cleaned up most — <b>1,122 node</b>,<br>427 GoogleUpdater.</p>
+        </div>
+        <div class="frame" style="max-width:680px">
+          <img src="../shots/actions-en.webp" width="1360" height="984" loading="lazy" alt="The actions tab of the Paws record window: total reclaimed, a bar chart by date, a most-cleaned list and the day-by-day log.">
+        </div>
+      </div>
+    </div>
+
+    <p class="shot-note">Captured 18 September 2026 with Paws 1.3.2 on macOS 26, a Mac Studio (M4 Max, 64 GB). The numbers are that machine’s real values. The six menu-bar icons were printed straight from the code that draws them (PawGauge, MenuBarLabel) — a screenshot picks up the wallpaper through them and goes muddy.</p>
   </div>
 </section>
 
@@ -647,7 +780,7 @@ footer .spacer{flex:1}
         14-day trial after install · no account
       </div>
     </div>
-    <a class="btn btn-primary" href="../Paws-1.3.1.dmg" download>Download Paws 1.3.1 <span class="sub">DMG</span></a>
+    <a class="btn btn-primary" href="../Paws-1.3.2.dmg" download>Download Paws 1.3.2 <span class="sub">DMG</span></a>
   </div>
 </section>
 
