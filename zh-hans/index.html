@@ -335,6 +335,8 @@ footer .spacer{flex:1}
 .screen{background:var(--card);padding:26px 24px}
 @media(min-width:900px){
   .screen{display:grid;grid-template-columns:270px 1fr;gap:34px;align-items:start}
+  /* 그림이 글보다 낮은 줄(메뉴바 칩·게이지)만 가운데로. 긴 스크린샷 줄을 가운데로 두면 글이 그림 중간으로 내려가 번호 없이 그림만 한참 보인다. */
+  .screen:has(.gauges){align-items:center}
 }
 .screen .n{font-family:var(--mono);font-size:12px;color:var(--calm);letter-spacing:.11em}
 .screen h3{margin:7px 0 0;font-size:18px;letter-spacing:-.018em;word-break:keep-all}
@@ -369,7 +371,7 @@ footer .spacer{flex:1}
   display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--hair);
   border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin-top:18px;
 }
-@media(min-width:900px){.gauges{margin-top:0}}
+@media(min-width:900px){.gauges{margin-top:0}.chips + .gauges{margin-top:10px}}
 .gauge{background:#0B0E12;padding:16px 8px;text-align:center;min-width:0}
 @media(max-width:620px){
   /* 영어·독일어 라벨은 다섯 칸에 안 들어간다. 좁으면 세 칸으로 접는다. */
