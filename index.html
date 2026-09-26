@@ -116,6 +116,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offse
 }
 .scope-head .eyebrow{letter-spacing:.12em}
 .scope-head .mem{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--slate)}
+/* 이 도식이 앱 화면으로 읽히지 않게. 실제 화면은 #screens 에 있다. */
+.scope-head .example{font-family:var(--mono);font-size:11px;color:var(--slate);border:1px solid var(--hair);border-radius:999px;padding:1px 8px}
+@media(max-width:620px){.scope-head{flex-wrap:wrap;row-gap:4px}.scope-head .eyebrow{white-space:nowrap}.scope-head .mem{margin-left:0;flex-basis:100%}}
 .tree{font-family:var(--mono);font-size:13.5px;line-height:1.5;padding:14px 0 18px;overflow-x:auto}
 .row{
   display:grid;grid-template-columns:34px 62px 1fr auto;gap:14px;align-items:center;
@@ -450,6 +453,7 @@ footer .spacer{flex:1}
           <circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="46 57" transform="rotate(-90 12 12)" style="stroke:var(--warn)"></circle>
         </svg>
         <span class="eyebrow">지금 이 맥에서</span>
+        <span class="example">판정 예시</span>
         <span class="mem">메모리 압박 경고 · 발견 2</span>
       </div>
 
@@ -463,12 +467,12 @@ footer .spacer{flex:1}
         <div class="row held indent" style="animation-delay:.26s">
           <span class="gutter"></span><span class="pid">41904</span>
           <span class="cmd">rg <span class="dim">--json --hidden pattern src/</span></span>
-          <span class="tag tag-hold">보호 · 위로 번짐</span>
+          <span class="tag tag-hold">보호 · 세션에 딸림</span>
         </div>
         <div class="row held indent" style="animation-delay:.32s">
           <span class="gutter"></span><span class="pid">41911</span>
           <span class="cmd">node <span class="dim">playwright-mcp --user-data-dir=…</span></span>
-          <span class="tag tag-hold">보호 · 위로 번짐</span>
+          <span class="tag tag-hold">보호 · 세션에 딸림</span>
         </div>
         </div>
         <div class="row" style="animation-delay:.40s">
@@ -484,7 +488,7 @@ footer .spacer{flex:1}
       </div>
 
       <div class="scope-foot">
-        <span class="key"><span class="swatch" style="background:var(--hold)"></span> 보호선은 위로 번집니다</span>
+        <span class="key"><span class="swatch" style="background:var(--hold)"></span> 세션과 딸린 것은 보호</span>
         <span class="key"><span class="swatch" style="background:var(--danger)"></span> 고아만 정리 대상</span>
       </div>
     </div>

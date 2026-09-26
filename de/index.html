@@ -114,6 +114,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offse
 }
 .scope-head .eyebrow{letter-spacing:.12em}
 .scope-head .mem{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--slate)}
+/* 이 도식이 앱 화면으로 읽히지 않게. 실제 화면은 #screens 에 있다. */
+.scope-head .example{font-family:var(--mono);font-size:11px;color:var(--slate);border:1px solid var(--hair);border-radius:999px;padding:1px 8px}
+@media(max-width:620px){.scope-head{flex-wrap:wrap;row-gap:4px}.scope-head .eyebrow{white-space:nowrap}.scope-head .mem{margin-left:0;flex-basis:100%}}
 .tree{font-family:var(--mono);font-size:13.5px;line-height:1.5;padding:14px 0 18px;overflow-x:auto}
 .row{
   display:grid;grid-template-columns:34px 62px 1fr auto;gap:14px;align-items:center;
@@ -449,6 +452,7 @@ h3{hyphens:auto;-webkit-hyphens:auto}</style>
           <circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="46 57" transform="rotate(-90 12 12)" style="stroke:var(--warn)"></circle>
         </svg>
         <span class="eyebrow">Gerade auf diesem Mac</span>
+        <span class="example">Beispiel</span>
         <span class="mem">Speicherdruck: Warnung · 2 Funde</span>
       </div>
 
@@ -462,12 +466,12 @@ h3{hyphens:auto;-webkit-hyphens:auto}</style>
         <div class="row held indent" style="animation-delay:.26s">
           <span class="gutter"></span><span class="pid">41904</span>
           <span class="cmd">rg <span class="dim">--json --hidden pattern src/</span></span>
-          <span class="tag tag-hold">geschützt · reicht nach oben</span>
+          <span class="tag tag-hold">geschützt · hängt an der Sitzung</span>
         </div>
         <div class="row held indent" style="animation-delay:.32s">
           <span class="gutter"></span><span class="pid">41911</span>
           <span class="cmd">node <span class="dim">playwright-mcp --user-data-dir=…</span></span>
-          <span class="tag tag-hold">geschützt · reicht nach oben</span>
+          <span class="tag tag-hold">geschützt · hängt an der Sitzung</span>
         </div>
         </div>
         <div class="row" style="animation-delay:.40s">
@@ -483,7 +487,7 @@ h3{hyphens:auto;-webkit-hyphens:auto}</style>
       </div>
 
       <div class="scope-foot">
-        <span class="key"><span class="swatch" style="background:var(--hold)"></span> Die Schutzlinie reicht nach oben</span>
+        <span class="key"><span class="swatch" style="background:var(--hold)"></span> Die Sitzung und alles darunter ist geschützt</span>
         <span class="key"><span class="swatch" style="background:var(--danger)"></span> Nur verwaiste Prozesse werden aufgeräumt</span>
       </div>
     </div>
