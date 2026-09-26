@@ -12,7 +12,7 @@
 
   /* Cloudflare 대시보드 → Web Analytics → Add a site → beacon token 을 여기에 붙인다.
    * 무료, 쿠키 없음, 동의 배너 불필요. 채우는 순간부터 방문이 잡힌다. */
-  var TOKEN = '';
+  var TOKEN = '3913344a4f8641eab7b14c64cfb8acc5';
 
   var lang = (document.documentElement.lang || 'ko').toLowerCase();
   var REF_KEY = 'paws.ref';
