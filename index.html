@@ -46,6 +46,8 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
+/* 폭 제한을 풀었으니 마지막 줄에 한 단어만 남지 않게. 지원 안 하는 브라우저는 그냥 무시한다. */
+p{text-wrap:pretty}
 a{color:inherit}
 .wrap{max-width:1060px;margin:0 auto;padding:0 var(--gut)}
 
@@ -96,7 +98,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offse
   font-weight:800;margin:18px 0 0;max-width:15ch;word-break:keep-all;
 }
 .hero .lede{
-  margin:22px 0 0;max-width:46ch;color:var(--slate);font-size:clamp(16px,2vw,19px);
+  margin:22px 0 0;max-width:none;color:var(--slate);font-size:clamp(16px,2vw,19px);
   word-break:keep-all;
 }
 .hero .lede b{color:var(--ink);font-weight:600}
@@ -152,7 +154,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offse
 
 /* ── generic section ────────────────────────── */
 section{padding:clamp(56px,8vw,96px) 0}
-.sec-head{max-width:52ch}
+.sec-head{max-width:none}
 .sec-head h2{
   font-size:clamp(26px,3.6vw,38px);line-height:1.25;letter-spacing:-.03em;
   font-weight:800;margin:12px 0 0;word-break:keep-all;
@@ -180,7 +182,7 @@ section{padding:clamp(56px,8vw,96px) 0}
 .vow p{margin:0;font-size:15px;color:#98A4B1;word-break:keep-all}
 .vow .mark-hold{color:#4FBBA3;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
 .aside-cpu{border:1px dashed #2E3841;border-radius:12px;margin-top:34px;padding:24px}
-.aside-cpu p{margin:0;max-width:64ch;word-break:keep-all;color:#A9B4C0;font-size:15px}
+.aside-cpu p{margin:0;max-width:none;word-break:keep-all;color:#A9B4C0;font-size:15px}
 .aside-cpu b{color:#fff;font-weight:600}
 .aside-cpu code{font-family:var(--mono);font-size:13px;color:#4FBBA3}
 
@@ -225,7 +227,7 @@ footer .spacer{flex:1}
 }
 .symptom p{margin:0;font-size:15.5px;word-break:keep-all}
 .bridge{
-  margin:clamp(30px,4vw,40px) 0 0;max-width:62ch;word-break:keep-all;
+  margin:clamp(30px,4vw,40px) 0 0;max-width:none;word-break:keep-all;
   font-size:clamp(16px,2vw,18px);
 }
 .bridge b{font-weight:600}
@@ -275,7 +277,7 @@ footer .spacer{flex:1}
   border-radius:12px;padding:24px;background:var(--card);
 }
 .nocount h3{margin:0;font-size:17px;letter-spacing:-.015em}
-.nocount p{margin:12px 0 0;max-width:64ch;word-break:keep-all;color:var(--slate);font-size:15px}
+.nocount p{margin:12px 0 0;max-width:none;word-break:keep-all;color:var(--slate);font-size:15px}
 .nocount p b{color:var(--ink);font-weight:600}
 .shell{
   margin:16px 0 0;background:var(--night);border-radius:9px;padding:14px 16px;
@@ -314,7 +316,7 @@ footer .spacer{flex:1}
   border-left:2px solid var(--warn);border-radius:0 12px 12px 0;
 }
 .lesson h3{margin:0;font-size:17px;letter-spacing:-.015em}
-.lesson p{margin:12px 0 0;max-width:66ch;word-break:keep-all;color:var(--slate);font-size:15px}
+.lesson p{margin:12px 0 0;max-width:none;word-break:keep-all;color:var(--slate);font-size:15px}
 .lesson p b{color:var(--ink);font-weight:600}
 
 /* ── real screens ───────────────────────────── */
@@ -371,7 +373,7 @@ footer .spacer{flex:1}
 .gauge .lb{font-family:var(--mono);font-size:10.5px;color:#8A94A0;letter-spacing:.03em;word-break:keep-all;line-height:1.5}
 .shot-note{
   margin-top:clamp(28px,4vw,38px);font-family:var(--mono);font-size:12.5px;
-  color:var(--slate);word-break:keep-all;line-height:1.8;max-width:72ch;
+  color:var(--slate);word-break:keep-all;line-height:1.8;max-width:none;
 }
 /* ── entrance choreography ──────────────────── */
 @media(prefers-reduced-motion:no-preference){
