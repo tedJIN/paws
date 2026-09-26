@@ -95,7 +95,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offse
 .hero{padding:clamp(56px,9vw,104px) 0 clamp(24px,3.5vw,36px)}
 .hero h1{
   font-size:clamp(36px,6.4vw,68px);line-height:1.14;letter-spacing:-.035em;
-  font-weight:800;margin:18px 0 0;max-width:16ch;word-break:keep-all;
+  font-weight:800;margin:18px 0 0;max-width:none;text-wrap:balance;word-break:keep-all;
 }
 .hero .lede{
   margin:22px 0 0;max-width:none;color:var(--slate);font-size:clamp(16px,2vw,19px);
@@ -431,12 +431,13 @@ footer .spacer{flex:1}
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow reveal">macOS 14 及以上 · 菜单栏应用</span>
-    <h1 class="reveal" style="animation-delay:.06s">关掉终端<br>进程却还在</h1>
+    <span class="eyebrow reveal">为同时运行 Claude Code 和 MCP 的 Mac 而做</span>
+    <h1 class="reveal" style="animation-delay:.06s">34GB 不见了，<br>元凶却不在列表里</h1>
     <p class="lede reveal" style="animation-delay:.12s">
-      同时运行多个 AI 智能体，主人已经消失的进程就会越积越多。
-      Paws 在菜单栏守着内存，只把这些进程挑出来给你看。
-      <b>绝不触碰正在进行的工作。</b>
+      有一天，我的 Mac 上堆积了 2,750 个失去主人的进程——
+      活动监视器和内存警告都没能指出它们。
+      Paws 只找出这些进程并清理掉。
+      <b>正在工作的会话一概不碰。</b>
     </p>
     <div class="cta reveal" style="animation-delay:.18s">
       <a class="btn btn-primary" href="#get">下载 <span class="sub">1.3.3 · 已通过 Apple 公证</span></a>
