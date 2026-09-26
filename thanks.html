@@ -57,7 +57,7 @@ a:focus-visible{outline:2px solid var(--hold);outline-offset:3px;border-radius:6
   <p class="note" id="note"></p>
 
   <div class="foot">
-    <a id="again" href="Paws-1.3.3.dmg" data-direct></a>
+    <a id="again" href="Paws-1.3.4.dmg" data-direct></a>
     <a href="mailto:pawsapp.help@gmail.com" id="help"></a>
     <a id="back" href="./"></a>
   </div>
@@ -119,7 +119,7 @@ a:focus-visible{outline:2px solid var(--hold);outline-offset:3px;border-radius:6
   var lang = (q.get("lang") || "ko").toLowerCase();
   var t = T[lang] || T.ko;
   var file = (q.get("f") || "").replace(/[^A-Za-z0-9._-]/g, "");
-  if (!/^Paws-[0-9.]+\.dmg$/.test(file)) file = "Paws-1.3.3.dmg";
+  if (!/^Paws-[0-9.]+\.dmg$/.test(file)) file = "Paws-1.3.4.dmg";
 
   document.documentElement.lang = lang;
   document.title = "Paws — " + t.title;
