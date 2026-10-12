@@ -94,6 +94,7 @@ a{color:inherit}
 .btn .sub{font-family:var(--mono);font-size:12px;font-weight:400;opacity:.62}
 a:focus-visible,button:focus-visible{outline:2px solid var(--hold);outline-offset:3px;border-radius:6px}
 
+.flow{display:block;width:100%;max-width:560px;height:auto;margin:clamp(28px,4vw,44px) auto 0;border-radius:20px;background:#0E0F12}
 /* ── hero ───────────────────────────────────── */
 .hero{padding:clamp(56px,9vw,104px) 0 clamp(24px,3.5vw,36px)}
 .hero h1{
@@ -496,6 +497,12 @@ footer .spacer{flex:1}
         <span class="key"><span class="swatch" style="background:var(--danger)"></span> Only orphans are cleanup targets</span>
       </div>
     </div>
+
+    <video class="flow" autoplay muted loop playsinline preload="metadata" width="720" height="720"
+      poster="../shots/flow.jpg" aria-label="Paws flow. It finds a dev server nothing owns, you pick it from a list where nothing is pre-selected, it ends and is logged.">
+      <source src="../shots/flow.mp4" type="video/mp4">
+    </video>
+    <script>if(matchMedia("(prefers-reduced-motion: reduce)").matches)document.querySelector("video.flow").removeAttribute("autoplay")</script>
 
   </div>
 </header>
