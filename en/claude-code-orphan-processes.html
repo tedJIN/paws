@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code leaves orphaned MCP processes on your Mac — how to find them safely</title>
+<meta name="description" content="Why MCP servers and subagents outlive their Claude Code session on macOS, a read-only command to count them, why counting ppid=1 is the wrong test, and how to clean up without killing a live session.">
+<meta name="robots" content="index">
+<link rel="canonical" href="https://tedjin.github.io/paws/en/claude-code-orphan-processes.html">
+<meta property="og:title" content="Claude Code leaves orphaned MCP processes on your Mac">
+<meta property="og:description" content="How to find them with one read-only command — and why the obvious ppid=1 check gets it wrong.">
+<meta property="og:image" content="https://tedjin.github.io/paws/og/en.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../_legal.css">
+<style>
+  pre{overflow-x:auto;padding:14px 16px;border-radius:10px;background:var(--code-bg,rgba(127,127,127,.12));font:13px/1.55 "IBM Plex Mono",ui-monospace,monospace}
+  .note{border-left:3px solid #e8833a;padding:2px 0 2px 14px;margin:18px 0}
+  .cta{margin:28px 0;padding:18px 20px;border-radius:14px;border:1px solid rgba(127,127,127,.3)}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Claude Code leaves orphaned MCP processes on your Mac — how to find them safely","datePublished":"2026-10-15","author":{"@type":"Person","name":"Teddy"},"about":["Claude Code","MCP servers","macOS memory"],"url":"https://tedjin.github.io/paws/en/claude-code-orphan-processes.html"}
+</script>
+<script src="../analytics.js" defer></script>
+</head>
+<body>
+<div class="bar"><div class="wrap">
+<a href="index.html"><svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="9"></circle><circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="34 57" transform="rotate(-90 12 12)"></circle></svg></a>
+<a href="index.html">Paws</a>
+<span class="spacer"></span>
+</div></div>
+<main><div class="wrap">
+<span class="eyebrow">Guide · macOS · Claude Code</span>
+<h1>Claude Code leaves orphaned MCP processes on your Mac. Here’s how to find them safely.</h1>
+
+<p>If you run Claude Code with a few MCP servers, your Mac can slowly fill up with processes that outlived the session that started them. Each one is small. Together they can hold tens of gigabytes — and neither Activity Monitor nor the “out of application memory” dialog will point at them.</p>
+<p>This is a known problem. The open issue <a href="https://github.com/anthropics/claude-code/issues/1935">anthropics/claude-code#1935</a> (“MCP servers not properly terminated when Claude Code exits”) has dozens of comments, and similar reports keep arriving — e.g. <a href="https://github.com/anthropics/claude-code/issues/33947">#33947</a> and <a href="https://github.com/anthropics/claude-code/issues/95821">#95821</a> on macOS.</p>
+
+<h2>What it looks like</h2>
+<ul>
+<li>The fan keeps spinning after the heavy work is done.</li>
+<li>“Your system has run out of application memory.” You quit the app it names; the warning comes back minutes later.</li>
+<li>Swap keeps growing even though only a few windows are open.</li>
+</ul>
+<p>On the Mac where this guide started (M4 Max, 64 GB, 55 days of uptime) the cause was <b>2,750 orphaned <code>chroma-mcp</code> processes holding 34 GB</b>. The dialog blamed Safari (1.15 GB) and Terminal (1.69 GB). Both were innocent.</p>
+
+<h2>Why it happens</h2>
+<p>A stdio MCP server is a child process of the Claude Code session that launched it. When the session ends uncleanly, or a server is restarted and the old child isn’t reaped, the child keeps running. macOS re-parents it to <code>launchd</code> (PID 1), and nothing ever asks it to exit. Subagents and dev servers they spawn can end up the same way.</p>
+
+<h2>Count them yourself (read-only)</h2>
+<p>This only reads the process list. It lists commands that have <b>three or more identical copies</b> with no living parent, skipping Apple’s own system processes:</p>
+<pre><code>ps -axo ppid=,rss=,command= | awk '$1==1 &amp;&amp; $3 !~ /^\/(System|usr)\// &amp;&amp; /(node|npx|uvx?|python[0-9.]*|bun|deno|mcp)( |$|\/)/ {rss=$2; $1=$2=""; sub(/^ +/,""); n[$0]++; m[$0]+=rss} END {for (c in n) if (n[c]&gt;=3) printf "%5d  %8.1f MB  %s\n", n[c], m[c]/1024, substr(c,1,80)}' | sort -rn | head</code></pre>
+<p>Empty output is good news. If you see the same MCP server dozens or hundreds of times, you’ve found it.</p>
+
+<h2>Why “count everything with ppid=1” is the wrong test</h2>
+<p>The tempting one-liner is <code>ps -eo ppid= | awk '$1==1' | wc -l</code>. On a healthy Mac that returns hundreds — 883 on mine as I write this — and almost none of them should be touched. Spotify, browser helpers, and dozens of Apple XPC services all legitimately have <code>launchd</code> as their parent. Having no parent is an absence of information, not evidence.</p>
+<div class="note"><p>I learned this the hard way: the first build of my own cleanup tool treated “not in <code>launchctl list</code>” as proof of being an orphan and terminated 108 Apple XPC services, including the ones Safari uses to render pages. That’s why the command above skips <code>/System</code> and <code>/usr</code> and only reports piles of three or more.</p></div>
+<p>CPU is an even worse signal. A Claude Code session waiting for your input sits at 0% CPU. Anything that reaps “idle” processes will kill your work.</p>
+
+<h2>Cleaning up by hand</h2>
+<ol>
+<li>Finish or quit every Claude Code session you care about first.</li>
+<li>Kill one group at a time, by the exact name you saw above, for example <code>pkill -f chroma-mcp</code>.</li>
+<li>Run the count again. Restart Claude Code; it starts fresh servers when it needs them.</li>
+</ol>
+<p>Rebooting also clears everything — until it builds up again.</p>
+
+<div class="cta">
+<p><b>If you’d rather not do this every few days:</b> I built <a href="index.html?utm_source=guide-orphans">Paws</a>, a menu bar app that watches memory and finds these piles for you. Instead of CPU or ppid, it asks the kernel whether a terminal session still owns the process (<code>e_tpgid</code>), and protection spreads upward to parents — so a live agent is never on the list. Nothing is pre-checked, every termination is logged, and watching is free forever. Cleaning is $29 once, for three Macs.</p>
+</div>
+
+<h2>FAQ</h2>
+<h3>Is this only a macOS problem?</h3>
+<p>No — the GitHub issues include Linux and Windows reports. The command and the app on this page are macOS-only.</p>
+<h3>Will killing an orphaned MCP server break Claude Code?</h3>
+<p>Not if no session owns it any more; a running session starts its own servers. The risk is killing one that a live session still uses — which is why you quit sessions first, or use a tool that checks session ownership.</p>
+<h3>Does Activity Monitor show them?</h3>
+<p>Yes, as separate rows — each one small enough to sit far below the top of the list. You’d have to notice that the same name appears hundreds of times.</p>
+</div></main>
+<footer><div class="wrap">
+<a href="index.html">Home</a><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms</a>
+</div></footer>
+</body>
+</html>
