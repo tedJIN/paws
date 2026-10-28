@@ -30,6 +30,12 @@ button:disabled{background:var(--hair);color:var(--slate);cursor:not-allowed}
 button:focus-visible,.btn:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--hold);outline-offset:2px}
 .why{font-size:14px;color:#9A3412;margin-top:8px;min-height:1.2em}
 .msg{margin-top:12px;font-weight:600}
+.stats h2{margin:0;font-size:17px}
+.nums{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px;font-size:15px}
+.vids{list-style:none;padding:0;margin:12px 0 0;font-size:14px}
+.vids li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--hair);margin:0}
+.vids .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vids .n{font-family:var(--mono);font-size:12px;color:var(--slate);white-space:nowrap}
 [hidden]{display:none!important}
 </style>
 </head>
@@ -82,6 +88,12 @@ button:focus-visible,.btn:focus-visible,select:focus-visible,textarea:focus-visi
   <p id="why" class="why" aria-live="polite"></p>
 </form>
 <p id="status" class="msg" role="status" aria-live="polite"></p>
+
+<section id="stats" class="card stats" hidden aria-labelledby="stats-h">
+  <h2 id="stats-h">Your account</h2>
+  <div class="nums" id="nums"></div>
+  <ul class="vids" id="vids"></ul>
+</section>
 </div></main>
 <footer><div class="wrap"><a href="../en/terms.html">Terms</a><a href="../en/privacy.html">Privacy</a></div></footer>
 <script src="app.js"></script>

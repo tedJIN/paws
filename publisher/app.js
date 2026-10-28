@@ -56,6 +56,7 @@ function show(d) {
   }
   creator = d.creator || { error: "unknown" };
   $("form").hidden = false;
+  loadStats();
   if (!creator.error) {
     $("who").textContent = `Posting to @${creator.creator_nickname}`;
     if (creator.creator_avatar_url) $("avatar").src = creator.creator_avatar_url; else $("avatar").hidden = true;
@@ -74,10 +75,26 @@ function show(d) {
   refresh();
 }
 
+// 우리 계정 지표(user.info.stats, video.list) — 어떤 편이 잘 됐는지 보고 다음 편을 정한다
+async function loadStats() {
+  try {
+    const s = await api(`/tt/drafts/${encodeURIComponent(tok)}/stats`);
+    $("nums").replaceChildren(...[`${s.follower_count} followers`, `${s.likes_count} likes`, `${s.video_count} videos`]
+      .map((t) => Object.assign(document.createElement("span"), { textContent: t })));
+    $("vids").replaceChildren(...(s.videos || []).slice(0, 5).map((v) => {
+      const li = document.createElement("li");
+      li.append(Object.assign(document.createElement("span"), { className: "t", textContent: v.title || "(no caption)" }),
+        Object.assign(document.createElement("span"), { className: "n", textContent: `${v.view_count} views · ${v.like_count} likes` }));
+      return li;
+    }));
+    $("stats").hidden = false;
+  } catch (_) { /* 지표가 없어도 게시는 막지 않는다 */ }
+}
+
 async function poll() {
   for (let i = 0; i < 60; i++) {
     const s = await api(`/tt/drafts/${encodeURIComponent(tok)}/status`).catch(() => ({}));
-    if (s.state === "PUBLISH_COMPLETE") return say("Posted. It can take a few minutes to show on your profile.");
+    if (s.state === "PUBLISH_COMPLETE") { loadStats(); return say("Posted. It can take a few minutes to show on your profile."); }
     if (s.state === "FAILED") return say(`TikTok could not post it: ${s.fail_reason || "unknown reason"}.`);
     await new Promise((r) => setTimeout(r, 5000));
   }
