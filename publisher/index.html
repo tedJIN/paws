@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post to TikTok — Paws</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../_legal.css">
+<style>
+.card{background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:20px;margin-top:20px}
+.who{display:flex;align-items:center;gap:12px;font-weight:600}
+.who img{width:40px;height:40px;border-radius:50%;background:var(--hair)}
+video{display:block;width:100%;max-height:520px;background:#000;border-radius:10px;margin-top:16px}
+label.f{display:block;font-weight:600;font-size:15px;margin-top:20px}
+textarea,select{display:block;width:100%;margin-top:6px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--hair);border-radius:8px;background:#fff;color:var(--ink)}
+textarea{min-height:120px;resize:vertical}
+.count{font-family:var(--mono);font-size:12px;color:var(--slate);text-align:right}
+.row{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:15px}
+.row input{width:18px;height:18px}
+.row input:disabled+span{color:var(--slate)}
+.note{font-size:13px;color:var(--slate);margin:4px 0 0 28px}
+.sub{margin-left:28px}
+.consent{font-size:14px;color:var(--slate);margin-top:24px}
+.consent a{color:inherit}
+button,.btn{display:inline-block;margin-top:12px;font:inherit;font-weight:700;font-size:16px;padding:12px 22px;border-radius:10px;border:0;background:var(--ink);color:#fff;cursor:pointer;text-decoration:none}
+button:disabled{background:var(--hair);color:var(--slate);cursor:not-allowed}
+button:focus-visible,.btn:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--hold);outline-offset:2px}
+.why{font-size:14px;color:#9A3412;margin-top:8px;min-height:1.2em}
+.msg{margin-top:12px;font-weight:600}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="bar"><div class="wrap">
+<a href="../en/"><svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><circle class="track" cx="12" cy="12" r="9"></circle><circle class="arc" cx="12" cy="12" r="9" stroke-dasharray="34 57" transform="rotate(-90 12 12)"></circle></svg></a>
+<a href="../en/">Paws</a>
+</div></div>
+<main><div class="wrap">
+<span class="eyebrow">Paws Publisher</span>
+<h1>Post to TikTok</h1>
+<p>Review this video, choose who can see it, and post it to your TikTok account. Nothing is posted until you press Post.</p>
+
+<p id="status" class="msg" role="status" aria-live="polite"></p>
+
+<section id="connect" class="card" hidden>
+  <p style="margin:0">Connect your TikTok account to continue.</p>
+  <a id="connect-link" class="btn" href="#">Connect TikTok</a>
+</section>
+
+<form id="form" class="card" hidden novalidate>
+  <div class="who"><img id="avatar" alt=""><span id="who"></span></div>
+  <video id="video" controls playsinline preload="metadata"></video>
+
+  <label class="f" for="caption">Caption</label>
+  <textarea id="caption" maxlength="2200"></textarea>
+  <div class="count"><span id="count">0</span> / 2200</div>
+
+  <label class="f" for="privacy">Who can view this video</label>
+  <select id="privacy" required>
+    <option value="" disabled selected>Select</option>
+  </select>
+
+  <div class="f" style="font-weight:600;font-size:15px;margin-top:20px">Allow users to</div>
+  <label class="row"><input type="checkbox" id="comment"><span>Allow comments</span></label>
+  <label class="row"><input type="checkbox" id="duet"><span>Allow Duet</span></label>
+  <label class="row"><input type="checkbox" id="stitch"><span>Allow Stitch</span></label>
+  <p id="interaction-note" class="note" hidden>Some options are turned off in your TikTok settings.</p>
+
+  <label class="row" style="margin-top:22px"><input type="checkbox" id="disclose"><span>Disclose video content</span></label>
+  <p class="note">Turn on to disclose that this video promotes goods or services in exchange for something of value.</p>
+  <div id="disclose-opts" class="sub" hidden>
+    <label class="row"><input type="checkbox" id="brand-own"><span>Your brand</span></label>
+    <p class="note">You are promoting yourself or your own business.</p>
+    <label class="row"><input type="checkbox" id="brand-paid"><span>Branded content</span></label>
+    <p class="note">You are promoting another brand or a third party.</p>
+    <p id="label-note" class="note" aria-live="polite"></p>
+  </div>
+
+  <p id="consent" class="consent"></p>
+  <button id="post" type="submit" disabled>Post</button>
+  <p id="why" class="why" aria-live="polite"></p>
+</form>
+</div></main>
+<footer><div class="wrap"><a href="../en/terms.html">Terms</a><a href="../en/privacy.html">Privacy</a></div></footer>
+<script src="app.js"></script>
+</body>
+</html>
