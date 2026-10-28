@@ -14,7 +14,7 @@ const say = (t) => { $("status").textContent = t; };
 async function api(path, opts) {
   const r = await fetch(API + path, opts);
   const j = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(j.error || `HTTP ${r.status}`);
+  if (!r.ok) throw Object.assign(new Error(j.error || `HTTP ${r.status}`), { status: r.status });
   return j;
 }
 
@@ -71,7 +71,9 @@ function show(d) {
   $("video").addEventListener("loadedmetadata", () => { duration = $("video").duration; refresh(); });
   $("video").addEventListener("error", () => { say("The video could not be loaded."); });
   $("video").src = `${API}/tt/drafts/${encodeURIComponent(tok)}/video`;
-  if (d.status && d.status.state && d.status.state !== "FAILED") { posted = true; say("This video was already posted."); }
+  // 한 초안은 한 번만: 이미 시작했거나 끝난(실패 포함) 편은 다시 올리지 않는다
+  if (d.status && d.status.state === "FAILED") { posted = true; say(`TikTok could not post it: ${d.status.fail_reason || "unknown reason"}.`); }
+  else if (d.status && d.status.state) { posted = true; say("This video was already posted."); }
   refresh();
 }
 
@@ -123,7 +125,9 @@ $("form").addEventListener("submit", async (e) => {
     say("Uploaded. TikTok is processing it…");
     await poll();
   } catch (err) {
-    posting = false; refresh();
+    posting = false;
+    if (err.status === 409) posted = true; // 다른 탭·기기에서 이미 올림
+    refresh();
     say(`Not posted: ${err.message}`);
   }
 });
